@@ -9,6 +9,7 @@ module.exports = { a: 'b' };
 Import
 ```JavaScript
 const library = require('library');
+library.a; // b
 ```
 
 ## Add property to exports
