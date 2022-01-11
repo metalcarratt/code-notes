@@ -22,7 +22,7 @@ promise.then(result => {
 ```
 
 Chaining:
-```
+```JavaScript
 fetch('/todos.json')
   .then(response => {
     if (response.status >= 200) {
