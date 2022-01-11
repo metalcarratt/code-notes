@@ -32,3 +32,4 @@ Other:
 - `||` or
 - `latest` update to latest
 
+References: https://nodejs.dev/learn/semantic-versioning-using-npm
