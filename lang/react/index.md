@@ -39,6 +39,7 @@ function App() {
 export default App;
 ```
 
+## Props
 Props:
 ```JavaScript
 function ComponentName(props) {
