@@ -11,3 +11,5 @@ node app.js
 [Exporting and importing](export.md)
 
 [Node package manager (npm)](npm.md)
+
+[Node package executor (npx)](npx.md)
