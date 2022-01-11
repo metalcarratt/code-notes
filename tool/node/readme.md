@@ -18,6 +18,8 @@ node app.js
 
 [Promises](promises.md)
 
+[The Event Emitter](event-emitter.md)
+
 
 ## Tooling
 [Node package manager (npm)](npm.md)
