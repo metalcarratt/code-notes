@@ -6,4 +6,4 @@
 [React](/lang/react/index.md)
 
 ## Tools
-[Node.js](tool/node/index.md)
+[Node.js](tool/node/readme.md)
