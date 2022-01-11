@@ -1,6 +1,6 @@
 # Minimal Vuex Store
 
-```
+```JavaScript
 import Vue from 'vue';
 import Vuex from 'vuex';
 
