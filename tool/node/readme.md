@@ -10,6 +10,8 @@ node app.js
 
 [Exporting and importing](export.md)
 
+[The Event Loop](event-loop.md)
+
 ## Tooling
 [Node package manager (npm)](npm.md)
 
