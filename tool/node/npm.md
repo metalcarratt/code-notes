@@ -36,3 +36,20 @@ Run it:
 ```Bash
 npm run start
 ```
+
+## Local vs global
+`npm install` installs the package locally, in the `./node_modules` directory.
+
+`npm -g install` installs the package globally. Globally installed packages are normally for executable commands such as `npm`, `vue-cli`, `create-react-app`.
+
+## Semantic versioning
+
+
+
+References:
+
+https://nodejs.dev/learn/an-introduction-to-the-npm-package-manager
+
+https://nodejs.dev/learn/where-does-npm-install-the-packages
+
+https://nodejs.dev/learn/npm-global-or-local-packages
