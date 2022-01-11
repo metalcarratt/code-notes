@@ -12,6 +12,8 @@ node app.js
 
 [The Event Loop](event-loop.md)
 
+[Timers](timers.md)
+
 ## Tooling
 [Node package manager (npm)](npm.md)
 
