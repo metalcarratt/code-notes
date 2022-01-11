@@ -12,6 +12,9 @@ node app.js
 
 [Error Handling](error-handling.md)
 
+[TypeScript](typescript.md)
+
+
 ### Asynchronous Development
 
 [The Event Loop](event-loop.md)
