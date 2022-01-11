@@ -22,6 +22,22 @@ Update package:
 npm update <package>
 ```
 
+## Uninstall
+Remove from `./node_modules`:
+```Bash
+npm uninstall <package>
+```
+
+Remove also from `package.json`:
+```Bash
+npm uninstall -s <package>
+```
+
+Remove global:
+```Bash
+npm uninstall -g <package>
+```
+
 ## Run tasks
 Define a bash script in `package.json`:
 ```Json
