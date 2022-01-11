@@ -14,6 +14,9 @@ node app.js
 
 [Timers](timers.md)
 
+[Promises](promises.md)
+
+
 ## Tooling
 [Node package manager (npm)](npm.md)
 
