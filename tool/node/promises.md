@@ -35,4 +35,28 @@ fetch('/todos.json')
   .catch(error => console.log(error));
 ```
 
+## Async and Await
+Await result of a function that returns a promise. Must be in an function defined as async.
+```JavaScript
+const doAsync = () => {
+    return new Promise(resolve => {
+        setTimeout() => resolve('did something'), 3000);
+    });
+}
+
+const doSomething = async () => {
+    await doAsync();
+};
+```
+
+Using async makes a function return a promise:
+```JavaScript
+const doAsync = async () => {
+    return 'test';
+}
+
+doAsync().then(alert); // will alert 'test'
+```
+
+
 Reference: https://nodejs.dev/learn/understanding-javascript-promises
