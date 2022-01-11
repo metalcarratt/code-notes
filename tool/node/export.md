@@ -29,3 +29,5 @@ Or:
 const { value } = require('library');
 value; // true
 ```
+
+Reference: https://nodejs.dev/learn/expose-functionality-from-a-nodejs-file-using-exports
