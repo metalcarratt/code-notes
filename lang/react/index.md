@@ -63,3 +63,10 @@ function App() {
 
 export default App;
 ```
+
+## CSS
+
+Just import in the component:
+```JavaScript
+import './style.css';
+```
