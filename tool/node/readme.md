@@ -10,6 +10,8 @@ node app.js
 
 [Exporting and importing](export.md)
 
+[Error Handling](error-handling.md)
+
 ### Asynchronous Development
 
 [The Event Loop](event-loop.md)
