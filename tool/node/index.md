@@ -10,6 +10,11 @@ node app.js
 
 [Exporting and importing](export.md)
 
+## Tooling
 [Node package manager (npm)](npm.md)
 
 [Node package executor (npx)](npx.md)
+
+[The package.json file](package-json.md)
+
+[The package-lock.json file](package-lock-json.md)
