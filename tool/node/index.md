@@ -9,3 +9,5 @@ node app.js
 [Environment variables](env-var.md)
 
 [Exporting and importing](export.md)
+
+[Node package manager (npm)](npm.md)
