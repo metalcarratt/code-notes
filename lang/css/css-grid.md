@@ -8,3 +8,11 @@ parent {
   align-items: center;      /* vertical center */
 }
 ```
+
+## Vertical line
+```css
+parent {
+  display: flex;
+  flex-direction: column;
+}
+```
