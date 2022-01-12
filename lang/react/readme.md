@@ -19,25 +19,4 @@ npm start
 
 [CSS](css.md)
 
-## Components within components
-In the parent:
-```
-function App() {
-  return (
-    <TopComponent>
-      <ChildComponent />
-    </TopComponent>
-  );
-}
-```
-
-In `TopComponent`:
-```
-function TopComponent(props) {
-  return (
-    <div>
-      {props.children}
-    </div>
-  );
-}
-```
+[Components within components](nested-components.md)
