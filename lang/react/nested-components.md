@@ -1,6 +1,6 @@
 # Components within components
 In the parent:
-```
+```JavaScript
 function App() {
   return (
     <TopComponent>
@@ -11,7 +11,7 @@ function App() {
 ```
 
 In `TopComponent`:
-```
+```JavaScript
 function TopComponent(props) {
   return (
     <div>
