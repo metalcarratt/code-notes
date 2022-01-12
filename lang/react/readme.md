@@ -12,7 +12,7 @@ Run:
 cd <app-name>
 npm start
 ```
-
+## Topics
 [New component](new-component.md)
 
 [Props](props.md)
