@@ -17,13 +17,7 @@ npm start
 
 [Props](props.md)
 
-
-## CSS
-
-Just import in the component:
-```JavaScript
-import './style.css';
-```
+[CSS](css.md)
 
 ## Components within components
 In the parent:
