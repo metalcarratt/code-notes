@@ -4,7 +4,7 @@
 ```css
 parent {
   display: flex;
-  justify-content: center; // horizontal center
-  align-items: center;     // vertical center
+  justify-content: center;  /* horizontal center */
+  align-items: center;      /* vertical center */
 }
 ```
