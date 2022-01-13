@@ -21,4 +21,6 @@ npm start
 
 [Components within components](nested-components.md)
 
+[Redux](redux.md)
+
 [Create HTML element](create-html-element.md)
