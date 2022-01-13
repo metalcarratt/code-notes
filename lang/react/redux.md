@@ -49,10 +49,6 @@ export const store = configureStore({
 
 Wrap a part of the component tree, for example in `index.js`:
 ```JavaScript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-
 import { Provider } from 'react-redux';
 import { store } from './app/store.js';
 
@@ -68,7 +64,6 @@ ReactDOM.render(
 
 Use the state in a component:
 ```JavaScript
-import React from 'react';
 import { useSelector } from 'react-redux';
 
 function <CompName>() {
@@ -81,6 +76,27 @@ function <CompName>() {
         </div>
     );
 }
+```
 
-export default <CompName>;
+Update state in a component:
+```
+```JavaScript
+import { useDispatch } from 'react-redux';
+import { <actionName> } from './app/store.js';
+
+function <CompName>() {
+
+    const dispatch = useDispatch();
+    
+    function handleChange(event) {
+      dispatch(<actionName>(event.target.value));
+    }
+
+    return (
+        <div>
+            <textarea value={data} onChange={handleChange} />
+        </div>
+    );
+}
+```
 ```
