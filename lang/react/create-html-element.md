@@ -3,7 +3,7 @@
 ```JavaScript
 import React from 'react';
 
-const e = React.createElement('span', { class: 'myStyle' }, 'Building');
+const e = React.createElement('span', { class: 'myStyle' }, ''); // type, attributes, children
 
 return (
   { e }
