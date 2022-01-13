@@ -28,3 +28,5 @@ npm start
 
 ## Advanced Ideas
 [Create HTML element](create-html-element.md)
+
+[Add css from String](dyanmic-css.md)
