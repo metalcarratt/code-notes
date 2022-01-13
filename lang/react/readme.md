@@ -25,4 +25,6 @@ npm start
 
 [Redux](redux.md)
 
+
+## Advanced Ideas
 [Create HTML element](create-html-element.md)
