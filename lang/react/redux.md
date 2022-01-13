@@ -48,7 +48,7 @@ export const store = configureStore({
 ```
 
 Wrap a part of the component tree, for example in `index.js`:
-```
+```JavaScript
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
