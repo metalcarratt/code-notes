@@ -17,6 +17,8 @@ npm start
 
 [Props](props.md)
 
+[JSX](jsx.md)
+
 [CSS](css.md)
 
 [Components within components](nested-components.md)
