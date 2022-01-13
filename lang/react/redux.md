@@ -79,7 +79,6 @@ function <CompName>() {
 ```
 
 Update state in a component:
-```
 ```JavaScript
 import { useDispatch } from 'react-redux';
 import { <actionName> } from './app/store.js';
