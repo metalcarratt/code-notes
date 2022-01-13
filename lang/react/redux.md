@@ -19,8 +19,8 @@ A minimal slice:
 ```JavaScript
 import { createSlice } from '@reduxjs/toolkit';
 
-const <sliceName>Slice = createSlice({
-    name: '<name>',
+const <nnnSlice> = createSlice({
+    name: '<nnn>',
     initialState: {
         // data
     },
@@ -31,18 +31,18 @@ const <sliceName>Slice = createSlice({
     }
 });
 
-export const { <actionName> } = <sliceName>Slice.actions;
-export default <sliceName>Slice.reducer;
+export const { <actionName> } = <nnnSlice>.actions;
+export default <nnnSlice>.reducer;
 ```
 
 A minimal store:
 ```JavaScript
 import { configureStore } from '@reduxjs/toolkit';
-import <sliceName>Reducer from '../<slice>.js';
+import <nnnReducer> from '../<slice>.js';
 
 export const store = configureStore({
     reducer: {
-        <sliceName>: <sliceName>Reducer
+        <nnn>: <nnnReducer>
     }
 })
 ```
