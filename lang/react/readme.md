@@ -30,3 +30,5 @@ npm start
 [Create HTML element](create-html-element.md)
 
 [Add css from String](dynamic-css.md)
+
+[Text to HTML](text-to-html.md)
