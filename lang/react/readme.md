@@ -32,3 +32,6 @@ npm start
 [Add css from String](dynamic-css.md)
 
 [Text to HTML](text-to-html.md)
+
+## Issues
+[Set homepage - white page on static deployment](set-homepage.md)
