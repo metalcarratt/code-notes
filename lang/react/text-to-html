@@ -1,0 +1,5 @@
+# Text to HTML
+
+```
+<div dangerouslySetInnerHTML={{ __html: "<p>Hi</p>"}} />
+```
