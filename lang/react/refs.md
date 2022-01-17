@@ -3,9 +3,7 @@ Create refs using a callback like this:
 ```JavaScript
 function MyComponent {
   let myRef = null;
-  function setMyRef(element) {
-    myRef = element;
-  }
+  let setMyRef = element => myRef = element
   
   return (
     <div ref={setMyRef} />
