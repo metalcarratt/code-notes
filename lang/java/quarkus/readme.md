@@ -11,4 +11,6 @@ Instructions to get started with Quarkus: [Get started](https://quarkus.io/get-s
 
 [Hibernate](https://quarkus.io/guides/hibernate-orm)
 
+[Scheduled tasks](https://quarkus.io/guides/scheduler-reference)
+
 
