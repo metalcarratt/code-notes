@@ -7,6 +7,8 @@
 
 [CSS](/lang/css/readme.md)
 
+[Java](/lang/java/readme.md)
+
 ## Tools
 [Node.js](tool/node/readme.md)
 
