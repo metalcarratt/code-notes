@@ -21,6 +21,8 @@ npm start
 
 [State](state.md)
 
+[Events](events.md)
+
 [CSS](css.md)
 
 [Components within components](nested-components.md)
