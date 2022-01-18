@@ -1,6 +1,7 @@
 # JSX
 
-## Using map for For-each behaviour
+## Iterate over a list
+Using a map:
 ```JavaScript
 return (
   <div>
@@ -10,6 +11,7 @@ return (
 ```
 
 ## Conditional rendering
+Using logical && operator:
 ```JavaScript
 return (
   <div>
