@@ -8,3 +8,12 @@ return (
   </div>
 }
 ```
+
+## Conditional rendering
+```JavaScript
+return (
+  <div>
+    { show && <OtherComponent/> }
+  </div>
+}
+```
