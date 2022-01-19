@@ -37,5 +37,7 @@ npm start
 
 [Text to HTML](text-to-html.md)
 
+[Import with absolute paths](absolute-paths.md)
+
 ## Issues
 [Set homepage - white page on static deployment](set-homepage.md)
