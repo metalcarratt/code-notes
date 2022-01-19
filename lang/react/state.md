@@ -22,7 +22,7 @@ Reference: https://stackoverflow.com/questions/45404546/react-stateful-component
 
 ## Update an array point
 ```JavaScript
-let _myList = [...myList];
+const _myList = [...myList];
 _myList[listItem] = newValue;
 setMylist(_myList);
 ```
