@@ -19,3 +19,10 @@ function MyComponent {
 
 
 Reference: https://stackoverflow.com/questions/45404546/react-stateful-components-without-classes
+
+## Update an array point
+```JavaScript
+let _myList = [...myList];
+_myList[listItem] = newValue;
+setMylist(_myList);
+```
