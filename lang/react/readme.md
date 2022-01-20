@@ -29,6 +29,8 @@ npm start
 
 [Redux](redux.md)
 
+[Forms](forms.md)
+
 
 ## Advanced Ideas
 [Create HTML element](create-html-element.md)
