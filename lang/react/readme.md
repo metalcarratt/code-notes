@@ -39,7 +39,7 @@ npm start
 
 [Import with absolute paths](absolute-paths.md)
 
-[Add Sass](https://create-react-app.dev/docs/adding-a-sass-stylesheet/)
+[Add Sass](https://create-react-app.dev/docs/adding-a-sass-stylesheet/) (external link)
 
 ## Issues
 [Set homepage - white page on static deployment](set-homepage.md)
