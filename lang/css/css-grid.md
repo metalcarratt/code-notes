@@ -16,3 +16,5 @@ With gap:
   column-gap: 5px;
 }
 ```
+
+Reference: https://css-tricks.com/snippets/css/complete-guide-grid/
