@@ -8,7 +8,7 @@ import { useState } from 'react';
 function MyComponent() {
   const [myValue, setMyValue] = useState('');
   
-  updateMyValue = (event) => setMyValue(event.target.value);
+  const updateMyValue = (event) => setMyValue(event.target.value);
   
   return (
     <input type="text" value={myValue} onChange={updateValue} />
