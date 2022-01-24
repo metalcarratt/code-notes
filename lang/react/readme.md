@@ -17,7 +17,7 @@ npm start
 
 [Props](props.md)
 
-[JSX](jsx.md)
+[JSX](jsx.md) - list and conditional rendering
 
 [State](state.md)
 
