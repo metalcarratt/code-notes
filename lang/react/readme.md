@@ -31,6 +31,8 @@ npm start
 
 [Forms](forms.md)
 
+[Routing](router.md)
+
 
 ## Advanced Ideas
 [Create HTML element](create-html-element.md)
