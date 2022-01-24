@@ -27,5 +27,11 @@ Navigation:
 ```JavaScript
 import { useNavigate } from 'react-router-dom';
 
-navigate('/abc');
+function MyComponent() {
+  const navigate = useNavigate();
+  function onClick() {
+    navigate('/abc');
+  }
+  return (<span onClick={onClick} />);
+}
 ```
