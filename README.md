@@ -15,4 +15,4 @@
 [Git](tool/git/readme.md)
 
 ## Console
-[OSX](conosle/osx.md)
+[OSX](conosle/osx/readme.md)
