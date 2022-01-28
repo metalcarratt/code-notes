@@ -5,3 +5,7 @@
 [Quarkus](quarkus/readme.md)
 
 [Useful libraries](useful-libraries.md)
+
+## Helpful stuff
+
+[Print classpath](print-classpath.md)
