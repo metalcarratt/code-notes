@@ -48,7 +48,18 @@ Notice the name is the container name, not the image name:
 docker exec -it <containerName> /bin/sh
 ```
 
-## List running containers
+## List containers
+List running containers:
 ```
 docker ps
+```
+
+List all containers:
+```
+docker ps -a
+```
+
+Remove container:
+```
+docker rm <containerName>
 ```
