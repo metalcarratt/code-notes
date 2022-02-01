@@ -42,6 +42,11 @@ docker run --name <myname> <imagename>
 docker run --mount type=bind,source=<source>,target=<target> <imagename>
 ```
 
+## Run interactive shell
+Notice the name is the container name, not the image name:
+```Bash
+docker exec -it <containerName> /bin/sh
+```
 
 ## List running containers
 ```
