@@ -26,3 +26,8 @@ docker run <imagename>
 ```Bash
 docker run --mount type=bind,source=<source>,target=<target> <imagename>
 ```
+
+## Port forwarding
+```Bash
+docker run -p 8080:80 <imagename>
+```
