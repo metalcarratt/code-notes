@@ -1,5 +1,7 @@
 # Docker
 
+See docker compose [here](docker-compose.md)
+
 ## Docker file
 Name: `Dockerfile`
 
