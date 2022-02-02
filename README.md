@@ -14,6 +14,8 @@
 
 [Git](tool/git/readme.md)
 
+[Maven](tool/maven/readme.md)
+
 ## Console
 [OSX](console/osx/readme.md)
 
