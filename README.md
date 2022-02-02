@@ -19,5 +19,7 @@
 ## Console
 [OSX](console/osx/readme.md)
 
+[Bash](console/bash/readme.md)
+
 ## Containers
 [Docker](containers/docker/readme.md)
