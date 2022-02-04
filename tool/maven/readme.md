@@ -10,3 +10,6 @@ mvn archetype:generate \
   -DarchetypeArtifactId=maven-archetype-quickstart \
   -DarchetypeVersion=1.4
 ```
+
+## Main manifest
+https://stackoverflow.com/questions/9689793/cant-execute-jar-file-no-main-manifest-attribute
