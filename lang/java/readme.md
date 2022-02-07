@@ -4,6 +4,8 @@
 
 [Quarkus](quarkus/readme.md)
 
+[Spring Boot](spring-boot.md)
+
 [Useful libraries](useful-libraries.md)
 
 ## Helpful stuff
