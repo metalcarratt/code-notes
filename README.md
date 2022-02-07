@@ -25,4 +25,4 @@
 [Docker](containers/docker/readme.md)
 
 ## Apps
-[RabbitMQ](apps/rabbitmq.md)
+[RabbitMQ](app/rabbitmq.md)
