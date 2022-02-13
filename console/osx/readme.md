@@ -14,3 +14,26 @@ Kill service using port:
 ```
 npx kill-port 8080
 ```
+
+# Aliases
+List aliases
+```
+alias
+```
+
+Edit alias file:
+```
+vi ~/.zshrc
+```
+
+Create normal alias (command):
+```
+alias <a>="<b>"
+```
+Where the alias is <a> and the command is "b"
+  
+Global alias (anything):
+```
+alias -g <a>="<b>"
+```
+  
