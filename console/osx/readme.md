@@ -30,7 +30,7 @@ Create normal alias (command):
 ```
 alias <a>="<b>"
 ```
-Where the alias is <a> and the command is "b"
+Where the alias is "a" and the command is "b"
   
 Global alias (anything):
 ```
