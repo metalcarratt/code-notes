@@ -49,3 +49,24 @@ To restart:
 ```
 docker-compose restart
 ```
+
+To build:
+```
+docker-compose build
+```
+
+To build without caching:
+```
+docker-compose build --no-cache
+```
+
+## Build / run single service
+Build:
+```
+docker-compose build app
+```
+
+Run:
+```
+docker-compose up app
+```
