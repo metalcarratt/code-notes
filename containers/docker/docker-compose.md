@@ -14,7 +14,7 @@ Above creates a docker container called 'api'.
 services:
   api:
     ports:
-      - "8080":"8080"
+      - "8080:8080"
 ```
 
 ### Bind mounts:
