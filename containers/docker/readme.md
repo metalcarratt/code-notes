@@ -2,6 +2,8 @@
 
 See docker compose [here](docker-compose.md)
 
+Extra tooling: [tooling](tooling.md)
+
 ## Docker file
 Name: `Dockerfile`
 
