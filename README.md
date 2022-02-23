@@ -9,6 +9,8 @@
 
 [Java](/lang/java/readme.md)
 
+[JavaScript](/lang/javascript/readme.md)
+
 ## Tools
 [Node.js](tool/node/readme.md)
 
