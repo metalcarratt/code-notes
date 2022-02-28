@@ -9,3 +9,9 @@ ps
 ```
 yum install procps
 ```
+
+Vi
+```
+sudo apt-get update
+sudo apt-get install vim
+```
