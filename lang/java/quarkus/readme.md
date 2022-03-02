@@ -1,6 +1,6 @@
 # Quarkus
 
-Instructions to get started with Quarkus: [Get started](https://quarkus.io/get-started/)
+Instructions to get started with Quarkus: [Get started](https://quarkus.io/guides/getting-started#bootstrapping-the-project)
 
 ## Common modules
 [JSON](https://quarkus.io/guides/rest-json)
@@ -13,4 +13,8 @@ Instructions to get started with Quarkus: [Get started](https://quarkus.io/get-s
 
 [Scheduled tasks](https://quarkus.io/guides/scheduler-reference)
 
-
+## Common tasks
+set port:
+```
+quarkus.http.port=9090
+```
