@@ -19,5 +19,5 @@ tcpdump -D
 ```
 3. Listen for network traffic:
 ```
-tcpdump -i any -X
+tcpdump -i any -A
 ```
