@@ -16,3 +16,8 @@ https://stackoverflow.com/questions/9689793/cant-execute-jar-file-no-main-manife
 
 ## Fat jar
 https://stackoverflow.com/questions/574594/how-can-i-create-an-executable-jar-with-dependencies-using-maven
+
+## Skip tests
+```
+mvn clean install -DskipTests
+```
