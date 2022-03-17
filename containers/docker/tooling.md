@@ -15,3 +15,8 @@ Vi
 sudo apt-get update
 sudo apt-get install vim
 ```
+
+ping
+```
+yum install iputils
+```
