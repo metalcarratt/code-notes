@@ -21,3 +21,9 @@ tcpdump -D
 ```
 tcpdump -i any -A
 ```
+
+
+## Find class in jars
+```
+for i in *.jar; do jar -tvf "$i" | grep -Hsi com/sun/xml/bind/v2/runtime/reflect/Accessor && echo "$i"; done
+```
