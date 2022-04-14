@@ -67,3 +67,15 @@ Remove container:
 ```
 docker rm <containerName>
 ```
+
+## Copy file from container to host
+
+Format:
+```
+docker cp <containerId>:/file/path/within/container /host/path/target
+```
+
+Example:
+```
+docker cp goofy_roentgen:/out_read.jpg .
+```
