@@ -49,3 +49,5 @@ npm start
 
 ## Issues
 [Set homepage - white page on static deployment](set-homepage.md)
+
+[Change build output to docs](build-output.md)
