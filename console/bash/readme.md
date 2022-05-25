@@ -27,3 +27,13 @@ tcpdump -i any -A
 ```
 for i in *.jar; do jar -tvf "$i" | grep -Hsi com/sun/xml/bind/v2/runtime/reflect/Accessor && echo "$i"; done
 ```
+
+## Use SED to insert a line in a file
+```
+sed -i 's/find/replace/' filename
+```
+Where:
+- `-i` means to save changes
+- `find` is text to find in the file
+- `replace` is test to replace it with
+- `filename` is the name of the file to modify
