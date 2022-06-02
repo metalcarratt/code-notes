@@ -26,5 +26,8 @@
 ## Containers
 [Docker](containers/docker/readme.md)
 
+## Cloud
+[AWS](cloud/aws/readme.md)
+
 ## Apps
 [RabbitMQ](app/rabbitmq.md)
