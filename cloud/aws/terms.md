@@ -1,0 +1,42 @@
+# AWS Terms
+- AMI - Amazon machine image - info required to launch EC2 instance including root volumes, launch permissions
+- TCO - total cost of ownership - the cost of buying and using an asset
+- Amazon Macie - detect and protect sensitive data stored in S3 such as personally identifiable information
+- AWS Control Tower - easily set up and govern a secure, multi-account AWS environment
+- AWS CodeDeploy - fully managed deployment service to automate software deployments to EC2 and Fargate
+- AWS Pricing Calculator - estimate cost for new cloud deployment
+- Agility - more quickly
+- Elasticity - scale
+- AWS Cloud HSM - Key management with HSM (hardware security module)
+- HSM - hardware security module
+- AWS Storage Gateway - a set of hyrbid cloud solutions providing on-prem access to cloud data storage
+- TCO Calculator - making a case for using aws
+- Cost and usage report - tracks AWS usage and provides estimated charges
+- AWS professional services - paid engagement to assist in cloud migration
+- AWS Config - assess and audit configuration of AWS resources
+- Disaster recovery:
+  - back and restore (lowest cost/complexity) - backup data to another region and have infrasture as code ready to build other environment in the case of a failure
+  - pilot light - backup data to another region and have infrastructure ready but turned off, ready to be turned on in the case of a failure
+  - warm standby - have another environment ready to go in th case of a failure
+  - multi-site active/active (highest cost/complexity) - actively use dual sites
+- AWS Service health dashboard - provides alerts and guidance for aws events that might affect your environment
+- Amazon Athena - helps you analyse data stored in S3
+- Amazon Kinesis - collect and process large streams of data in real time
+- Amazon QuickSight - business intelligence service powered by machine learning
+- AWS Batch - create a batch job in aws
+- AWS Lightsail - a virtual private server in the cloud - simpler and less customisable than EC2
+- AWS CodeBuild - compiles source code, runs tests and produces packages
+- AWS CodeCommit - host private git repos
+- AWS CodePipeline - model, visualise and automate release of software
+- AWS CodeStar - combines codecommit, codebuild, codepipeline, codedeploy, cloudformation and jira
+- Amazon Connect - a cloud contact center service
+- Amazon EventBridge - connect different event sources via event buses
+- AWS License Manager - manage software vendor licenses
+- AWS Secrets manager - protect secrets needed to access your applications and services
+- AWS Systems Manager - configuration management
+- AWS Systems Manager Parameter Store - secure, hierarchical sotrage for configuration data and secrets management
+- Amazon Detective - collects log data from your aws resources and uses machine learning to enable you to conduct security investigations
+- OpEx (operational expenses) - day-to-day expenses, such as salaries and rent
+- CapEx (capital expenses) - major, long-term expenses, such as buildings and equipment
+- AWS Global Accelerator - improve network performance by rerouting requests to closest nodes and mitigating endpoint failure
+- AWS Simple Monthly Calculator - estimate the monthly cost of aws services  
