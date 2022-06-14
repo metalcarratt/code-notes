@@ -31,3 +31,6 @@
 
 ## Apps
 [RabbitMQ](app/rabbitmq.md)
+
+## IDEs
+[Visual Studio Code](ide/vsc.md)
