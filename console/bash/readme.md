@@ -37,3 +37,6 @@ Where:
 - `find` is text to find in the file
 - `replace` is test to replace it with
 - `filename` is the name of the file to modify
+
+## Use SED to extract from a file
+https://unix.stackexchange.com/questions/312059/how-to-extract-a-portion-of-text-from-a-file-between-matched-conditions
