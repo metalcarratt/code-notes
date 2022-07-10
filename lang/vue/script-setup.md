@@ -1,6 +1,6 @@
 # Script setup
 Looks like:
-```
+```xml
 <script setup>
 ...
 </script>
