@@ -1,7 +1,7 @@
 # Vue3 Vuex
 
 ## Simplest store
-```
+```ts
 import { createStore } from 'vuex';
 
 const store = createStore({
@@ -19,7 +19,7 @@ export default {
 ```
 
 Main:
-```
+```ts
 import stores from './store';
 const app = create(App);
 app.use(store);
@@ -28,7 +28,7 @@ app.mount('#app');
 
 ## Modules
 Store:
-```
+```ts
 import { createStore } from 'vuex';
 import module1 from './module1';
 
@@ -41,7 +41,7 @@ export default store;
 ```
 
 ## Typescript
-```
+```ts
 interface StoreType {
   count: number,
   name: string
@@ -56,7 +56,7 @@ const store = createStore<StoreType>({
 ```
 
 ### Typed array
-```
+```ts
 interface StoreType {
   list: string[]
 }
