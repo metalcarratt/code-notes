@@ -1,14 +1,18 @@
 # Vue
 
-[Minimal vuex store](minimal-vuex.md)
-
 ## Create a project
-
 ```
 vue create hello-world
 ```
 
-## Vue Router (vue 2)
+## Vue 3
+[Script setup](script-setup.md)
+
+## Vue 2
+[Minimal vuex store](minimal-vuex.md)
+
+
+### Vue Router (vue 2)
 In `package.json`:
 ```
 "dependencies": {
