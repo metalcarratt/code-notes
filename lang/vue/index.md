@@ -103,3 +103,8 @@ createApp(App)
 .component('font-awesome-icon', FontAwesomeIcon)
 .mount('#app');
 ```
+
+Use:
+```
+<font-awesome-icon icon="fa-solid fa-user-secret" />
+```
