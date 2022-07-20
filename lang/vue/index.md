@@ -5,6 +5,16 @@
 vue create hello-world
 ```
 
+## Change output dir to docs
+In `vue.config.js`:
+```
+const path = require("path");
+module.exports = defineConfig({
+  outputDir: path.resolve(__dirname, "./docs"),
+})
+```
+(in addition to whatever else is in that file)
+
 ## Vue 3
 [Script setup](script-setup.md)
 
