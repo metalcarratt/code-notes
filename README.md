@@ -11,6 +11,8 @@
 
 [JavaScript](/lang/javascript/readme.md)
 
+[TypeScript](/lang/typescript/readme.md)
+
 ## Tools
 [Node.js](tool/node/readme.md)
 
