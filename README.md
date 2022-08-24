@@ -1,9 +1,7 @@
 # Code notes
 
 ## Languages
-[Vue.js](/lang/vue/index.md)
-
-[React](/lang/react/readme.md)
+| [Vue.js](/lang/vue/index.md) | [React](/lang/react/readme.md) |
 
 [CSS](/lang/css/readme.md)
 
