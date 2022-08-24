@@ -1,6 +1,10 @@
 # Type orm
 
-## Install
+## Details
+
+Website: https://typeorm.io/
+
+Install:
 ```
 npm install typeorm --save
 ```
