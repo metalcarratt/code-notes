@@ -17,6 +17,8 @@ let app = server.build();
 app.listen(3000);
 ```
 
+*note*: the `import "reflect-metadata"` must be at the top or bad things will happen. ;)
+
 ## Add a controller
 Minimum controller:
 
