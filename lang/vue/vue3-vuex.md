@@ -1,5 +1,10 @@
 # Vue3 Vuex
 
+## Install
+```
+npm install vuex
+```
+
 ## Simplest store
 ```ts
 import { createStore } from 'vuex';
