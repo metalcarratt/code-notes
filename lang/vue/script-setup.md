@@ -62,3 +62,16 @@ const doSomething = () => {
 <script setup>
 import MyComponent from './MyComponent';
 </script>
+
+## V-model
+```
+import { defineProps, defineEmits } from 'vue';
+
+const props = defineProps({
+    modelValue: Boolean
+});
+
+const emit = defineEmits(['update:modelValue']);
+
+emit('update:modelValue', "new value");
+```
