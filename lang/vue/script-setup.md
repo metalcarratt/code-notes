@@ -71,6 +71,7 @@ import MyComponent from './MyComponent';
 
 ## V-model
 ```vue
+<script setup>
 import { defineProps, defineEmits } from 'vue';
 
 const props = defineProps({
@@ -80,4 +81,5 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue']);
 
 emit('update:modelValue', "new value");
+</script>
 ```
