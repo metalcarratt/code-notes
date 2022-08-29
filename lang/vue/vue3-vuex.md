@@ -25,8 +25,9 @@ export default {
 
 Main:
 ```ts
+import App from './App.vue';
 import stores from './store';
-const app = create(App);
+const app = createApp(App);
 app.use(store);
 app.mount('#app');
 ```
