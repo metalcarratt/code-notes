@@ -7,7 +7,7 @@ Looks like:
 ```
 
 ## Refs
-```
+```vue
 <template>
   {{ var1 }}
 </template>
