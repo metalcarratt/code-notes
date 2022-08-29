@@ -11,6 +11,7 @@ Looks like:
 <template>
   {{ var1 }}
 </template>
+
 <script setup>
 import { ref } from 'vue';
 const var1 = ref(0);
@@ -19,7 +20,7 @@ var1.value = 2;
 ```
 
 ## Props
-```
+```vue
 <template>
   {{ props.title }}
 </template>
@@ -33,9 +34,11 @@ const props = defineProps({
 ```
 
 ## Emits
-```
+```vue
 <template>
   <button @click="emit('touched')"/>
+</template>
+
 <script setup>
 import { defineEmits } from 'vue';
 const emit = defineEmits(['touched']);
@@ -43,10 +46,11 @@ const emit = defineEmits(['touched']);
 ```
 
 ## Method
-```
+```vue
 <template>
   <button @click="doSomething"/>
 </template>
+
 <script setup>
 const doSomething = () => {
   // ...
@@ -55,17 +59,18 @@ const doSomething = () => {
 ```
 
 ## Components
-```
+```vue
 <template>
   <MyComponent />
 </template>
+
 <script setup>
 import MyComponent from './MyComponent';
 </script>
 ```
 
 ## V-model
-```
+```vue
 import { defineProps, defineEmits } from 'vue';
 
 const props = defineProps({
