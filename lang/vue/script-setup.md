@@ -62,6 +62,7 @@ const doSomething = () => {
 <script setup>
 import MyComponent from './MyComponent';
 </script>
+```
 
 ## V-model
 ```
