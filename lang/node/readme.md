@@ -21,9 +21,10 @@ Add `tsconfig.json`, example:
       "target": "es6",
       "moduleResolution": "node",
       "sourceMap": true,
-      "outDir": "dist"
+      "outDir": "dist",
+      "lib": ["es2017", "es6", "dom"]
     },
-    "lib": ["es2015"]
+    "lib": ["es2017"]
 }
 ```
 
