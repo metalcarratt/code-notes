@@ -46,6 +46,16 @@ docker run --name <myname> <imagename>
 docker run --mount type=bind,source=<source>,target=<target> <imagename>
 ```
 
+Local directory from bash:
+```Bash
+docker run --mount type=bind,source=$pwd,target=<target> <imagename>
+```
+
+Local directory from cmd:
+```Bash
+docker run --mount type=bind,source=%cd%,target=<target> <imagename>
+```
+
 ## Run interactive shell
 Notice the name is the container name, not the image name:
 ```Bash
