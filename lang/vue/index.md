@@ -7,12 +7,12 @@
 
 ## Set up
 Create a project
-```
+```sh
 vue create hello-world
 ```
 
 Add typescript to vue 3
-```
+```sh
 vue add typescript
 ```
 
