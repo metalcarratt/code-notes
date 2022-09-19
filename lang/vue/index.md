@@ -1,5 +1,13 @@
 # Vue
 
+## Testing
+[Testing](testing.md)
+
+## Vue 3
+[Script setup](script-setup.md)
+
+[Vuex](vue3-vuex.md)
+
 ## Create a project
 ```
 vue create hello-world
@@ -41,10 +49,6 @@ module.exports = defineConfig({
 })
 ```
 
-## Vue 3
-[Script setup](script-setup.md)
-
-[Vuex](vue3-vuex.md)
 
 ## Vue 2
 [Minimal vuex store](minimal-vuex.md)
