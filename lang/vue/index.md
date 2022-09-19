@@ -1,10 +1,5 @@
 # Vue
 
-## Vue 3
-[Script setup](script-setup.md)
-
-[Vuex](vue3-vuex.md)
-
 ## Set up
 Create a project
 ```sh
@@ -15,6 +10,11 @@ Add typescript to vue 3
 ```sh
 vue add typescript
 ```
+
+## Vue 3
+[Script setup](script-setup.md)
+
+[Vuex](vue3-vuex.md)
 
 ## Useful stuff
 [Working on Github](github.md)
