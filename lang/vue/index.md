@@ -15,7 +15,7 @@ vue create hello-world
 
 [Testing](testing.md)
 
-[Font Awesome[(fontawesome.md)
+[Font Awesome](fontawesome.md)
 
 ## Vue 2
 [Minimal vuex store](minimal-vuex.md)
