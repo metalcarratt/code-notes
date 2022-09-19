@@ -12,6 +12,7 @@ vue create hello-world
 
 ## Useful stuff
 [Working on Github](github.md)
+
 [Testing](testing.md)
 
 ## Vue 2
