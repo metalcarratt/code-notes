@@ -23,6 +23,8 @@ vue add typescript
 
 [Font Awesome](fontawesome.md)
 
+[File upload](fileupload.md)
+
 ## Vue 2
 [Minimal vuex store](minimal-vuex.md)
 
