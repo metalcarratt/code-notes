@@ -5,9 +5,15 @@
 
 [Vuex](vue3-vuex.md)
 
-## Create a project
+## Set up
+Create a project
 ```
 vue create hello-world
+```
+
+Add typescript to vue 3
+```
+vue add typescript
 ```
 
 ## Useful stuff
