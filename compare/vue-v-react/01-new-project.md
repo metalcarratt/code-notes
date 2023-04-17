@@ -1,4 +1,4 @@
-# Generating a new (Typescript) project
+# Generating a new project
 ## Create
 Vue:
 ```
