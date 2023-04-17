@@ -20,3 +20,27 @@ function App() {
 export default App;
 ```
 (`App.tsx`)
+
+## Text Interpolation
+Vue:
+```vue
+<template>
+    <h1>This is {{ name }}</h1>
+</template>
+
+<script setup>
+const name = 'Compare-Vue';
+</script>
+```
+
+React:
+```tsx
+function App() {
+  const name = 'Compare-React'
+  return (
+    <h1>This is {name}</h1>
+  );
+}
+
+export default App;
+```
