@@ -3,3 +3,4 @@
 ## 1. The basics
 
 - [Creating a new project](01-new-project.md)
+- [Templateing](02-templating.md)
