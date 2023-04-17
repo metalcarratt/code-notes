@@ -8,7 +8,18 @@ vue add typescript
 
 React:
 ```
-npx create-next-app
+npx create-react-app <project-name>
+```
+
+## Add Typescript
+Vue:
+```
+vue add typescript
+```
+
+React:
+```
+npx create-react-app <project-name> --template typescript
 ```
 
 ## Run
@@ -20,7 +31,7 @@ Listening on localhost:8080
 
 React:
 ```
-npm run dev
+npm start
 ```
 Listening on localhost:3000
 
