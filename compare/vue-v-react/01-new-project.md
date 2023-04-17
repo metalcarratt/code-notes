@@ -11,6 +11,11 @@ React:
 npx create-react-app <project-name>
 ```
 
+React with Next.js:
+```
+npx create-next-app
+```
+
 ## Add Typescript
 Vue:
 ```
