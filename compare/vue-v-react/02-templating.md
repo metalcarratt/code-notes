@@ -10,7 +10,7 @@ Vue:
 (`App.vue`)
 
 React:
-```react
+```tsx
 function App() {
   return (
     <p>This is an empty application</p>
