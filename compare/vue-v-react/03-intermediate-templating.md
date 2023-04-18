@@ -14,7 +14,7 @@ import { ref } from 'vue';
 
 const name = ref('Compare-Vue');
 
-const change = (newName) => name.value = newName.target.value;
+const change = (event) => name.value = event.target.value;
 </script>
 ```
 
