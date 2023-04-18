@@ -18,7 +18,7 @@ const change = (event) => name.value = event.target.value;
 </script>
 ```
 
-Or, using `v-model`:
+Or, using `v-model` directive:
 ```vue
 <template>
     <h1>This is {{ name }}</h1>
