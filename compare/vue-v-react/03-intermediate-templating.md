@@ -55,7 +55,7 @@ function App() {
 export default App;
 ```
 
-## Mouse clicks
+## Handling mouse clicks
 Vue:
 ```vue
 <template>
