@@ -45,3 +45,44 @@ function App() {
 
 export default App;
 ```
+
+## Using components with slots / props.children
+Vue:
+
+`MyHeader.vue`:
+```vue
+<template>
+    <h1><slot></slot></h1>
+</template>
+```
+
+`App.vue`:
+```vue
+<template>
+    <MyHeader>This is Compare-Vue</MyHeader>
+</template>
+
+<script setup>
+import MyHeader from './components/MyHeader.vue';
+</script>
+```
+
+React: (again using single file for two components, just because I can)
+```tsx
+import { PropsWithChildren } from "react";
+
+const MyHeader = (props: PropsWithChildren) => {
+    return (<h1>{props.children}</h1>)
+}
+
+function App() {
+    return (
+        <div>
+            <MyHeader>This is Compare-React</MyHeader>
+        </div>
+    );
+}
+
+export default App;
+```
+
