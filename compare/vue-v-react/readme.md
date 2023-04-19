@@ -4,4 +4,4 @@
 
 - [Creating a new project](01-new-project.md)
 - [Templating](02-templating.md) (text interpolation, looping, conditional rendering)
-- [Intermediate templating](03-intermediate-templating.md) (model binding)
+- [Intermediate templating](03-intermediate-templating.md) (model binding, handling mouse clicks)
