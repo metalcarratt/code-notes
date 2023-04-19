@@ -2,6 +2,7 @@
 
 ## Referencing components and passing in props
 Vue:
+
 `MyHeader.vue`:
 ```vue
 <template>
