@@ -54,3 +54,43 @@ function App() {
 
 export default App;
 ```
+
+## Mouse clicks
+Vue:
+```vue
+<template>
+    <h1>This is Compare-Vue</h1>
+    <p>Clicked: {{ clicked }}</p>
+    <button @click="click">Click Me</button>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const clicked = ref(0);
+
+const click = () => clicked.value++;
+</script>
+```
+
+React:
+```tsx
+import { useState } from 'react';
+
+function App() {
+    const [clicked, setClicked] = useState(0);
+
+    function click() {
+        setClicked(clicked + 1);
+    }
+    return (
+        <div>
+            <h1>This is Compare React</h1>
+            <p>Clicked: {clicked}</p>
+            <button onClick={click}>Click Me</button>
+        </div>
+    );
+}
+
+export default App;
+```
