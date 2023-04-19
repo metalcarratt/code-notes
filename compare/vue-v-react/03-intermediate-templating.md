@@ -80,9 +80,8 @@ import { useState } from 'react';
 function App() {
     const [clicked, setClicked] = useState(0);
 
-    function click() {
-        setClicked(clicked + 1);
-    }
+    const click = () => setClicked(clicked + 1);
+    
     return (
         <div>
             <h1>This is Compare React</h1>
