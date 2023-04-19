@@ -27,3 +27,21 @@ import MyHeader from './components/MyHeader.vue';
 </script>
 ```
 
+React:
+
+(These could be separate files like the Vue example, but in Vue they *have* to be separate files; in React they don't)
+```tsx
+const MyHeader = (props: {heading: string}) => {
+    return (<h1>{props.heading}</h1>)
+}
+
+function App() {
+    return (
+        <div>
+            <MyHeader heading="This is Compare-React" />
+        </div>
+    );
+}
+
+export default App;
+```
