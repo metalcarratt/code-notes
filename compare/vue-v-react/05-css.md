@@ -1,5 +1,5 @@
 # CSS
-# Component scoped CSS
+## Component scoped CSS
 Vue:
 ```vue
 <template>
