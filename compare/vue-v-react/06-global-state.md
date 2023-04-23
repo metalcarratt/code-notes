@@ -146,3 +146,6 @@ function App() {
 
 export default App;
 ```
+
+## Comparison
+Biggest difference I can see is that React *requires* the state belong to a parent component and be passed down to children components via props. React doesn't allow me to use `useState` globally outside the React hook (in `useMyList`). What this means is if I don't put the hook on the parent component and try to use it directly from the children, each one gets its own version of the state. This is good for contextuallised state but makes it impossible to have global state without passing it down through props.
