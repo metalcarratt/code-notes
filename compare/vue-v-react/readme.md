@@ -7,8 +7,8 @@
 - [Intermediate templating](03-intermediate-templating.md) (model binding, handling mouse clicks)
 - [Components](04-components.md)
 - [CSS](05-css.md)
+- [Global state](06-global-state.md)
 
 TBD:
-- state
 - API
 - validation
