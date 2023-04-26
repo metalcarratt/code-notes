@@ -8,7 +8,7 @@
 - [Components](04-components.md)
 - [CSS](05-css.md)
 - [Global state](06-global-state.md)
+- [Calling a REST API](07-calling-rest.md)
 
 TBD:
-- API
 - validation
