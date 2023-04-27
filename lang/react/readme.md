@@ -51,3 +51,6 @@ npm start
 [Set homepage - white page on static deployment](set-homepage.md)
 
 [Change build output to docs](build-output.md)
+
+## Nice Articles
+- [useEffect - simple explanation](https://dmitripavlutin.com/react-useeffect-explanation/)
