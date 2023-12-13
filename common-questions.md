@@ -1,8 +1,8 @@
 # Common questions
 
-## Git
+## About Git
 
-### How to Checkout a File from Another Branch
+### Question: "How to Checkout a File from Another Branch?"
 
 ```sh
 git checkout <branchname> -- <file-path-and-name>
