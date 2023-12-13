@@ -27,3 +27,5 @@
 
 ## Comparisons
 [Vue vs React](/compare/vue-v-react/readme.md)
+
+[Common Questions](common-questions.md)
