@@ -1,5 +1,7 @@
 # Code notes
 
+[Common Questions](common-questions.md)
+
 ## Languages
 | [Vue.js](/lang/vue/index.md) | [React](/lang/react/readme.md) | [CSS](/lang/css/readme.md) |
 [Java](/lang/java/readme.md) | [JavaScript](/lang/javascript/readme.md) | [TypeScript](/lang/typescript/readme.md) | [Node](/lang/node/readme.md) |
@@ -28,4 +30,4 @@
 ## Comparisons
 [Vue vs React](/compare/vue-v-react/readme.md)
 
-[Common Questions](common-questions.md)
+
