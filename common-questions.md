@@ -18,3 +18,8 @@ git restore --staged <file>
 
 source: https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/git-unstage-file-all-index-commit-folder-add-delete
 
+### Question: "How to remove a local commit, preserving updates?"
+
+```sh
+git reset HEAD^
+```
