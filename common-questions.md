@@ -10,6 +10,12 @@ git checkout <branchname> -- <file-path-and-name>
 
 source: https://www.freecodecamp.org/news/git-checkout-file-from-another-branch/
 
+also for a particular commit:
+
+```sh
+git checkout <commitId> -- <file-path-and-name>
+```
+
 ### Question: "How to unstage a file (local add but not commit)?"
 
 ```sh
