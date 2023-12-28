@@ -16,6 +16,8 @@ vue add typescript
 
 [Vuex](vue3-vuex.md)
 
+[Scss](scss.md)
+
 ## Useful stuff
 [Working on Github](github.md)
 
