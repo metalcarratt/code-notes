@@ -1,6 +1,6 @@
 # Graph QL
 
-GraphQL server using Apollo Server
+[GraphQL server using Apollo Server](./apollo-server.md)
 
 GraphQL client using Vue
 
