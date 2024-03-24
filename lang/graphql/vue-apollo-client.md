@@ -33,6 +33,7 @@ const queryTest = async () => {
         
     return result.data.test;
 };
+```
 
 ## Make mutation
 ```ts
