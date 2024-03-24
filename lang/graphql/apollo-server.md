@@ -1,5 +1,10 @@
 # Apollo Server
 
+Install:
+```
+npm install graphql @apollo/server
+```
+
 ## Create typedefs (schema):
 ```ts
 const schema = `#graphql
