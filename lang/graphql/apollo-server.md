@@ -1,7 +1,7 @@
 # Apollo Server
 
 ## Create typedefs (schema):
-```
+```ts
 const schema = `#graphql
 type Query {
     test: String
@@ -13,7 +13,7 @@ type Mutation {
 ```
 
 ### Create resolvers:
-```
+```ts
 let testValue = 'test';
 
 const resolvers = {
@@ -30,7 +30,7 @@ const resolvers = {
 ```
 
 ### Create server:
-```
+```ts
 import { ApolloServer } from '@apollo/server';
 
 const server = new ApolloServer({
@@ -40,7 +40,7 @@ const server = new ApolloServer({
 ```
 
 and then serve:
-```
+```ts
 import { startStandaloneServer } from '@apollo/server/standalone';
 
 startStandaloneServer(server, {
