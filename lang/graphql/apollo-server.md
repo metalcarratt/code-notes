@@ -1,7 +1,7 @@
 # Apollo Server
 
 Install:
-```
+```sh
 npm install graphql @apollo/server
 ```
 
