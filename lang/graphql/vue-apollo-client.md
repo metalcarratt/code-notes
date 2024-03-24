@@ -1,5 +1,10 @@
 # Vue Apollo Client
 
+Install:
+```
+npm install @apollo/client, graphql, graphql-tag
+```
+
 ## Create client
 ```ts
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core';
