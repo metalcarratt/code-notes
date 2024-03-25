@@ -6,4 +6,6 @@
 
 [GraphQL client using Vue](./vue-apollo-client.md)
 
+- With [subscriptions](vue-apollo-client-subscriptions.md)
+
 GraphQL client using React
