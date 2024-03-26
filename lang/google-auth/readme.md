@@ -56,7 +56,7 @@ const GOOGLE_TOKEN_ENDPOINT = 'https://oauth2.googleapis.com/token';
 const response = await axios.post(
   GOOGLE_TOKEN_ENDPOINT,
   {
-    code,
+    code, // the auth code sent from FE
     client_id: GOOGLE_CLIENT_ID,
     client_secret: GOOGLE_SECRET,
     redirect_uri: 'postmessage',
@@ -86,7 +86,7 @@ User Details {
   name: 'x', // full name
   given_name: 'x',
   family_name: 'x',
-  picture: 'x', // you can directly embed this in a <img src="..." /> tag
+  picture: 'x', // a url you can directly embed this in a <img src="..." /> tag
   email: 'x',
   email_verified: true,
   locale: 'en'
