@@ -7,7 +7,7 @@
 [Java](/lang/java/readme.md) | [JavaScript](/lang/javascript/readme.md) | [TypeScript](/lang/typescript/readme.md) | [Node](/lang/node/readme.md) |
 
 ## Frameworks and Libraries
-| [Inversify-Express](/lang/inversify-express/readme.md) | [Type-orm](/lang/typeorm/readme.md) | [Graph QL](/lang/graphql/readme.md) |
+| [Inversify-Express](/lang/inversify-express/readme.md) | [Type-orm](/lang/typeorm/readme.md) | [Graph QL](/lang/graphql/readme.md) | [Google Auth](/lang/google-auth/readme.md) |
 
 ## Tools
 | [Node.js](tool/node/readme.md) | [Git](tool/git/readme.md) | [Maven](tool/maven/readme.md) |
