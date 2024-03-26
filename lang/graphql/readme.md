@@ -9,3 +9,5 @@
 - With [subscriptions](vue-apollo-client-subscriptions.md)
 
 GraphQL client using React
+
+[Gotchas](gotchas.md)
