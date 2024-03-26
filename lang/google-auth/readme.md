@@ -31,10 +31,7 @@ googleSdkLoaded(google => {
 
 Here's an example of calling your BE:
 ```ts
-const headers = {
-  Authorization: getAuthCode()
-};
-const response = await axios.post('http://localhost:4000/auth', null, { headers });
+const response = await axios.post('http://localhost:4000/auth', null, { Authorization: getAuthCode() });
 ```
 
 ## Step 3 - BE code
@@ -81,5 +78,18 @@ const userResponse = await axios.get(
   }
 );
 const userDetails = userResponse.data;
+```
+The user details payload from Google looks something like this:
+```js
+User Details {
+  sub: 'x', // a number
+  name: 'x', // full name
+  given_name: 'x',
+  family_name: 'x',
+  picture: 'x', // you can directly embed this in a <img src="..." /> tag
+  email: 'x',
+  email_verified: true,
+  locale: 'en'
+}
 ```
 
