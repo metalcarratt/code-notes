@@ -8,6 +8,7 @@
 [GraphQL client using Vue](./vue-apollo-client.md)
 
 - With [subscriptions](vue-apollo-client-subscriptions.md)
+- [Authorization](vue-apollo-client-authorization.md)
 
 GraphQL client using React
 
