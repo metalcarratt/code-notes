@@ -18,6 +18,8 @@ vue add typescript
 
 [Scss](scss.md)
 
+[Models](models.md)
+
 ## Useful stuff
 [Working on Github](github.md)
 
