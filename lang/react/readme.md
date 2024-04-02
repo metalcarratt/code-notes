@@ -4,23 +4,13 @@
 
 Create:
 ```bash
-npx create-react-app <app-name>
+npx create-react-app <app-name> --template typescript
 ```
 
 Run:
 ```bash
 cd <app-name>
 npm start
-```
-
-Add typescript:
-```sh
-npm install --save typescript @types/node @types/react @types/react-dom @types/jest
-```
-
-Or, create react app with typescript by default:
-```sh
-npx create-react-app <app-name> --template typescript
 ```
 
 ## Topics
