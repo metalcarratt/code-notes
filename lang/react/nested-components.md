@@ -12,7 +12,7 @@ function App() {
 
 In `TopComponent`:
 ```JavaScript
-function TopComponent(props) {
+function TopComponent(props: {children: JSX.Element}) {
   return (
     <div>
       {props.children}
