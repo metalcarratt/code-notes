@@ -34,7 +34,6 @@ npm start
 
 [Routing](router.md)
 
-
 ## Advanced Ideas
 [Create HTML element](create-html-element.md)
 
@@ -47,6 +46,8 @@ npm start
 [Add Sass](https://create-react-app.dev/docs/adding-a-sass-stylesheet/) (external link)
 
 [CSS Modules](css-modules.md)
+
+CSS-in-JS: [Emotion](emotion-css.md)
 
 ## Issues
 [Set homepage - white page on static deployment](set-homepage.md)
