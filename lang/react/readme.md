@@ -49,6 +49,8 @@ npm start
 
 CSS-in-JS: [Emotion](emotion-css.md)
 
+[Font awesome](font-awesome.md)
+
 ## Issues
 [Set homepage - white page on static deployment](set-homepage.md)
 
