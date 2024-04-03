@@ -11,11 +11,12 @@ npm install --save @emotion/react
 Put at top of files using emotion:
 ```ts
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
 ```
 
 Object-css:
 ```ts
+import { css } from '@emotion/react';
+
 const myStyles = css({
     backgroundColor: '#aaa'
 });
