@@ -22,8 +22,10 @@ describe('spec', () => {
   it('passes', () => {
   });
 });
+```
 
 ## Commands
+
 Go to the web site you want to test:
 ```ts
 cy.visit('http://localhost:3000');
