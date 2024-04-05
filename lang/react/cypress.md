@@ -60,3 +60,10 @@ Check for text within a `input[type=text]`:
 ```ts
 cy.get('#my-id').should('have.value', 'my-value');
 ```
+
+## Issues
+### cannot find cy
+If vsc can't find cy you can put this at the top of the file:
+```ts
+/// <reference types="cypress" />
+```
