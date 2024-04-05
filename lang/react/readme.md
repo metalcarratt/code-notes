@@ -34,6 +34,16 @@ npm start
 
 [Routing](router.md)
 
+## CSS
+[Add Sass](https://create-react-app.dev/docs/adding-a-sass-stylesheet/) (external link)
+
+[CSS Modules](css-modules.md)
+
+CSS-in-JS: [Emotion](emotion-css.md)
+
+## Testing
+End to end with [Cypress](cypress.md)
+
 ## Advanced Ideas
 [Create HTML element](create-html-element.md)
 
@@ -42,12 +52,6 @@ npm start
 [Text to HTML](text-to-html.md)
 
 [Import with absolute paths](absolute-paths.md)
-
-[Add Sass](https://create-react-app.dev/docs/adding-a-sass-stylesheet/) (external link)
-
-[CSS Modules](css-modules.md)
-
-CSS-in-JS: [Emotion](emotion-css.md)
 
 [Font awesome](font-awesome.md)
 
