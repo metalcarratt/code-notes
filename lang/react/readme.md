@@ -36,6 +36,9 @@ npm start
 
 [Routing](router.md)
 
+### Hooks
+[Default hooks](default-hooks.md)
+
 [Custom hooks](custom-hooks.md)
 
 ## CSS
