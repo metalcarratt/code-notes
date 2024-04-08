@@ -34,7 +34,7 @@ const MyProvider = ({children}: PropsWithChildren) => {
 Optionally provide hooks to simplify data access:
 ```ts
 function useFirst() {
-  const context = useContext(MyContext);
+  const context = useContext(MyContext); // using the context created above
   const getFirst = context.data.first;
   const setFirst = (newState: string) => context.setData({...context.data, first: newState});
   return {
@@ -48,4 +48,11 @@ Then use it:
 <MyContextProvider>
   // ...
 </MyContextProvider>
+```
+
+And in your code:
+```ts
+const {getFirst, setFirst} = useFirst();
+setFirst('abc');
+console.log(getFirst);
 ```
