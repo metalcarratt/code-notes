@@ -23,11 +23,12 @@ const MyProvider = ({children}: PropsWithChildren) => {
     second: true
   });
 
-const value = {
-  data, setData
-};
+  const value = {
+    data, setData
+  };
 
-return <MyContext.Provider value={value}>{children}</MyContext.Provider>
+  return <MyContext.Provider value={value}>{children}</MyContext.Provider>
+}
 ```
 
 Optionally provide hooks to simplify data access:
