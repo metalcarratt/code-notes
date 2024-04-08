@@ -31,6 +31,19 @@ const MyProvider = ({children}: PropsWithChildren) => {
 }
 ```
 
+Then use it:
+```ts
+<MyContextProvider>
+  // ...
+</MyContextProvider>
+```
+
+In your code:
+```ts
+const context = useContext(MyContext);
+const getFirst = context.data.first;
+```
+
 Optionally provide hooks to simplify data access:
 ```ts
 function useFirst() {
@@ -41,13 +54,6 @@ function useFirst() {
     getFirst, setFirst
   }
 }
-```
-
-Then use it:
-```ts
-<MyContextProvider>
-  // ...
-</MyContextProvider>
 ```
 
 And in your code:
