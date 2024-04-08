@@ -2,6 +2,8 @@
 
 ## Create new React app
 
+!! change this it Vite
+
 Create:
 ```bash
 npx create-react-app <app-name> --template typescript
