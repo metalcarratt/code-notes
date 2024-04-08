@@ -34,6 +34,8 @@ npm start
 
 [Routing](router.md)
 
+[Custom hooks](custom-hooks.md)
+
 ## CSS
 [Add Sass](https://create-react-app.dev/docs/adding-a-sass-stylesheet/) (external link)
 
