@@ -22,7 +22,7 @@ npm start
 
 [JSX](jsx.md) - list and conditional rendering
 
-[State](state.md)
+
 
 [Events](events.md)
 
@@ -30,11 +30,16 @@ npm start
 
 [Components within components](nested-components.md)
 
-[Redux](redux.md)
-
 [Forms](forms.md)
 
 [Routing](router.md)
+
+### State
+[State](state.md)
+
+[Redux](redux.md)
+
+[Contexts](contexts.md)
 
 ### Hooks
 [Default hooks](default-hooks.md)
