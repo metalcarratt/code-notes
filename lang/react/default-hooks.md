@@ -101,6 +101,15 @@ In the parent, or whatever is using it, create the ref:
 const myRef = useRef();
 ```
 
+And reference it as `myRef.current.value`.
+
+The ref can also be an object:
+
+```ts
+const myRef: { state: number } | undefined = useRef();
+console.log(myRef.current?.state);
+```
+
 ### using forwardRef
 If you create your component using `forwardRef` you get access to `ref`:
 ```ts
