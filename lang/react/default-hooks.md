@@ -98,17 +98,14 @@ The ref above could be passed in as a prop, or you can use `forwardRef` as menti
 
 In the parent, or whatever is using it, create the ref:
 ```ts
-const myRef = useRef();
+type MyRef = {
+  myState: string,
+  myAction: () => void
+} | undefined
+const myRef: MyRef = useRef();
 ```
 
-And reference it as `myRef.current.value`.
-
-The ref can also be an object:
-
-```ts
-const myRef: { state: number } | undefined = useRef();
-console.log(myRef.current?.state);
-```
+And reference it as `myRef.current?.myState` or `myRef.current?.myAction()`.
 
 ### using forwardRef
 If you create your component using `forwardRef` you get access to `ref`:
