@@ -80,3 +80,39 @@ Use it to slow down updates
 
 ## useId
 generates a random id.
+
+## useImperativeHandle and useRef
+Use this to make state/actions from a child component accessible to a parent component.
+
+In the child:
+```ts
+useImperativeHandle(myRef, () => {
+  return {
+    myState,
+    myAction: () => {}
+  }
+});
+```
+
+The ref above could be passed in as a prop, or you can use `forwardRef` as mentioned below.
+
+In the parent, or whatever is using it, create the ref:
+```ts
+const myRef = useRef();
+```
+
+### using forwardRef
+If you create your component using `forwardRef` you get access to `ref`:
+```ts
+const MyComponent = forwardRef((props, ref) => {
+  // use ref
+  return <></>'
+});
+```
+
+Then when using the component you can pass in the ref.
+```ts
+<MyComponent ref={ref} />
+```
+
+But, as mentioned above, you can just pass it as a prop as well.
