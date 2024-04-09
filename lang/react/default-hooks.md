@@ -23,6 +23,17 @@ For array dependency:
 - `[someVar]` means run on init and every time `someVar` updates
 - `` means run on every re-render
 
+If you want to run something when a component unmounts:
+```ts
+useEffect(() => {
+  // run onmount code here
+
+  return {
+    // run unmount code here
+  }
+}, []);
+```
+
 ## useContext
 Semi-global state. See {TBD}
 
