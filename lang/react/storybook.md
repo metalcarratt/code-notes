@@ -54,3 +54,6 @@ export const WithDefault: Story = {
   }
 }
 ```
+
+## Add accessibility testing
+Follow instructions here: https://storybook.js.org/docs/writing-tests/accessibility-testing
