@@ -74,4 +74,24 @@ Simple table:
 </List>
 ```
 
+## Custom layouts
+Simple:
+```jsx
+<Box>
+  // stuff
+</Box>
+```
+
+With css:
+```jsx
+const sx = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between'
+}
+
+<Box sx={sx}>
+  // stuff
+</Box>
+```
 
