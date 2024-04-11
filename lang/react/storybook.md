@@ -12,7 +12,9 @@ npm run storybook
 
 It runs on `http://localhost:6006`, but the page will auto-open.
 
-Installs files under `src/stories`. In that folder just add normal React components as well as a `<ComponentName>.stories.ts` file. You may need to make it `*.tsx` if you plan on using the `render` feature of `Story`.
+Installs examples under `src/stories`. In that folder just add normal React components as well as a `<ComponentName>.stories.ts` file. You may need to make it `*.tsx` if you plan on using the `render` feature of `Story`.
+
+**note** you can actually stick stories anywhere under `src` as long as it ends in `stories.ts` or `stories.tsx`. This is configured in `.storybook/main.ts`.
 
 ## Stories file
 The base:
