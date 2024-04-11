@@ -26,3 +26,52 @@ use `value` and `onChange` to handle state.
 />
 ```
 `fullWidth` makes it fullwidth. `multiline` turns it into a textarea. `rows` specify how many rows are visible.
+
+To target specific styles in css:
+```ts
+import { inputBaseClasses } from "@mui/material";
+```
+
+And then:
+```ts
+const sx = {
+  [`.${inputBaseClasses.root}`]: {
+    // styles for root element
+  },
+  [`.${inputBaseClasses.input}`]: {
+    // styles for input element
+  },
+}
+```
+
+## Text and headers
+```jsx
+<Typography variant="h2" align='center'>Text</Typography>
+```
+Text that displays as centered h2
+
+## Table
+Simple table:
+```jsx
+<Table>
+  <TableBody>
+    <TableRow>
+      <TableCell>1</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+## Lists
+```jsx
+<List>
+  <ListItem>
+    <ListItemButton> // makes it clickable
+      <ListItemIcon>/* icon */</ListItemIcon>
+      <ListItemText>/* Text */</ListItemText>
+    </ListItemButton>
+  </ListItem>
+</List>
+```
+
+
