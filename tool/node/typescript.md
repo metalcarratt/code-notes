@@ -29,4 +29,4 @@ In package.json:
     "serve": "set NODE_ENV=development && nodemon src/app.ts"
 },
 ```
-This creates a `example.js` that can be run by node.
+
