@@ -11,6 +11,6 @@
 - With [subscriptions](vue-apollo-client-subscriptions.md)
 - [Authorization](vue-apollo-client-authorization.md)
 
-GraphQL client using React
+[GraphQL client using React](./react-apollo-client.md)
 
 [Gotchas](gotchas.md)
