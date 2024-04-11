@@ -23,7 +23,7 @@ npm i -D nodemon
 }
 ```
 
-In package.json:
+In `package.json`:
 ```json
 "scripts": {
     "serve": "set NODE_ENV=development && nodemon src/app.ts"
