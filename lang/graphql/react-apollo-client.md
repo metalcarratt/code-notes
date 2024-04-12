@@ -71,3 +71,14 @@ doMutate({
     }
 });
 ```
+
+## Refreshing the cache
+### Polling
+```ts
+const {data} = useQuery(GQL, {
+    variables: {
+       // vars
+    },
+    pollInterval: 1500
+});
+```
