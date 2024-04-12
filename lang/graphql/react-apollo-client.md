@@ -76,9 +76,12 @@ doMutate({
 ### Polling
 ```ts
 const {data} = useQuery(GQL, {
-    variables: {
-       // vars
-    },
     pollInterval: 1500
 });
+```
+### Refetching
+```ts
+const {data, refetch} = useQuery(GQL);
+// later
+refetch();
 ```
