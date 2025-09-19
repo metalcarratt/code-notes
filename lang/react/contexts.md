@@ -1,4 +1,7 @@
 # Contexts
+
+**Makes sure to put this inside a TSX file, not a TS file!!!**
+
 Define your data model:
 ```ts
 type Data = {
