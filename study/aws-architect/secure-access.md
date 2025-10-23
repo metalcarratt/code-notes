@@ -574,3 +574,43 @@ In resource-based policies, a Principal can be:
 | Service principal | lambda.amazonaws.com, ec2.amazonaws.com |
 
 🔒 IAM groups cannot be principals. Groups are used only to manage permissions for IAM users—they don’t represent identities themselves.
+
+# Traceability
+## 🧭 Core AWS Services for Traceability
+| Service | Purpose | Key | Capabilities |
+|---|---|---|---|
+| AWS CloudTrail | Logs all API activity across AWS | Tracks who did what, when, from where |
+| AWS Config | Records configuration changes | Detects drift, enforces compliance |
+| Amazon CloudWatch | Collects logs, metrics, and events | Enables monitoring, alerting, dashboards |
+| AWS CloudWatch Logs Insights | Query and analyze logs | Investigate access patterns and anomalies |
+| AWS X-Ray | Traces application requests | Visualizes service interactions and latency |
+| AWS Security Hub | Aggregates security findings | Centralized view of threats and compliance |
+| Amazon GuardDuty | Threat detection using logs and network flow | Alerts on suspicious activity |
+| IAM Access Analyzer | Identifies risky permissions and resource sharing | Helps refine least privilege policies |
+
+### 🔐 Best Practices for Access Traceability
+#### 1. Enable CloudTrail Across All Regions
+- Use organization-wide trails in AWS Organizations.
+- Store logs in a secure S3 bucket with encryption and access controls.
+
+#### 2. Use AWS Config Rules
+- Automatically evaluate resource configurations.
+- Trigger remediation workflows for non-compliant changes.
+
+#### 3. Centralize Logs with CloudWatch
+- Stream logs from Lambda, EC2, API Gateway, and other services.
+- Set up metric filters to detect access anomalies.
+
+#### 4. Integrate with SIEM or SOAR Tools
+- Forward logs to Splunk, Datadog, or custom systems.
+- Automate investigation and response using Lambda or Step Functions.
+
+### 5. Use IAM Access Analyzer
+- Detect unintended access to resources.
+- Review and refine trust policies and role assumptions.
+
+### 6. Set Up GuardDuty and Security Hub
+- Detect brute force attacks, credential exfiltration, and unusual API calls.
+- Aggregate findings across accounts and regions.
+
+
