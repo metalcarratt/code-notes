@@ -455,6 +455,8 @@ This allows flexible, secure access without hardcoding.
 | STS | Cross-account, federation | ⭐⭐⭐⭐⭐ |
 | Hardcoded Credentials | Never | ❌ |
 
+---
+
 # 🔐 Deep Dive into IAM Policies
 IAM policies define who can do what on which resources. Best practices include:
 
@@ -484,3 +486,91 @@ IAM policies define who can do what on which resources. Best practices include:
 - Use Attribute-Based Access Control (ABAC) with tags.
 - Combine RBAC (roles) and ABAC for granular control.
 - Use IAM Access Analyzer to detect overly permissive policies.
+
+## 📜 Major Parts of an IAM Policy Statement
+Each IAM policy is a JSON document composed of statements. Each statement includes:
+
+| Field | Purpose | Required? |
+|---|---|---|
+| Effect | Either "Allow" or "Deny" | ✅ |
+| Action | Specifies the AWS service actions (e.g., s3:GetObject) | ✅ |
+| Resource | Defines the ARN(s) the action applies to | ✅ |
+| Condition | Optional filters (e.g., IP address, time, tags) | ❌ |
+| Principal | Only used in resource-based policies to define who can access | ❌ (not used in identity-based policies) |
+
+#### Example:
+```json
+{
+  "Effect": "Allow",
+  "Action": "s3:GetObject",
+  "Resource": "arn:aws:s3:::my-bucket/*"
+}
+```
+
+### 🎯 Granularity in Permissions
+IAM policies allow fine-grained control through:
+- Action-level control: e.g., allow s3:PutObject but deny s3:DeleteObject
+- Resource-level control: e.g., allow access to one bucket, deny others
+- Condition keys: e.g., allow access only from specific IPs or during business hours
+- Tag-based access control (ABAC): e.g., allow access if resource.tag.Team == "Dev"
+
+### 🧠 IAM Decision Logic
+AWS evaluates policies using this logic:
+1. Default Deny: All requests are denied unless explicitly allowed.
+2. Explicit Allow: Grants access if no explicit deny exists.
+3. Explicit Deny: Overrides any allow—even across multiple policies.
+
+#### Multiple Policies Attached?
+- AWS combines all identity-based policies (user, group, role).
+- If any policy explicitly denies an action, it takes precedence.
+- If no policy allows an action, it's denied by default.
+
+### 🏗️ Resource-Based Policies
+Used to control access from the resource side, not the identity. Common examples:
+
+| Service | Resource Policy Use |
+|---|---|
+| S3 | Bucket policies to allow cross-account access |
+| SNS/SQS | Allow publishing or subscribing from other accounts |
+| Lambda | Allow invocation from specific services or accounts |
+| KMS | Control who can use encryption keys |
+
+#### Key Differences:
+- Include a Principal field to specify who can access.
+- Often used for cross-account access or public access.
+
+### ✅ Are Action and Principal Lists?
+Action
+- Yes, Action can be a list of one or more AWS service actions.
+- Example:
+```json
+"Action": ["s3:GetObject", "s3:PutObject"]
+```
+- You can also use wildcards:
+```json
+"Action": "s3:*"
+```
+
+Principal
+- Yes, Principal can be a list—but only in resource-based policies (like S3 bucket policies, Lambda permissions, etc.).
+- Example:
+```json
+"Principal": {
+  "AWS": [
+    "arn:aws:iam::111122223333:user/Alice",
+    "arn:aws:iam::111122223333:role/DevRole"
+  ]
+}
+```
+
+#### 👥 What Can Be a Principal?
+In resource-based policies, a Principal can be:
+
+| Type | Example |
+| IAM user | arn:aws:iam::123456789012:user/Alice |
+| IAM role | arn:aws:iam::123456789012:role/AdminRole |
+| AWS account | 123456789012 or arn:aws:iam::123456789012:root |
+| Federated identity | arn:aws:iam::123456789012:saml-provider/MyIdP |
+| Service principal | lambda.amazonaws.com, ec2.amazonaws.com |
+
+🔒 IAM groups cannot be principals. Groups are used only to manage permissions for IAM users—they don’t represent identities themselves.
