@@ -114,7 +114,7 @@ You can create multiple AWS accounts to separate environments (e.g., dev, test, 
 - Never share root credentials.
 - Use strong passwords and rotate them regularly.
 
-## 🧰 Tools to Help You Stay Secure
+### 🧰 Tools to Help You Stay Secure
 - IAM Access Analyzer: Identifies resources shared with external entities.
 - AWS Trusted Advisor: Recommends security improvements.
 - AWS Security Hub: Aggregates findings from multiple services.
@@ -126,7 +126,7 @@ No permission boundaries: Unlike IAM users or roles, you can't restrict or scope
 
 Single point of failure: If compromised, the entire AWS environment is at risk.
 
-## ✅ Best Practices for Root User Security
+### ✅ Best Practices for Root User Security
 1. Enable Multi-Factor Authentication (MFA)
 - Use a hardware MFA device or a secure authenticator app.
 - This adds a critical layer of protection against password compromise.
