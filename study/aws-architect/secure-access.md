@@ -63,7 +63,7 @@ To ensure secure access across these environments, consider the following strate
 3. **Network Security**
 - Use VPNs or dedicated interconnects for private/hybrid cloud access.
 - Segment networks with firewalls and microsegmentation.
-_ Apply Zero Trust principles: verify every access request.
+- Apply Zero Trust principles: verify every access request.
 
 4. **Encryption and Data Protection**
 - Encrypt data at rest and in transit using cloud-native tools.
