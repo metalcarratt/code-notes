@@ -174,9 +174,9 @@ Single point of failure: If compromised, the entire AWS environment is at risk.
 # 🧑‍💻 IAM Identity Types in AWS
 | Identity Type | Purpose | Typical Use Case | Key Traits |
 |---|---|---|---|
-| IAM User | Represents a person or application needing long-term credentials	Developers, admins, automation scripts | Has permanent credentials (username/password, access keys) |
-| IAM Group | A collection of IAM users with shared permissions | Teams like DevOps, Finance, Support	Simplifies permission management across users |
-| IAM Role | A temporary identity assumed by users, services, or external entities | EC2 instance access, cross-account access, federated login	Uses temporary credentials via STS; no password or access keys |
+| IAM User | Represents a person or application needing long-term credentials | Developers, admins, automation scripts | Has permanent credentials (username/password, access keys) |
+| IAM Group | A collection of IAM users with shared permissions | Teams like DevOps, Finance, Support | Simplifies permission management across users |
+| IAM Role | A temporary identity assumed by users, services, or external entities | EC2 instance access, cross-account access, federated login | Uses temporary credentials via STS; no password or access keys |
 
 
 ## 🧠 Choosing Between Users, Groups, and Roles
