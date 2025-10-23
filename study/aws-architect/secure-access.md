@@ -161,7 +161,7 @@ Single point of failure: If compromised, the entire AWS environment is at risk.
 - Rotate access keys and passwords.
 - Prefer temporary credentials via STS or IAM roles.
 
-## 🧠 Example: Secure Setup for a Small Team
+### 🧠 Example: Secure Setup for a Small Team
 | Role | Access Level | Tools Used |
 |---|---|---|
 | Root User | Emergency only | MFA, CloudTrail |
