@@ -91,4 +91,38 @@ In practice, many systems use JWTs for access tokens and introspection for refre
 
 
 
+# Different token types
 
+## 🪙 1. Access Token
+- Purpose: Grants access to protected resources (e.g., APIs).
+- Scope: Limited to specific permissions (e.g., read:profile, write:calendar).
+- Lifetime: Short-lived (minutes to hours).
+- Format:
+  - Can be opaque (random string, validated via introspection).
+  - Or JWT (self-contained, signed, includes claims like sub, exp, scope).
+- Usage: Sent in Authorization: Bearer <token> header to resource server.
+
+## 🔁 2. Refresh Token
+- Purpose: Used to obtain a new access token without re-authenticating the user.
+- Scope: Typically broader than access tokens.
+- Lifetime: Long-lived (days to months); revocable.
+- Format: Usually opaque.
+- Usage: Sent to the authorization server’s /token endpoint to get a new access token.
+
+🔐 Refresh tokens are never sent to resource servers — only to the authorization server.
+
+## 🧾 3. ID Token (OpenID Connect only)
+- Purpose: Authenticates the user — proves identity, not authorization.
+- Scope: Contains identity claims (e.g., name, email, picture).
+- Lifetime: Short-lived.
+- Format: Always a JWT.
+0 Usage: Used by the client to establish a session or display user info.
+
+🧠 ID tokens are not meant for API access — they’re for identity, not resource access.
+
+## 🧠 Summary Table
+| Token Type | Purpose | Format | Sent To | Typical Lifetime |
+|---|---|---|---|---|
+| Access Token | Authorize API use | Opaque or JWT | Resource Server | Short |
+| Refresh Token | Renew access | Opaque | Authorization Server | Long |
+| ID Token | Prove identity | JWT | Client App | Short |
