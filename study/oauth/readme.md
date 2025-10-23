@@ -2,8 +2,8 @@
 
 OAuth (Open Authorization) is a **secure authorization protocol** that allows one application to access **limited data** from another application **on behalf of a user**, without exposing the user's credentials.
 
-- [Mapping OAuth Roles in Internal Systems](#mapping-oauth-roles-in-internal-systems)
-- [Token Introspection vs JWT Verification](#token-introspection-vs-jwt-verification)
+- [Mapping OAuth Roles in Internal Systems](#-mapping-oauth-roles-in-internal-systems)
+- [Token Introspection vs JWT Verification](#-token-introspection-vs--jwt-verification)
 - [Different token types](#different-token-types)
 
 ## 🧩 Key Concepts
