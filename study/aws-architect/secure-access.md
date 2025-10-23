@@ -14,7 +14,7 @@
 - Along with those identities, make sure you know how IAM and other AWS services give you the ability to [secure the necessary credentials](#-securing-aws-credentials-best-practices) and best practices for handling those credentials.
     - Look at various methods of assuming roles including assigning roles to AWS services.
     - Understand how to use AWS Security Token Service within and across accounts, and how roles are used with federations. Your users might already have identities outside of AWS such as in your corporate directory. If those users need to work with AWS resources or work with applications that access those resources then those users will need security credentials. You can use an IAM role to specify permission for users whose identity is federated from your organization or third party identity provider.
-- Do you know how to design and configure active directory to federation access to AWS IAM roles or users?
+- Do you know how to [design and configure active directory to federation access to AWS IAM roles or users](#designing-and-configuring-active-directory-to-federate-access-to-aws-iam-roles-or-users)?
 - Also dive into the best practices for controlling your application's access to AWS APIs.
   - When should you hard code credentials into your application? The answer to this is never, but know the other ways to enable API access and dive deeper into IAM policies.
 - For this certification, you do not need to know how to write advanced policies, but you should be able to read and interpret policy documents.
@@ -365,3 +365,54 @@ To link your corporate directory to AWS and allow federated users to assume role
 }
 ```
 
+## Designing and configuring Active Directory to federate access to AWS IAM roles or users
+
+The core components include:
+- **Active Directory (AD)**: Your corporate identity store.
+- **AD FS (Active Directory Federation Services)**: Acts as the SAML Identity Provider (IdP).
+- **AWS IAM**: Defines roles and trust policies for federated access.
+- **AWS STS (Security Token Service)**: Issues temporary credentials when roles are assumed.
+
+### 🛠️ Step-by-Step Configuration
+#### 1. Set Up AD FS as a SAML IdP
+- Install and configure AD FS on a Windows Server joined to your AD domain.
+- Add a Relying Party Trust for AWS:
+  - Use AWS’s SAML metadata URL: https://signin.aws.amazon.com/static/saml-metadata.xml
+  - Set the Relying Party Identifier to: urn:amazon:webservices
+
+#### 2. Configure Claim Rules in AD FS
+- Create claim rules to pass user attributes:
+  - Name ID: Use Email or User Principal Name
+  - Role: Format as arn:aws:iam::<AccountID>:role/<RoleName>,arn:aws:iam::<AccountID>:saml-provider/<ProviderName>
+  - You can map AD groups to specific IAM roles using custom rules.
+
+#### 3. Create IAM Roles in AWS
+- Define roles with trust policies that allow SAML federation:
+
+```json
+{
+  "Effect": "Allow",
+  "Principal": {
+    "Federated": "arn:aws:iam::<AccountID>:saml-provider/<ProviderName>"
+  },
+  "Action": "sts:AssumeRoleWithSAML",
+  "Condition": {
+    "StringEquals": {
+      "SAML:aud": "https://signin.aws.amazon.com/saml"
+    }
+  }
+}
+```
+- Attach appropriate permission policies (e.g., AmazonS3ReadOnlyAccess).
+
+#### 4. Create IAM SAML Provider
+- In AWS IAM console:
+  - Go to “Identity providers” → “Add provider”
+  - Choose SAML, name it (e.g., ADFSProvider)
+  - Upload the AD FS metadata XML
+
+#### 5. Test the Federation Flow
+- Access AWS via a custom AD FS login page or corporate portal.
+- After authentication, AD FS issues a SAML assertion.
+- AWS STS validates the assertion and issues temporary credentials.
+- User is redirected to the AWS console with assumed role permissions.
