@@ -267,7 +267,7 @@ Applying least privilege means:
 
 This limits your blast radius—if a user or role is compromised, the damage is contained.
 
-## 🔐 Securing AWS Credentials: Best Practices
+# 🔐 Securing AWS Credentials: Best Practices
 According to AWS and security experts:
 - Avoid long-term credentials: Use IAM roles and temporary credentials via STS.
 - Enable MFA: Especially for privileged users and the root account.
@@ -416,3 +416,71 @@ The core components include:
 - After authentication, AD FS issues a SAML assertion.
 - AWS STS validates the assertion and issues temporary credentials.
 - User is redirected to the AWS console with assumed role permissions.
+
+## 🚫 Why You Should Never Hardcode AWS Credentials
+Hardcoding credentials (access key ID and secret access key) into your application:
+- Risks accidental exposure via GitHub or other repositories.
+- Makes rotation and revocation difficult.
+- Violates AWS security best practices.
+
+### ✅ Secure Alternatives for AWS API Access
+#### 1. IAM Roles (Best Practice)
+- Attach roles to AWS services (e.g., EC2, Lambda, ECS).
+- Use instance profiles for EC2 or execution roles for Lambda.
+- Credentials are automatically rotated and scoped to the service.
+
+#### 2. AWS SDK Credential Chain
+The SDK automatically looks for credentials in this order:
+- Environment variables
+- Shared credentials file (~/.aws/credentials)
+- IAM role for EC2/Lambda
+- AWS SSO or federated identity
+
+This allows flexible, secure access without hardcoding.
+
+#### 3. AWS Secrets Manager or Parameter Store
+- Store credentials securely and retrieve them at runtime.
+- Use IAM policies to restrict access to secrets.
+
+#### 4. AWS STS (Security Token Service)
+- Use AssumeRole to get temporary credentials for cross-account or federated access.
+- Ideal for short-lived sessions and dynamic access control.
+
+### 🧠 Summary
+| Method | Use Case | Security Level |
+|---|---|---|
+| IAM Role | EC2, Lambda, ECS | ⭐⭐⭐⭐⭐ |
+| SDK Credential Chain | Local dev, CI/CD | ⭐⭐⭐⭐ |
+| Secrets Manager | Third-party credentials | ⭐⭐⭐⭐ |
+| STS | Cross-account, federation | ⭐⭐⭐⭐⭐ |
+| Hardcoded Credentials | Never | ❌ |
+
+# 🔐 Deep Dive into IAM Policies
+IAM policies define who can do what on which resources. Best practices include:
+
+#### Principle of Least Privilege
+- Grant only the permissions needed for the task.
+- Use resource-level permissions and conditions (e.g., IP address, time of day).
+
+#### Use Managed Policies First
+- Start with AWS-managed policies (e.g., AmazonS3ReadOnlyAccess).
+- Transition to custom policies as your needs evolve.
+
+#### Policy Structure
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::my-bucket/*"
+    }
+  ]
+}
+```
+
+### Advanced Techniques
+- Use Attribute-Based Access Control (ABAC) with tags.
+- Combine RBAC (roles) and ABAC for granular control.
+- Use IAM Access Analyzer to detect overly permissive policies.
