@@ -11,7 +11,7 @@
   - [How do you create IAM users, groups, and roles](#%EF%B8%8F-how-to-create-iam-users-groups-and-roles)?
   - What are their [strengths and limitations](#%EF%B8%8F-strengths-and-limitations)?
   - What scenarios would dictate possibly [switching between the various user group and role-based permissions](#-when-to-switch-between-iam-constructs)?
-- Along with those identities, make sure you know how IAM and other AWS services give you the ability to secure the necessary credentials and best practices for handling those credentials.
+- Along with those identities, make sure you know how IAM and other AWS services give you the ability to [secure the necessary credentials](#-securing-aws-credentials-best-practices) and best practices for handling those credentials.
     - Look at various methods of assuming roles including assigning roles to AWS services.
     - Understand how to use AWS Security Token Service within and across accounts, and how roles are used with federations. Your users might already have identities outside of AWS such as in your corporate directory. If those users need to work with AWS resources or work with applications that access those resources then those users will need security credentials. You can use an IAM role to specify permission for users whose identity is federated from your organization or third party identity provider.
 - Do you know how to design and configure active directory to federation access to AWS IAM roles or users?
@@ -266,3 +266,102 @@ Applying least privilege means:
 - Regularly audit and prune unused permissions
 
 This limits your blast radius—if a user or role is compromised, the damage is contained.
+
+## 🔐 Securing AWS Credentials: Best Practices
+According to AWS and security experts:
+- Avoid long-term credentials: Use IAM roles and temporary credentials via STS.
+- Enable MFA: Especially for privileged users and the root account.
+- Rotate access keys regularly: Audit and remove unused keys.
+- Use IAM Access Analyzer: To detect risky permissions and refine policies.
+- Apply least privilege: Grant only the permissions needed, scoped by resource, action, and condition.
+
+### 🧑‍🚀 Methods of Assuming Roles
+IAM roles allow entities to assume temporary access to AWS resources. Here are the main methods:
+
+#### 1. AssumeRole (via STS)
+- Used for cross-account access or privilege escalation within an account.
+- Returns temporary credentials (access key ID, secret key, session token).
+- Example: A developer in Account A assumes a role in Account B to access S3.
+
+#### 2. Service-Linked Roles
+- Automatically created and managed by AWS services (e.g., Lambda, ECS).
+- Allow services to perform actions on your behalf.
+
+#### 3. Instance Profiles
+- Attach IAM roles to EC2 instances.
+- Applications on the instance use the role’s temporary credentials via the metadata service.
+
+#### 4. AssumeRoleWithWebIdentity
+- Used for federated access via OpenID Connect or Amazon Cognito.
+- Common in mobile/web apps where users authenticate with Google, Facebook, etc.
+
+### 🌐 AWS STS and Federation
+#### What Is AWS STS?
+- Security Token Service issues temporary credentials for IAM roles.
+- Credentials are valid for 15 minutes to 12 hours.
+- Used for cross-account access, federation, and role assumption.
+
+#### Federation Scenarios
+- Users authenticate via corporate directory (e.g., Active Directory, Azure AD).
+- AWS trusts the identity provider (IdP) via SAML 2.0, OIDC, or custom brokers.
+- IAM role defines permissions; trust policy defines who can assume it.
+
+#### Example Flow:
+- User logs into corporate portal.
+- IdP authenticates and issues a SAML assertion.
+- AWS STS uses the assertion to allow the user to assume a role.
+- User receives temporary credentials to access AWS resources.
+
+### 🧩 Step-by-Step: Linking Corporate Directory to AWS
+To link your corporate directory to AWS and allow federated users to assume roles, you set up identity federation using SAML 2.0 or OIDC. Here's how AWS knows which roles a user can access—even if it’s their first time logging in:
+
+#### 1. Set Up Your Identity Provider (IdP)
+- Use a corporate IdP like Azure AD, Okta, Ping Identity, or Active Directory Federation Services (AD FS).
+- Configure it to support SAML 2.0 or OIDC.
+
+#### 2. Create IAM Roles for Federated Access
+- In AWS, create one or more IAM roles with:
+- Trust policy: Specifies which IdP can assume the role.
+- Permissions policy: Defines what the role allows (e.g., access to S3, EC2).
+
+#### 3. Establish Trust Between AWS and Your IdP
+- In AWS IAM, create a SAML provider or configure OIDC.
+- Upload the IdP metadata (XML for SAML or endpoint for OIDC).
+- This tells AWS to trust assertions from your IdP.
+
+#### 4. Configure Role Mapping in Your IdP
+- In your IdP, define attribute mappings (e.g., group membership, department).
+- These attributes are passed in the SAML assertion or OIDC token.
+- Example: A user in the “Finance” group gets mapped to the FinanceAccessRole.
+
+#### 5. User Authentication Flow
+- User logs into your corporate portal.
+- IdP authenticates the user and issues a SAML assertion or OIDC token.
+- AWS STS receives the assertion and validates it.
+- AWS checks the role’s trust policy and the attributes in the assertion.
+- If matched, AWS issues temporary credentials for the role.
+
+### 🔐 How AWS Knows Which Role to Grant
+- The SAML assertion or OIDC token contains attributes like:
+  - RoleSessionName: The user's display name or email.
+  - RoleArn: The ARN of the IAM role to assume.
+  - PrincipalArn: The ARN of the SAML provider.
+- AWS matches these against the trust policy of the IAM role.
+- If valid, AWS STS issues temporary credentials for that role.
+
+#### Example Trust Policy:
+```json
+{
+  "Effect": "Allow",
+  "Principal": {
+    "Federated": "arn:aws:iam::123456789012:saml-provider/MyCorpIdP"
+  },
+  "Action": "sts:AssumeRoleWithSAML",
+  "Condition": {
+    "StringEquals": {
+      "SAML:aud": "https://signin.aws.amazon.com/saml"
+    }
+  }
+}
+```
+
