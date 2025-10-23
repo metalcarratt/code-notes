@@ -169,3 +169,47 @@ Single point of failure: If compromised, the entire AWS environment is at risk.
 | Developer | EC2, S3, Lambda | IAM user + scoped policy |
 | Auditor | Read-only access | IAM user + read-only policy |
 
+---
+
+# 🧑‍💻 IAM Identity Types in AWS
+| Identity Type | Purpose | Typical Use Case | Key Traits |
+|---|---|---|---|
+| IAM User | Represents a person or application needing long-term credentials	Developers, admins, automation scripts | Has permanent credentials (username/password, access keys) |
+| IAM Group | A collection of IAM users with shared permissions | Teams like DevOps, Finance, Support	Simplifies permission management across users |
+| IAM Role | A temporary identity assumed by users, services, or external entities | EC2 instance access, cross-account access, federated login	Uses temporary credentials via STS; no password or access keys |
+
+
+## 🧠 Choosing Between Users, Groups, and Roles
+Use IAM Users when:
+- You need long-term access for a human or script.
+- You want to assign credentials directly.
+
+Use IAM Groups when:
+- You manage multiple users with similar responsibilities.
+- You want to apply policies uniformly (e.g., all developers get EC2 access).
+
+Use IAM Roles when:
+- You need temporary access (e.g., EC2 accessing S3).
+- You want to delegate access across accounts or organizations.
+- You integrate with identity providers (SSO, federation).
+
+Combine Them Like This:
+- Create IAM users for individuals.
+- Assign users to groups for shared permissions.
+- Use roles for temporary or scoped access (e.g., assume a “DevOpsAdmin” role only when needed).
+
+## 🔐 Principle of Least Privilege: Why It Matters
+Least privilege means granting only the permissions necessary to perform a task—nothing more.
+
+Benefits:
+- Limits blast radius: If a user or service is compromised, the damage is contained.
+- Reduces human error: Prevents accidental deletion or exposure of sensitive resources.
+- Improves auditability: Easier to track and justify permissions.
+
+How to Apply It:
+- Start with AWS managed policies (e.g., ReadOnlyAccess) and refine over time.
+- Use IAM Access Analyzer to generate least-privilege policies based on actual usage.
+- Add conditions to policies (e.g., IP restrictions, time-of-day access).
+- Regularly review and remove unused users, roles, and policies.
+
+
