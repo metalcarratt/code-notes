@@ -212,4 +212,57 @@ How to Apply It:
 - Add conditions to policies (e.g., IP restrictions, time-of-day access).
 - Regularly review and remove unused users, roles, and policies.
 
+## 🛠️ How to Create IAM Users, Groups, and Roles
+#### IAM Users
+1. Go to IAM Console → “Users” → “Add user”
+2. Choose a username and access type (programmatic, console, or both)
+3. Assign to a group or attach policies directly
+4. Configure tags and review
 
+#### IAM Groups
+1. Go to IAM Console → “User groups” → “Create group”
+2. Name the group
+3. Attach policies (e.g., AmazonEC2ReadOnlyAccess)
+4. Add users to the group
+
+#### IAM Roles
+1. Go to IAM Console → “Roles” → “Create role”
+2. Choose trusted entity (e.g., AWS service, another account, SAML provider)
+3. Attach policies
+4. Name and create the role
+
+You can also use CloudFormation, Terraform, or AWS CLI for infrastructure-as-code provisioning.
+
+### ⚖️ Strengths and Limitations
+| Identity Type | Strengths | Limitations |
+| IAM User | Direct access, customizable credentials | Long-term credentials can be risky if not rotated |
+| IAM Group | Simplifies permission management for teams | No direct access—must be used with users |
+| IAM Role | Temporary credentials, cross-account access, service integration | Cannot log in directly; must be assumed |
+
+### 🔄 When to Switch Between IAM Constructs
+#### ✅ Use IAM Users when:
+- You need long-term access for a human (e.g., developer, admin)
+- You want to assign credentials directly
+
+#### ✅ Use IAM Groups when:
+- You manage multiple users with similar responsibilities
+- You want to apply policies uniformly (e.g., all developers get EC2 access)
+
+#### ✅ Use IAM Roles when:
+- You need temporary access (e.g., EC2 accessing S3)
+- You want to delegate access across accounts or organizations
+- You integrate with identity providers (SSO, federation)
+
+#### 🔄 Switch Scenarios:
+- From user to role: When moving from long-term credentials to temporary, secure access (e.g., automation scripts → Lambda roles)
+- From direct policy to group: When scaling access control across a team
+- From group to role: When users need elevated access temporarily (e.g., assume “AdminRole” only when needed)
+
+### 🔐 Least Privilege in Action (redundant?)
+Applying least privilege means:
+- Start with no permissions
+- Grant only what’s needed for the task
+- Use conditions (e.g., IP, time, resource tags)
+- Regularly audit and prune unused permissions
+
+This limits your blast radius—if a user or role is compromised, the damage is contained.
