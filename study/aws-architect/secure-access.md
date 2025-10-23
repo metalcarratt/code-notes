@@ -1,15 +1,15 @@
-- know the differences between [public, private, hybrid, and multi-cloud environments](#-cloud-environment-types) and [how to design secure access to all of them](#-designing-secure-access-across-cloud-models).
+- know the differences between [public, private, hybrid, and multi-cloud environments](#%EF%B8%8F-cloud-environment-types) and [how to design secure access to all of them](#-designing-secure-access-across-cloud-models).
 - AWS accounts. [Understand what accounts are](#-what-is-an-aws-account) and how they work to ensure you have [secure access to your AWS resources](#-securing-access-to-aws-resources).
 - Review the [best practices for account root user security](#-best-practices-for-root-user-security), applying the principle of least privilege, and multifactor authentication.
   - AWS accounts begin with a single account root user with full permissions. So why is this a risk to use the account root user? Well, these account permissions cannot be changed or modified and if this account root user is compromised then so is the whole AWS environment.
   - One way to secure the account root user is to add multifactor authentication. But what else could we implement to secure our AWS account?
   - How about adding another user with more limited permissions instead of using the account root user? When we add new users to our AWS account, those new users will be different people and need different levels of access.
 - What level of permissions do new IAM users have in your AWS account?
-  - [IAM identities](#-iam-identity-types-in-aws) start with no permissions but permissions can be granted. Dive deeper into IAM users, groups, and roles and what goes into deciding between which to use and how they might be combined.
+  - [IAM identities](#%E2%80%8D-iam-identity-types-in-aws) start with no permissions but permissions can be granted. Dive deeper into IAM users, groups, and roles and what goes into deciding between which to use and how they might be combined.
   - Understand how using the principle of least privilege limits your blast radius.
 - Here are a few questions to consider.
-  - [How do you create IAM users, groups, and roles](#-how-to-create-iam-users-groups-and-roles)?
-  - What are their [strengths and limitations](#-strengths-and-limitations)?
+  - [How do you create IAM users, groups, and roles](#%EF%B8%8F-how-to-create-iam-users-groups-and-roles)?
+  - What are their [strengths and limitations](#%EF%B8%8F-strengths-and-limitations)?
   - What scenarios would dictate possibly [switching between the various user group and role-based permissions](#-when-to-switch-between-iam-constructs)?
 - Along with those identities, make sure you know how IAM and other AWS services give you the ability to secure the necessary credentials and best practices for handling those credentials.
     - Look at various methods of assuming roles including assigning roles to AWS services.
