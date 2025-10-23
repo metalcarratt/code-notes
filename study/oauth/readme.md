@@ -61,3 +61,34 @@ In pure backend-to-backend scenarios (no user), you'd use the Client Credentials
 - Uses that token to call downstream APIs.
 
 No user involved — just service identity.
+
+
+
+# 🔍 Token Introspection vs 🔐 JWT Verification
+
+| Feature | Introspection | JWT Verification |
+|---|---|---|
+| Token Type | Opaque (random string) | JWT (self-contained JSON Web Token) |
+| Validation Method | API call to the authorization server | Local signature verification |
+| Who validates? | Resource server asks the auth server | Resource server verifies independently |
+| Latency | Higher (network round-trip) | Lower (local check) |
+| Revocation support | ✅ Easy to revoke centrally | 🚫 Harder — must track revocation externally |
+| Token contents | Stored server-side | Encoded in the token itself (claims, scopes, etc.) |
+| Scalability | Less scalable (central dependency) | Highly scalable (no external calls) |
+
+## 🧠 When to Use Which?
+
+- Use introspection when:
+  - You need centralized control (e.g. revoking tokens instantly).
+  - You’re using opaque tokens for security or simplicity.
+  - You want fine-grained access decisions based on real-time token state.
+- Use JWT verification when:
+  - You want performance and scalability.
+  - You trust the token issuer and can validate signatures locally.
+  - You’re okay with short-lived tokens and external revocation strategies.
+
+In practice, many systems use JWTs for access tokens and introspection for refresh tokens or opaque tokens. Some even layer both — verifying JWTs locally but calling introspection for high-risk operations.
+
+
+
+
