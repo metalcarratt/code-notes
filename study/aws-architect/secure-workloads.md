@@ -234,3 +234,57 @@ Each tier is protected by layered controls:
 - Route Tables: Ensure correct routing between tiers and external endpoints.
 - NAT Gateways: Secure outbound access from private subnets.
 
+### 🧩 Extra: What Is a Subnet?
+A subnet (short for subnetwork) is a segmented portion of your Amazon VPC’s IP address range. It allows you to organize and isolate resources within your VPC.
+
+#### Key Characteristics:
+- Each subnet resides in one Availability Zone.
+- You can create public subnets (with internet access) or private subnets (no direct internet access).
+- Subnets help enforce security boundaries and routing rules.
+
+#### Example:
+If your VPC uses 10.0.0.0/16, you might create:
+- 10.0.1.0/24 for public resources (e.g., load balancers)
+- 10.0.2.0/24 for private resources (e.g., databases)
+
+### CIDR notation and subnetting logic
+
+#### 🧠 What Does 10.0.0.0/16 Mean?
+- This is a CIDR block (Classless Inter-Domain Routing).
+- `10.0.0.0` is the network address.
+- `/16` means the first 16 bits are fixed as the network portion.
+- That leaves 16 bits for host addresses, allowing:
+  - 65,536 IPs total (from `10.0.0.0` to `10.0.255.255`)
+  - Usable IPs: 65,534 (excluding network and broadcast addresses)
+
+#### 🧩 How Are 10.0.1.0/24 and 10.0.2.0/24 Subnets of 10.0.0.0/16?
+- `/24` means the first 24 bits are fixed for the network.
+- So each `/24` subnet contains 256 IPs (from `10.0.X.0` to `10.0.X.255`).
+- `10.0.1.0/24` and `10.0.2.0/24` are contained within the larger `10.0.0.0/16` block because:
+  - Their addresses fall within the 10.0.0.0 to 10.0.255.255 range.
+  - They simply carve out smaller chunks of that space.
+
+#### Visual Breakdown:
+```Code
+10.0.0.0/16
+├── 10.0.0.0/24
+├── 10.0.1.0/24
+├── 10.0.2.0/24
+├── ...
+└── 10.0.255.0/24
+```
+
+Each `/24` subnet is like a room in a building (`/16`), and you can assign different roles (e.g., public, private, isolated) to each room.
+
+### 🌐 Extra: What Does NAT Stand For?
+NAT stands for Network Address Translation.
+
+In AWS, a NAT Gateway or NAT instance allows resources in a private subnet to:
+- Initiate outbound connections to the internet (e.g., download updates)
+- Without exposing themselves to inbound internet traffic
+
+#### Why It Matters:
+- Keeps private resources secure while still allowing them to reach external services.
+- NAT Gateways are managed, scalable, and highly available across AZs.
+
+  
