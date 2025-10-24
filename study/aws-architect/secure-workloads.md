@@ -160,3 +160,14 @@ A resilient VPC isn’t a separate type—it’s a design pattern that incorpora
 - Scalable compute and storage
 - Secure, monitored access
 
+## Amazon VPC is a regional service.
+#### Here's why:
+- When you create a VPC, you choose a specific AWS Region (e.g., us-east-1, ap-southeast-2).
+- All resources within that VPC—like subnets, route tables, and gateways—are tied to that region.
+- Subnets are zonal, meaning they exist in a single Availability Zone within the region.
+- But the VPC itself spans the entire region and can include subnets in multiple zones.
+
+#### Summary:
+- VPC → Regional
+- Subnets → Zonal
+- IAM, S3 (global namespace) → Global
