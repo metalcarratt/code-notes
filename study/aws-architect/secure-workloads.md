@@ -2,7 +2,7 @@ Secure workloads
 
 This could involve determining who or what can launch or terminate your resources, managing how and when access is given, operational permissions, and again, almost anything else that would involve calls to the services.
 
-- Ensure you know how to design, build, and secure an Amazon Virtual Private Cloud or Amazon VPC.
+- Ensure you know [how to design, build, and secure an Amazon Virtual Private Cloud or Amazon VPC](#-core-components-of-a-vpc).
   - There are two types of Amazon VPC, default and custom. Make sure you know the differences and how the security for each is initially configured.
   - Let's also check in and see if you know what is the resilient type for an Amazon VPC.
   - Is an Amazon VPC a zonal, regional, or global service? Well, when you create a VPC, it is in one Region and in one AWS account, so that makes an Amazon VPC a regional service.
