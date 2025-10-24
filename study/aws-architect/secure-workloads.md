@@ -171,3 +171,66 @@ A resilient VPC isn’t a separate type—it’s a design pattern that incorpora
 - VPC → Regional
 - Subnets → Zonal
 - IAM, S3 (global namespace) → Global
+
+## 🧱 Multi-Tier VPC Architecture Overview
+A typical secure VPC design includes:
+- Public Subnet: Load balancers, bastion hosts
+- Private Subnet: Application servers
+- Isolated Subnet: Databases, internal services
+
+Each tier is protected by layered controls:
+
+| Tier | Access | Security |
+|---|---|---|
+| Public | Internet-facing | Security groups + IGW |
+| Private | Internal only | Security groups + NAT |
+| Isolated | No internet | Security groups + no route to IGW |
+
+### 🔐 Security Groups vs Network ACLs
+| Feature | Security Groups | Network ACLs (NACLs) |
+|---|---|---|
+| Scope | Instance-level | Subnet-level |
+| Type | Stateful | Stateless |
+| Rules | Allow only | Allow and deny |
+| Evaluation | Automatically tracks response traffic | Must define both inbound and outbound rules |
+| Use Case | Fine-grained control per resource | Broad subnet-level filtering, especially for edge cases |
+
+#### Best Practice:
+- Use security groups for primary access control.
+- Use NACLs as an additional layer for subnet-level restrictions (e.g., deny known malicious IPs).
+
+### 🧭 Route Tables and NAT Gateways
+#### Route Tables
+- Control traffic flow between subnets and gateways.
+- Each subnet is associated with one route table.
+- Public subnets route to Internet Gateway (IGW).
+- Private subnets route to NAT Gateway for outbound internet.
+
+#### NAT Gateway
+- Allows private subnets to access the internet without being exposed.
+- Must reside in a public subnet.
+- Use multiple NAT Gateways across AZs for resilience.
+
+### 🛠️ Rule Building and Processing Logic
+#### Security Group Rules
+- Inbound: Define allowed sources and ports.
+- Outbound: Define allowed destinations and ports.
+- Automatically allows return traffic (stateful).
+
+#### NACL Rules
+- Inbound and outbound must be explicitly defined.
+- Rules are evaluated in order by rule number.
+- Default NACL allows all traffic; custom NACLs start with deny-all.
+
+#### Pitfalls to Avoid
+- Overlapping or conflicting rules between SGs and NACLs.
+- Forgetting to allow return traffic in NACLs.
+- Misconfigured route tables that block internal communication.
+- Single NAT Gateway in one AZ (creates a single point of failure).
+
+### 🧠 Combined Functionality Strategy
+- Security Groups: Use for tier-specific access (e.g., app servers can talk to DB, but not vice versa).
+- NACLs: Use to block known bad IPs or enforce subnet-wide restrictions.
+- Route Tables: Ensure correct routing between tiers and external endpoints.
+- NAT Gateways: Secure outbound access from private subnets.
+
