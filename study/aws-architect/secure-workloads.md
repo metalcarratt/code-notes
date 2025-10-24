@@ -93,3 +93,36 @@ This could involve determining who or what can launch or terminate your resource
 #### Monitoring and Auditing
 - Enable CloudTrail and Config for change tracking.
 - Use GuardDuty for threat detection.
+
+## 🧱 Default vs Custom VPC: Key Differences
+| Feature | Default VPC | Custom VPC |
+|---|---|---|
+| Created by AWS | Automatically created in each region | Manually created by you |
+| Subnets | One public subnet per Availability Zone | You define public/private subnets |
+| Internet Gateway | Attached by default | Must be manually attached |
+| Route Tables | Includes routes to the internet | You configure routes explicitly |
+| Security Groups | Default security group allows all inbound traffic from same group | You define rules from scratch |
+| NAT Gateway | Not included | Must be manually created for private subnet egress |
+| Ease of Use | Quick setup for testing and simple apps | Full control for production-grade networks |
+
+
+### 🔐 Initial Security Configuration
+#### 🔸 Default VPC
+- Security Group: Allows all inbound traffic from instances in the same group and all outbound traffic.
+- Network ACL: Stateless, allows all inbound and outbound traffic by default.
+- Public Subnets: All subnets are public with internet access via IGW.
+- Risk: Easier to misconfigure or expose resources unintentionally.
+
+#### 🔸 Custom VPC
+- Security Group: Starts with no inbound rules; outbound is allowed by default.
+- Network ACL: You define inbound/outbound rules explicitly.
+- Subnet Design: You choose which are public or private.
+- Internet/NAT Gateway: Must be manually attached/configured.
+- Advantage: Greater control over traffic flow, segmentation, and exposure.
+
+### 🧠 Best Practices
+- Use custom VPCs for production: They allow fine-grained control over routing, segmentation, and security.
+- Restrict security group rules: Apply least privilege and avoid open ports.
+- Use private subnets for sensitive resources: Keep databases and internal services isolated.
+- Enable VPC Flow Logs: Monitor traffic and detect anomalies.
+- Use IAM roles for EC2 and Lambda: Avoid hardcoded credentials.
