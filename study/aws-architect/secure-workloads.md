@@ -7,7 +7,7 @@ This could involve determining who or what can launch or terminate your resource
   - Let's also check in and see if you know what is [the resilient type for an Amazon VPC](#%EF%B8%8F-characteristics-of-a-resilient-amazon-vpc).
   - [Is an Amazon VPC a zonal, regional, or global service](#amazon-vpc-is-a-regional-service)? Well, when you create a VPC, it is in one Region and in one AWS account, so that makes an Amazon VPC a regional service.
   - Dive deeper and ensure you understand how to design secure VPC architectures.
-    - For example, many application architectures are multi-tiered.
+    - For example, [many application architectures are multi-tiered](#-multi-tier-vpc-architecture-overview).
       - When studying about securing application tiers, pay attention to the use and functionality of security groups, network access control lists, route tables, and NAT gateways.
       - These will provide management and security controls over your network traffic.
       - They can provide granularity in the rules, restrictions, and allowances that you need.
