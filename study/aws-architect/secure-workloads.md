@@ -304,6 +304,16 @@ Private subnet outbound (has no inbound):
 - NAT (routing, ip translation, prevents inbound connection unless a response)
 - IGW
 
+Public subnet incoming traffic:
+<img width="607" height="557" alt="Screenshot 2025-10-28 at 12 25 28 pm" src="https://github.com/user-attachments/assets/dfe3adbe-bff3-4231-993c-3cd5fc011567" />
+
+Public subnet outgoing traffic:
+<img width="608" height="581" alt="Screenshot 2025-10-28 at 12 26 22 pm" src="https://github.com/user-attachments/assets/1d213446-2ef8-4b5e-9538-f98d46d3e2da" />
+
+Private subnet outgoing traffic:
+<img width="658" height="792" alt="Screenshot 2025-10-28 at 12 29 42 pm" src="https://github.com/user-attachments/assets/9082b9e5-1a9b-4a3b-a3a0-70a68f84d89c" />
+
+
 ### Topics to round out
 #### 1. Protocols and Port Behavior
 - Understand TCP vs UDP and how protocols affect firewall rules.
@@ -366,5 +376,7 @@ Private subnet outbound (has no inbound):
 - Public subnet: Load balancer, bastion host.
 - Private subnet: App servers, DBs, internal services.
 - NAT Gateway: Placed in public subnet, used by private subnets.
+
+
 
 
