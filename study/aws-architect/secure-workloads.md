@@ -336,6 +336,7 @@ Private subnet outgoing traffic:
 
 **🔢 Common Ports and Their Roles**
 | Port | Protocol | Purpose |
+|---|---|---|
 | 22 | TCP | SSH (remote login) |
 | 80 | TCP | HTTP (web traffic) |
 | 443 | TCP | HTTPS (secure web traffic) |
