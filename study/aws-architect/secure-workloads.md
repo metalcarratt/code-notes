@@ -287,4 +287,84 @@ In AWS, a NAT Gateway or NAT instance allows resources in a private subnet to:
 - Keeps private resources secure while still allowing them to reach external services.
 - NAT Gateways are managed, scalable, and highly available across AZs.
 
-  
+### Summary of inbound outbound flow
+
+Public subnet inbound (outbound is just reverse):
+- IGW (internet accessibility)
+- NACL (filtering to allow traffic (protocol, port))
+- Route table (route to correct subnet or gateway)
+- SG (security grouP) (fine-grained access control)
+- EC2
+
+Private subnet outbound (has no inbound):
+- EC2
+- SG
+- Route table
+- NACL
+- NAT (routing, ip translation, prevents inbound connection unless a response)
+- IGW
+
+### Topics to round out
+#### 1. Protocols and Port Behavior
+- Understand TCP vs UDP and how protocols affect firewall rules.
+- Know common ports (e.g., 22 for SSH, 80/443 for HTTP/HTTPS) and how they’re filtered by SGs/NACLs.
+
+##### 🔁 TCP vs UDP: Protocol Behavior
+| Protocol | TCP | UDP |
+|---|---|---|
+| Connection | Connection-oriented (handshake) | Connectionless |
+| Reliability | Reliable, ordered delivery | Best-effort, no guarantee |
+| Use Cases | Web (HTTP/HTTPS), SSH, FTP | DNS, video streaming, VoIP |
+| Firewall Impact | Stateful tracking works well | Harder to track without connection state |
+
+**🔐 Security Implication:**
+- Security Groups (stateful): Automatically allow return traffic for TCP.
+- NACLs (stateless): Must explicitly allow both inbound and outbound for TCP and UDP.
+
+##### 🔢 Common Ports and Their Roles
+| Port | Protocol | Purpose |
+| 22 | TCP | SSH (remote login) |
+| 80 | TCP | HTTP (web traffic) |
+| 443 | TCP | HTTPS (secure web traffic) |
+| 53 | UDP | DNS queries |
+| 123 | UDP | NTP (time sync) |
+
+**🔐 Filtering Behavior**
+- Security Groups: Apply at the instance level, allow traffic by protocol, port, and source.
+- NACLs: Apply at the subnet level, must allow both directions for bidirectional traffic (e.g., TCP handshake).
+
+#### 2. Elastic IPs and Public IPs
+- Difference between auto-assigned public IPs and Elastic IPs.
+- How public IPs relate to IGW routing and EC2 accessibility.
+
+##### 🌐 Public IPs vs Elastic IPs
+| Type | Auto-assigned Public IP | Elastic IP |
+| Assigned | Automatically when launching EC2 in a public subnet (if enabled) | Manually allocated and attached by you |
+| Persistence | Released when instance stops or is replaced | Stays with your account until you release it |
+| Control | AWS manages it | You manage it—can reassign across instances |
+| Use Case | Temporary access for dev/test | Stable endpoint for production, DNS, or failover setups |
+
+**🔁 How Public IPs Enable IGW Routing**
+- A public IP is what the Internet Gateway (IGW) uses to route traffic between the internet and your EC2.
+- Without a public IP, the IGW cannot deliver inbound traffic to your instance—even if the subnet has a route to the IGW.
+- Public IPs are mapped to private IPs inside the VPC using 1:1 NAT.
+
+#### 3. Route Table Associations
+- Each subnet must be explicitly associated with a route table.
+- One route table can be shared across subnets, but each subnet has only one active route table.
+
+#### 4. VPC Peering and Transit Gateways
+- How routing works across multiple VPCs.
+- What changes in route tables and CIDR planning when peering is involved.
+
+#### 5. Resiliency and AZ Design
+- Subnets are AZ-scoped, so for high availability:
+  - Spread resources across multiple subnets in different AZs.
+  - Use multi-AZ architectures for load balancers, databases, etc.
+
+#### 6. Common Practices
+- Public subnet: Load balancer, bastion host.
+- Private subnet: App servers, DBs, internal services.
+- NAT Gateway: Placed in public subnet, used by private subnets.
+
+
