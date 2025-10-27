@@ -322,7 +322,7 @@ Private subnet outgoing traffic:
 - Understand TCP vs UDP and how protocols affect firewall rules.
 - Know common ports (e.g., 22 for SSH, 80/443 for HTTP/HTTPS) and how they’re filtered by SGs/NACLs.
 
-##### 🔁 TCP vs UDP: Protocol Behavior
+**🔁 TCP vs UDP: Protocol Behavior**
 | Protocol | TCP | UDP |
 |---|---|---|
 | Connection | Connection-oriented (handshake) | Connectionless |
@@ -334,7 +334,7 @@ Private subnet outgoing traffic:
 - Security Groups (stateful): Automatically allow return traffic for TCP.
 - NACLs (stateless): Must explicitly allow both inbound and outbound for TCP and UDP.
 
-##### 🔢 Common Ports and Their Roles
+**🔢 Common Ports and Their Roles**
 | Port | Protocol | Purpose |
 | 22 | TCP | SSH (remote login) |
 | 80 | TCP | HTTP (web traffic) |
@@ -350,8 +350,9 @@ Private subnet outgoing traffic:
 - Difference between auto-assigned public IPs and Elastic IPs.
 - How public IPs relate to IGW routing and EC2 accessibility.
 
-##### 🌐 Public IPs vs Elastic IPs
+**🌐 Public IPs vs Elastic IPs**
 | Type | Auto-assigned Public IP | Elastic IP |
+|--|--|--|
 | Assigned | Automatically when launching EC2 in a public subnet (if enabled) | Manually allocated and attached by you |
 | Persistence | Released when instance stops or is replaced | Stays with your account until you release it |
 | Control | AWS manages it | You manage it—can reassign across instances |
