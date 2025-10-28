@@ -499,3 +499,36 @@ Destination: 192.168.0.0/16 → Target: vgw-xxxxxxxx
 | VPN/Direct Connect | Encrypted, authenticated private link |
 
 
+# Endpoints
+## 🔐 What Is a VPC Endpoint?
+- A VPC Endpoint is a gateway object inside your VPC that lets you privately connect to AWS services (like S3 or DynamoDB) without traversing the public internet.
+- There are two types:
+  - **Gateway Endpoints**: For S3 and DynamoDB only; use route tables.
+  - **Interface Endpoints**: Powered by AWS PrivateLink; use Elastic Network Interfaces (ENIs) in your subnet.
+
+## 🧭 What Is AWS PrivateLink?
+- PrivateLink lets you expose a service (e.g., an internal app or API) to other VPCs or AWS accounts without public exposure.
+- You create a VPC Endpoint Service, and consumers connect via Interface Endpoints.
+- Traffic stays on AWS’s private backbone—no IGW, NAT, or peering required.
+
+### 🛡️ Why Use PrivateLink Instead of Peering?
+| Feature | VPC Peering | PrivateLink |
+|---|---|---|
+| Connectivity | Full bidirectional | One-way, service-specific |
+| Security | Exposes entire VPC | Exposes only the service |
+| Scalability | Complex with many VPCs | Scales to 100s of VPCs easily |
+| Management | Manual route table updates | Centralized service exposure |
+| Internet Exposure | Often needed | Not required |
+
+### 🧠 Example Scenario
+Let’s say you have a payment API running in VPC A. You want VPCs B, C, and D (from other teams or accounts) to access it securely:
+- With PrivateLink, you:
+  - Create a VPC Endpoint Service in VPC A.
+  - Allow other VPCs to create Interface Endpoints pointing to it.
+  - No IGW, NAT, or peering needed.
+  - Traffic flows privately and securely.
+
+### ✅ Summary
+- PrivateLink is ideal for exposing services securely across VPCs and accounts.
+- It avoids the complexity and risk of peering and public exposure.
+- It’s a best practice for multi-account architectures, service meshes, and zero-trust designs.
