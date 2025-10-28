@@ -718,3 +718,85 @@ Here’s how AWS might test this:
 | You want employees to log in using Azure AD | Federated SSO via OIDC or SAML |
 | You want to assign different IAM roles based on user group | Identity Pool role mapping |
 | You want guest users to upload images to S3 | Identity Pool with unauthenticated access |
+
+
+# Firewalls and proxy services
+## 🔐 Firewalls and Proxy Layers
+- **AWS WAF (Web Application Firewall)**: Protects against SQL injection, XSS, and other layer 7 attacks.
+  - Deployment targets: Only on Application Load Balancer (ALB), API Gateway, and CloudFront.
+  - Use WAF for custom rule sets, rate limiting, and IP filtering.
+- **AWS Shield**: Protects against DDoS attacks.
+  - Shield Standard: Automatically included with ALB, CloudFront, and Route 53. Protects against common DDoS patterns.
+  - Shield Advanced: Adds 24/7 DDoS response team, cost protection, and custom mitigation for complex attacks.
+
+## 🧠 Identity and Access Management
+- **AWS IAM Identity Center**: Centralized SSO for workforce users across AWS accounts and apps.
+- **Amazon Cognito**: Manages user authentication for apps.
+  - User Pools: Handle sign-in, MFA, and federation.
+  - Identity Pools: Grant AWS credentials to authenticated users.
+
+## 🛡️ Threat Detection and Data Protection
+- **Amazon GuardDuty**: Monitors logs (VPC Flow, DNS, CloudTrail) for anomalies and threats like credential exfiltration or port scanning.
+- **Amazon Macie**: Uses ML to discover and classify PII in S3. Alerts on public exposure or sensitive data leaks.
+
+## 🔑 Secrets and Configuration Management
+| Feature | Secrets Manager | Parameter Store |
+|---|---|---|
+| Designed for secrets | ✅ Yes | ⚠️ Not primarily |
+| Automatic rotation | ✅ Yes (native support) | ❌ Manual only |
+| High-frequency access | ✅ Optimized | ⚠️ Rate-limited |
+| Encryption | ✅ KMS | ✅ KMS |
+| Use case | DB creds, API keys | Config values, low-volume secrets |
+
+*🧠 Choose Secrets Manager for high-volume, auto-rotated secrets like DB passwords. Use Parameter Store for config values or low-frequency secrets.*
+
+## 🧪 Exam Scenario Tips
+| Scenario | Best Service |
+|---|---|
+| Prevent DDoS on ALB | Shield Standard or Advanced |
+| Block SQL injection on API Gateway | AWS WAF |
+| Detect PII in S3 | Macie |
+| Secure app login with Google | Cognito User Pool + Federation |
+| Rotate DB credentials every 30 days | Secrets Manager |
+| Centralized SSO for workforce | IAM Identity Center |
+| Detect EC2 compromise | GuardDuty |
+
+## GuardDuty specifically
+### 🔍 What GuardDuty Actually Monitors
+GuardDuty analyzes three primary data sources:
+1. VPC Flow Logs – Network traffic in and out of your VPC.
+2. DNS Logs – Domain name queries from your resources.
+3. CloudTrail Events – API calls across your AWS account.
+
+These logs give visibility into:
+- Inbound/outbound traffic patterns
+- Unusual DNS lookups (e.g., to known malware domains)
+- Suspicious API activity (e.g., disabling logging, creating access keys)
+
+### 🧠 Why EC2 Is a Primary Focus
+- EC2 instances are often the first target in an attack—especially if they’re public-facing or misconfigured.
+- GuardDuty can detect:
+  - Port scanning
+  - Outbound traffic to known botnets
+  - Credential exfiltration
+  - Unusual SSH or RDP behavior
+- These behaviors are visible in VPC Flow Logs and DNS queries, which EC2 generates heavily.
+
+### 🧩 What About Other Services?
+GuardDuty can also detect threats involving:
+- IAM: Unusual role assumptions or key usage.
+- S3: Suspicious access patterns (if S3 protection is enabled).
+- Lambda: Indirectly, via CloudTrail events.
+- EKS: With EKS audit log integration.
+
+But EC2 remains the most visible and vulnerable surface, especially in traditional workloads.
+
+### ✅ Summary
+| Service | Visibility via GuardDuty |
+|---|---|
+| EC2 | Full (network + DNS + API) |
+| IAM | API activity only |
+| S3 | Optional integration |
+| Lambda | API-level only |
+| EKS | With audit log integration |
+
