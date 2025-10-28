@@ -26,7 +26,7 @@ This could involve determining who or what can launch or terminate your resource
   - We just mentioned that AWS also has a VPC endpoint service, PrivateLink, which can help to solve the issue of exposing an application in adding secure access for other VPCs in other AWS accounts.
     - Let's say you have an application and you make that application public. Well, now you're using the internet and your application is exposed, so how can you secure this application? We could set up VPC peering, but that's gonna add more management overhead as you scale, and it also exposes other applications in the VPCs to the other VPCs that are peered.
     - PrivateLink is a secure and scalable way to expose your application or service to tens or hundreds of VPCs with no peering, internet gateway, NAT gateway, and so on.
-- Ensure you know how to secure external connections to and from AWS resources using private connections with AWS Site-to-Site VPNs, AWS Client VPN, and Direct Connect.
+- Ensure you know how to secure external connections to and from AWS resources using [private connections]() with AWS Site-to-Site VPNs, AWS Client VPN, and Direct Connect.
   - You want to ensure you understand the capacity, security, and resilience options for configuring each of these services.
 - Let's step back again and talk about fundamentals and best practices for securing your data. Here are a few questions to consider.
   - How do you build in security to your networking tiers?
