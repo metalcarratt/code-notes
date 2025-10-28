@@ -28,7 +28,7 @@ This could involve determining who or what can launch or terminate your resource
     - PrivateLink is a secure and scalable way to expose your application or service to tens or hundreds of VPCs with no peering, internet gateway, NAT gateway, and so on.
 - Ensure you know how to secure external connections to and from AWS resources using [private connections](#private-connections) with AWS Site-to-Site VPNs, AWS Client VPN, and Direct Connect.
   - You want to ensure you understand the capacity, security, and resilience options for configuring each of these services.
-- Let's step back again and talk about fundamentals and best practices for securing your data. Here are a few questions to consider.
+- Let's step back again and talk about fundamentals and best practices for [securing your data](#securing-data). Here are a few questions to consider.
   - How do you build in security to your networking tiers?
   - How do you secure application use across these tiers? And what does the management of those security components look like?
   - For the exam, you could get a question asking, for which AWS service helps to secure personally identifiable information or PII? PII is personal data used to establish an individual's identity, this includes your name, your home address, email address, your social security number, driver license number, passport, date of birth, bank account information, credit card, and so on. Amazon Macie is an AWS service that uses machine learning to discover, classify, and protect sensitive data stored in Amazon S3.
@@ -607,3 +607,72 @@ START
 │           │
 │           └── NO → Re-evaluate: no external connection needed
 ```
+
+# Securing data
+## 🔐 1. Securing Networking Tiers
+#### ✅ Best Practices
+- Subnet segmentation: Use public subnets for internet-facing components (e.g., ALBs), and private subnets for internal services (e.g., app servers, DBs).
+- Route table isolation: Ensure private subnets don’t route to IGW; use NAT Gateway for controlled outbound access.
+- Security Groups (SGs): Stateful firewalls at the instance level—allow only necessary ports and CIDRs.
+- Network ACLs (NACLs): Stateless filters at the subnet level—use for coarse-grained control and deny rules.
+- VPC Flow Logs: Enable for visibility into traffic patterns and anomaly detection.
+
+## 🧱 2. Securing Application Use Across Tiers
+#### ✅ Best Practices
+- IAM roles and policies: Assign least-privilege roles to EC2, Lambda, ECS, etc.
+- Application Load Balancer (ALB): Use WAF integration for layer 7 protection.
+- TLS everywhere: Encrypt in transit using ACM-managed certificates.
+- Secrets Manager / Parameter Store: Secure credentials and config values.
+- PrivateLink / VPC Endpoints: Avoid public exposure when accessing AWS services or internal APIs.
+
+## 🔍 3. Data Protection and PII Security
+### 🔹 Amazon Macie - Sensitive Data Discovery & Protection
+Macie helps secure data at rest, especially in Amazon S3, by:
+- Automatically discovering and classifying sensitive data like PII, financial records, credentials, and health data.
+- Using machine learning and pattern matching to detect things like names, addresses, SSNs, credit card numbers, and more.
+- Generating alerts when sensitive data is found in unexpected places (e.g., public buckets).
+- Integrating with EventBridge and Security Hub for automated remediation workflows.
+
+*🧠 Use Macie to enforce data governance, prevent accidental exposure, and meet compliance requirements like GDPR or HIPAA.*
+
+According to AWS’s own blog, the name “Macie” was chosen with two meanings in mind:
+- French origin: “Weapon” — symbolizing protection and defense.
+- English origin: Describes someone bold, sporty, and sweet — a metaphor for proactive, intelligent security.
+
+### 🔹 Amazon Cognito - Identity & Access Management for Applications
+Cognito secures user identity and authentication, especially for web and mobile apps:
+- User Pools: Manage sign-up, sign-in, password policies, and multi-factor authentication.
+- Identity Pools: Grant temporary AWS credentials to authenticated users for accessing AWS resources.
+- Supports federated identity via SAML, OIDC, Google, Facebook, etc.
+- Enables fine-grained access control using IAM roles mapped to user attributes or groups.
+
+*🧠 Use Cognito to secure app access, enforce identity federation, and isolate user permissions across services.*
+
+#### 🔍 Cognito vs ForgeRock: Core Differences
+| Feature | Amazon Cognito | ForgeRock |
+|---|---|---|
+| Type | Cloud-native IAM for apps	Enterprise IAM platform |
+| Deployment | Fully managed by AWS | Self-hosted, cloud, hybrid |
+| Use Case | Web/mobile app auth, federated identity | Workforce IAM, customer IAM, IoT, legacy systems |
+| Identity Federation | SAML, OIDC, social (Google, Facebook, etc.) | SAML, OIDC, LDAP, AD, custom connectors |
+| User Directory | Cognito User Pools | ForgeRock Identity Store or external LDAP/AD |
+| Access to AWS Resources | Via Cognito Identity Pools + IAM roles | Not natively integrated with AWS IAM |
+| Customization | Basic UI and workflows | Deep customization, policy orchestration, adaptive auth |
+| Security Features | MFA, password policies, token-based auth | Risk-based auth, fine-grained access control, audit trails |
+
+#### 🧠 How Cognito Helps Secure Data
+- User Pools: Handle sign-up/sign-in, password policies, and MFA.
+- Identity Pools: Broker AWS credentials for authenticated users to access S3, DynamoDB, etc.
+- Federation: Supports SSO via SAML/OIDC—great for integrating enterprise identity providers.
+- IAM Integration: Maps users to IAM roles for fine-grained access to AWS resources.
+
+#### 🧠 How ForgeRock Helps Secure Data
+- Centralized Identity Platform: Manages identities across apps, APIs, devices, and legacy systems.
+- Adaptive Authentication: Uses context (device, location, behavior) to adjust access decisions.
+- Policy Engine: Fine-grained access control with dynamic rules.
+- Audit & Compliance: Strong logging and governance features for regulated environments.
+
+### 🔹 Amazon GuardDuty - Threat Detection & Anomaly Monitoring
+- Threat detection service that monitors VPC Flow Logs, DNS logs, and CloudTrail.
+- Flags suspicious activity like port scanning, credential exfiltration, or anomalous API calls.
+
