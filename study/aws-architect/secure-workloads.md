@@ -498,6 +498,7 @@ Destination: 192.168.0.0/16 → Target: vgw-xxxxxxxx
 | NACL | Filters traffic at subnet boundary |
 | VPN/Direct Connect | Encrypted, authenticated private link |
 
+---
 
 # Endpoints
 ## 🔐 What Is a VPC Endpoint?
@@ -532,6 +533,8 @@ Let’s say you have a payment API running in VPC A. You want VPCs B, C, and D (
 - PrivateLink is ideal for exposing services securely across VPCs and accounts.
 - It avoids the complexity and risk of peering and public exposure.
 - It’s a best practice for multi-account architectures, service meshes, and zero-trust designs.
+
+---
 
 # Private connections
 ## 🔐 1. AWS Site-to-Site VPN
@@ -607,6 +610,7 @@ START
 │           │
 │           └── NO → Re-evaluate: no external connection needed
 ```
+---
 
 # Securing data
 ## 🔐 1. Securing Networking Tiers
