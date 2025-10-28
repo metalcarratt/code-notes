@@ -5,19 +5,21 @@ Let's get started with a third task statement, determine appropriate data securi
 - Do you know how to design and implement the principle of lease privilege to ensure only those who need access have the only the degree of access that they need? 
 - Diving deeper, do you also know how to design and implement securing access to your encryption keys? 
   - As a solutions architect, we need to understand the fundamentals of encryption.
-  - There are two types of encryption we need to know for this certification exam. Encryption at rest and encryption in transit. So let's pause again and cover briefly some fundamentals needed for this exam. In AWS, we need to make sure our data is encrypted at rest and also in transit. Encryption at rest is designed to protect against unauthorized access and theft. Encryption at rest is usually used when only one party is involved. Encryption in transit is designed to protect data as it's being transferred between two places and two or more parties are involved.
+  - There are two types of encryption we need to know for this certification exam. Encryption at rest and encryption in transit. So let's pause again and cover briefly some fundamentals needed for this exam. In AWS, we need to make sure our data is encrypted at rest and also in transit.
+    - Encryption at rest is designed to protect against unauthorized access and theft. Encryption at rest is usually used when only one party is involved.
+    - Encryption in transit is designed to protect data as it's being transferred between two places and two or more parties are involved.
   - Ensure you understand that using encryption adds a tunnel around that data so no one from the outside can read the data. And to understand encryption, it's important to understand some terms. Ensure you know the following terms and concepts.
     - **Plaintext** is not always text data, but it is always unencrypted. It could be docs, images, applications, and so on.
     - An **algorithm** is code that takes the plaintext and the encryption key, and generates your encrypted data. When a algorithm is being used, it needs the plaintext and also a key.
     - A **key** is just a password and is used with the algorithms and produces ciphertext, and there are different types of keys in different types of encryption.
     - **Ciphertext** is your encrypted data.
   - Now taking a step back, there are also two types of encryption and keys that we need to know, symmetric and asymmetric. Here are a few questions to consider.
-  - What methods are available to secure your data at rest? For example, why would you use AWS KMS instead of AWS Cloud HSM for managing your data encryption keys or how can you use those two services together?
-  - How do you manage encryption keys across regions?
-  - What types of keys are there, and what are the differences in their capabilities?
-  - How often can you rotate each type of key?
-  - Also, understand how to implement access policies for encryption keys.
-  - For this exam, you'll need to understand the main differences and why you might choose one service over another.
+    - What methods are available to secure your data at rest? For example, why would you use AWS KMS instead of AWS Cloud HSM for managing your data encryption keys or how can you use those two services together?
+    - How do you manage encryption keys across regions?
+    - What types of keys are there, and what are the differences in their capabilities?
+    - How often can you rotate each type of key?
+    - Also, understand how to implement access policies for encryption keys.
+    - For this exam, you'll need to understand the main differences and why you might choose one service over another.
   - Diving deeper, you should also know how to use AWS Certificate Manager to encrypt data in transit and how certificates are renewed.
   - You should also understand Amazon S3 encryption. S3 provides encryption at rest and in transit. With S3, you have two methods that support encryption, client side encryption and server side encryption.
     - With client side encryption, the objects being uploaded to S3 are encrypted before the data leaves the source to S3, so it happens on the client side.
@@ -51,15 +53,14 @@ Let's get started with a third task statement, determine appropriate data securi
     - Another question to consider, will the use of encryption affect performance, and if so, how?
       - Ensure you know which services have no impact and which services might have a slight impact on the performance, for example, data retrieving speed with AWS RDS and AWS KMS, or when reading data from S3.
     - Also know how to handle the root keys and how that method differs from your data keys.
-  - Dive deeper into AWS KMS and S3.
-    - Are there managed services that can help you secure, evaluate, and audit the security of your data? Definitely dive into AWS KMS.
-    - Understanding your data security options will require understanding how the services operate, their security options, and how the services interact.
-  - The last thing I wanna bring to your attention is protecting based on access patterns. Certain services such as S3 give you the ability to manage security for entire buckets and to add control based on specific paths or objects.
-    - What capabilities exist for automatically managing the data lifecycle?
-    - For example, when would you use S3 lifecycle configurations instead of S3 intelligent tiering?
-    - You should know which services provide this level of granularity, read and build policies based on different access patterns and needs, and understand how those policies are evaluated by the service backend.
-    - As I said earlier, data security will be extremely important when approaching this exam. The best solution will often be the most secure solution. When adding security at every layer, data protection will be crucial to the design and the implementation of your solutions on both the exam and in the real world. Prioritize security at every layer. Study with security in mind and evaluate how protection can be added both in original designs and reinforcing existing deployments.
-
+- Dive deeper into AWS KMS and S3.
+  - Are there managed services that can help you secure, evaluate, and audit the security of your data? Definitely dive into AWS KMS.
+   - Understanding your data security options will require understanding how the services operate, their security options, and how the services interact.
+- The last thing I wanna bring to your attention is protecting based on access patterns. Certain services such as S3 give you the ability to manage security for entire buckets and to add control based on specific paths or objects.
+  - What capabilities exist for automatically managing the data lifecycle?
+  - For example, when would you use S3 lifecycle configurations instead of S3 intelligent tiering?
+  - You should know which services provide this level of granularity, read and build policies based on different access patterns and needs, and understand how those policies are evaluated by the service backend.
+  - As I said earlier, data security will be extremely important when approaching this exam. The best solution will often be the most secure solution. When adding security at every layer, data protection will be crucial to the design and the implementation of your solutions on both the exam and in the real world. Prioritize security at every layer. Study with security in mind and evaluate how protection can be added both in original designs and reinforcing existing deployments.
 - Let's wrap up this lesson and go back to fundamentals and talk about cloud storage.
   - What is cloud storage? How does it work?
   - What are the benefits, requirements, and types?
@@ -75,26 +76,26 @@ Let's get started with a third task statement, determine appropriate data securi
     - data migration,
     - compliance,
     - and big data and data lakes.
-  -  Disaster recovery is a big part of this exam and must be included as part of your design for a resilient architecture.
-    - What options exist for different storage to protect data in the event of a disaster?
-    - Disaster recovery strategies available to you within AWS can be categorized into four approaches, ranging from the low cost and low complexity of making backups to more complex strategies using multiple active Regions.
-    - Active passive strategies use an active site such as an AWS Region to host the workload and serve traffic. The passive site such as a different AWS Region is used for recovery. The passive site does not actively serve traffic until a failover event is invoked.
-    - For a disaster event based on disruption or loss of one physical data center for a well-architected highly available workload, you may only require a backup and restore approach to disaster recovery.
-    - If your definition of a disaster goes beyond the disruption or loss of a physical data center to that of a region or if you are subject to regulatory requirements that require it, then you should consider pilot light, warm standby, or multi-site active-active.
-    - Understand the AWS services that use a backup strategy that runs periodically or is continuous.
-    - How often you run your backup will determine your achievable recovery point.
-    - The backup should also offer a way to restore it to the point in time in which it was taken.
-    - Here are a few services to dive deeper into,
-      - EBS snapshot,
-      - DynamoDB backup,
-      - RDS snapshot,
-      - Aurora snapshot,
-      - EFS backup when using AWS Backup,
-      - Amazon Redshift snapshot,
-      - Neptune snapshot,
-      - DocumentDB,
-      - and for Amazon S3, you can use Amazon S3 Cross-Region Replication to asynchronously copy objects to an S3 bucket in the disaster recovery Region continuously while providing versioning for the stored object so that you can choose your restoration point.
-    - AWS backup provides a centralized location to configure, schedule, and monitor.
+-  Disaster recovery is a big part of this exam and must be included as part of your design for a resilient architecture.
+  - What options exist for different storage to protect data in the event of a disaster?
+  - Disaster recovery strategies available to you within AWS can be categorized into four approaches, ranging from the low cost and low complexity of making backups to more complex strategies using multiple active Regions.
+  - Active passive strategies use an active site such as an AWS Region to host the workload and serve traffic. The passive site such as a different AWS Region is used for recovery. The passive site does not actively serve traffic until a failover event is invoked.
+  - For a disaster event based on disruption or loss of one physical data center for a well-architected highly available workload, you may only require a backup and restore approach to disaster recovery.
+  - If your definition of a disaster goes beyond the disruption or loss of a physical data center to that of a region or if you are subject to regulatory requirements that require it, then you should consider pilot light, warm standby, or multi-site active-active.
+  - Understand the AWS services that use a backup strategy that runs periodically or is continuous.
+  - How often you run your backup will determine your achievable recovery point.
+  - The backup should also offer a way to restore it to the point in time in which it was taken.
+  - Here are a few services to dive deeper into,
+    - EBS snapshot,
+    - DynamoDB backup,
+    - RDS snapshot,
+    - Aurora snapshot,
+    - EFS backup when using AWS Backup,
+    - Amazon Redshift snapshot,
+    - Neptune snapshot,
+    - DocumentDB,
+    - and for Amazon S3, you can use Amazon S3 Cross-Region Replication to asynchronously copy objects to an S3 bucket in the disaster recovery Region continuously while providing versioning for the stored object so that you can choose your restoration point.
+  - AWS backup provides a centralized location to configure, schedule, and monitor.
     - Know the AWS backup capabilities for the following services and resources.
       - EBS volumes,
       - EC2 instances,
@@ -103,6 +104,6 @@ Let's get started with a third task statement, determine appropriate data securi
       - EFS file systems,
       - Storage Gateway volumes,
       - and Amazon FSx for Windows and Lustre.
-  - AWS Backup also supports copying backups across Regions such as to a disaster recovery Region.
+    - AWS Backup also supports copying backups across Regions such as to a disaster recovery Region.
     - Here's a question. What service can we use for hybrid environments?
     - Well, what about AWS Storage Gateway?
