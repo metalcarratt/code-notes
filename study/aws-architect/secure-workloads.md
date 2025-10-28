@@ -356,8 +356,8 @@ Private subnet outgoing traffic:
 | S3 Access from Private Subnet | Private + VPC Endpoint | Avoids NAT, keeps traffic internal |
 
 
-### Topics to round out
-#### 1. Protocols and Port Behavior
+## Topics to round out
+### 1. Protocols and Port Behavior
 - Understand TCP vs UDP and how protocols affect firewall rules.
 - Know common ports (e.g., 22 for SSH, 80/443 for HTTP/HTTPS) and how they’re filtered by SGs/NACLs.
 
@@ -386,7 +386,7 @@ Private subnet outgoing traffic:
 - Security Groups: Apply at the instance level, allow traffic by protocol, port, and source.
 - NACLs: Apply at the subnet level, must allow both directions for bidirectional traffic (e.g., TCP handshake).
 
-#### 2. Elastic IPs and Public IPs
+### 2. Elastic IPs and Public IPs
 - Difference between auto-assigned public IPs and Elastic IPs.
 - How public IPs relate to IGW routing and EC2 accessibility.
 
@@ -403,7 +403,7 @@ Private subnet outgoing traffic:
 - Without a public IP, the IGW cannot deliver inbound traffic to your instance—even if the subnet has a route to the IGW.
 - Public IPs are mapped to private IPs inside the VPC using 1:1 NAT.
 
-#### 3. Route Table Associations
+### 3. Route Table Associations
 - Each subnet must be explicitly associated with a route table.
 - One route table can be shared across subnets, but each subnet has only one active route table.
 
@@ -422,7 +422,7 @@ Details:
 - Changing a subnet’s route table can flip its role (e.g., from public to private).
 - This is a key tool for network segmentation and traffic control.
 
-#### 4. VPC Peering and Transit Gateways
+### 4. VPC Peering and Transit Gateways
 - How routing works across multiple VPCs.
 - What changes in route tables and CIDR planning when peering is involved.
 
@@ -458,7 +458,7 @@ Destination: 10.2.0.0/16 → Target: pcx-xxxxxxxx
 | CIDR | Must not overlap | Must not overlap |
 | Use Case | Small, tightly coupled VPCs | Large, multi-VPC architectures |
 
-#### 5. Resiliency and AZ Design
+### 5. Resiliency and AZ Design
 - Subnets are AZ-scoped, so for high availability:
   - Spread resources across multiple subnets in different AZs.
   - Use multi-AZ architectures for load balancers, databases, etc.
@@ -482,7 +482,7 @@ To build resilient architectures:
 - If one AZ goes down, resources in other AZs stay available.
 - AZ-level isolation helps protect against hardware failures, power outages, or network disruptions.
 
-#### 6. Common Practices
+### 6. Common Practices
 - Public subnet: Load balancer, bastion host (Secure jump box for SSH access to private instances).
 - Private subnet: App servers, DBs, internal services.
 - NAT Gateway: Placed in public subnet, used by private subnets.
