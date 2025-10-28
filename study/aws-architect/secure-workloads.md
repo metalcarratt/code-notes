@@ -368,17 +368,83 @@ Private subnet outgoing traffic:
 - Each subnet must be explicitly associated with a route table.
 - One route table can be shared across subnets, but each subnet has only one active route table.
 
+Details:
+- Every subnet must be linked to a route table—this tells AWS how to forward traffic from that subnet.
+- You can reuse the same route table across multiple subnets (e.g., all public subnets might share one).
+- But: each subnet can only have one active route table at a time—no multi-table merging or fallback.
+
+🔧 Example
+- You create a route table with a route to the Internet Gateway (0.0.0.0/0 → igw-xxxx).
+- You associate it with two subnets: subnet-a and subnet-b.
+- Both subnets now behave as public subnets, assuming their EC2s have public IPs.
+
+🧠 Why It Matters
+- Route table association defines routing behavior, not security.
+- Changing a subnet’s route table can flip its role (e.g., from public to private).
+- This is a key tool for network segmentation and traffic control.
+
 #### 4. VPC Peering and Transit Gateways
 - How routing works across multiple VPCs.
 - What changes in route tables and CIDR planning when peering is involved.
+
+**🔗 VPC Peering**
+
+🧭 Routing Behavior
+- VPC Peering creates a direct connection between two VPCs.
+- Each VPC must manually update its route table to send traffic to the other:
+```Code
+Destination: 10.2.0.0/16 → Target: pcx-xxxxxxxx
+```
+- No transitive routing: VPC A can talk to VPC B, but not to VPC C through B.
+
+📐 CIDR Planning
+- Peered VPCs must have non-overlapping CIDR blocks.
+- Overlapping CIDRs cause routing conflicts and are not allowed.
+
+**🛣️ Transit Gateway (TGW)**
+🧭 Routing Behavior
+- TGW acts as a hub for connecting multiple VPCs and on-prem networks.
+- Each VPC attaches to the TGW and uses TGW route tables to control traffic flow.
+- Supports transitive routing: VPC A → TGW → VPC B is allowed.
+
+📐 CIDR Planning
+- Still requires non-overlapping CIDRs across attached VPCs.
+- TGW simplifies large-scale routing and centralizes control.
+
+**🧠 Summary**
+| Feature | VPC Peering | Transit Gateway |
+|---|---|---|
+| Routing | Manual, non-transitive | Centralized, transitive |
+| Scale | Point-to-point | Hub-and-spoke |
+| CIDR | Must not overlap | Must not overlap |
+| Use Case | Small, tightly coupled VPCs | Large, multi-VPC architectures |
 
 #### 5. Resiliency and AZ Design
 - Subnets are AZ-scoped, so for high availability:
   - Spread resources across multiple subnets in different AZs.
   - Use multi-AZ architectures for load balancers, databases, etc.
 
+🧭 Subnets Are AZ-Scoped
+- Each subnet lives in a single Availability Zone (AZ).
+- That means any EC2, RDS, or other resource in that subnet is tied to that AZ’s infrastructure.
+
+🛡️ High Availability Strategy
+
+To build resilient architectures:
+- Spread resources across multiple subnets in different AZs:
+  - Example: EC2 instances in subnet-a (us-east-1a) and subnet-b (us-east-1b)
+- Use multi-AZ services:
+  - Elastic Load Balancers (ELBs) automatically span AZs.
+  - RDS Multi-AZ deployments replicate data across AZs for failover.
+  - Auto Scaling Groups can launch instances in multiple AZs.
+
+🧠 Why It Matters
+
+- If one AZ goes down, resources in other AZs stay available.
+- AZ-level isolation helps protect against hardware failures, power outages, or network disruptions.
+
 #### 6. Common Practices
-- Public subnet: Load balancer, bastion host.
+- Public subnet: Load balancer, bastion host (Secure jump box for SSH access to private instances).
 - Private subnet: App servers, DBs, internal services.
 - NAT Gateway: Placed in public subnet, used by private subnets.
 
