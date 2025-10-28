@@ -39,6 +39,7 @@ Ensure you understand:
 - AWS Organizations
 - service control policies. Learning to design secure access to the resources is an important step in learning how to prioritize security at every step. 
 
+---
 
 # ☁️ Cloud Environment Types
 | Cloud Type | Description | Pros | Cons | Example Providers |
@@ -51,30 +52,30 @@ Ensure you understand:
 ## 🔐 Designing Secure Access Across Cloud Models
 To ensure secure access across these environments, consider the following strategies:
 
-1. **Identity and Access Management (IAM)**
+#### 1. Identity and Access Management (IAM)
 - Use centralized IAM tools (e.g., Azure AD, Okta, AWS IAM).
 - Implement role-based access control (RBAC) and least privilege principles.
 - Enable multi-factor authentication (MFA) for all users.
 
-2. **Federated Identity and SSO**
+#### 2. Federated Identity and SSO
 - Use identity federation to unify access across clouds.
 - Implement Single Sign-On (SSO) for seamless user experience.
 
-3. **Network Security**
+#### 3. Network Security
 - Use VPNs or dedicated interconnects for private/hybrid cloud access.
 - Segment networks with firewalls and microsegmentation.
 - Apply Zero Trust principles: verify every access request.
 
-4. **Encryption and Data Protection**
+#### 4. Encryption and Data Protection
 - Encrypt data at rest and in transit using cloud-native tools.
 - Use customer-managed keys where possible.
 - Monitor for data exfiltration and unauthorized access.
 
-5. **Monitoring and Logging**
+#### 5. Monitoring and Logging
 - Centralize logs across environments using SIEM tools (e.g., Splunk, Azure Sentinel).
 - Set up alerts for anomalous access patterns.
 
-6. **Compliance and Governance**
+#### 6. Compliance and Governance
 - Map cloud environments to regulatory requirements (e.g., GDPR, HIPAA).
 - Use policy-as-code tools (e.g., Terraform, Open Policy Agent) to enforce governance.
 
@@ -89,28 +90,28 @@ An AWS account is a container for AWS resources and services. It includes:
 You can create multiple AWS accounts to separate environments (e.g., dev, test, prod), teams, or applications. This is often managed through AWS Organizations.
 
 ## 🔐 Securing Access to AWS Resources
-1. Use IAM (Identity and Access Management)
+#### 1. Use IAM (Identity and Access Management)
 - Create IAM users for individuals and IAM roles for applications or services.
 - Assign least-privilege permissions using IAM policies.
 - Avoid using the root user for daily tasks.
 
-2. Enable Multi-Factor Authentication (MFA)
+#### 2. Enable Multi-Factor Authentication (MFA)
 - Require MFA for the root user and all IAM users.
 - Adds an extra layer of protection against compromised credentials.
 
-3. Use Temporary Credentials
+#### 3. Use Temporary Credentials
 - Use IAM roles with temporary security tokens (via STS) for workloads and federated users.
 - Avoid long-term access keys unless absolutely necessary.
 
-4. Monitor and Audit Access
+#### 4. Monitor and Audit Access
 - Enable AWS CloudTrail to log all account activity.
 - Use AWS Config and Access Analyzer to detect risky permissions and changes.
 
-5. Organize with AWS Organizations
+#### 5. Organize with AWS Organizations
 - Centralize management of multiple AWS accounts.
 - Apply Service Control Policies (SCPs) to restrict actions across accounts.
 
-6. Protect Root User Credentials
+#### 6. Protect Root User Credentials
 - Never share root credentials.
 - Use strong passwords and rotate them regularly.
 
@@ -127,37 +128,37 @@ No permission boundaries: Unlike IAM users or roles, you can't restrict or scope
 Single point of failure: If compromised, the entire AWS environment is at risk.
 
 ### ✅ Best Practices for Root User Security
-1. Enable Multi-Factor Authentication (MFA)
+#### 1. Enable Multi-Factor Authentication (MFA)
 - Use a hardware MFA device or a secure authenticator app.
 - This adds a critical layer of protection against password compromise.
 
-2. Avoid Using the Root User
+#### 2. Avoid Using the Root User
 - Use the root account only for tasks that require it (e.g., changing support plans, closing the account).
 - Log out immediately after use.
 
-3. Create IAM Users and Roles
+#### 3. Create IAM Users and Roles
 - Assign users based on job function (e.g., developer, auditor, admin).
 - Use IAM roles for applications and services to avoid hardcoded credentials.
 
-4. Apply the Principle of Least Privilege
+#### 4. Apply the Principle of Least Privilege
 - Grant only the permissions needed for each user or role.
 - Use managed policies or custom policies with tight scopes.
 - Regularly review and prune unused permissions.
 
-5. Use Groups for Easier Management
+#### 5. Use Groups for Easier Management
 - Assign IAM users to groups (e.g., DevOps, Finance) and attach policies to groups.
 - This simplifies permission updates and audits.
 
-6. Monitor and Audit Access
+#### 6. Monitor and Audit Access
 - Enable AWS CloudTrail to log all account activity.
 - Use IAM Access Analyzer to detect risky permissions.
 - Set up alerts for unusual login patterns or privilege escalations.
 
-7. Use AWS Organizations for Multi-Account Management
+#### 7. Use AWS Organizations for Multi-Account Management
 - Create separate accounts for dev, test, prod, and billing.
 - Apply Service Control Policies (SCPs) to enforce guardrails across accounts.
 
-8. Rotate Credentials Regularly
+#### 8. Rotate Credentials Regularly
 - Rotate access keys and passwords.
 - Prefer temporary credentials via STS or IAM roles.
 
@@ -180,20 +181,20 @@ Single point of failure: If compromised, the entire AWS environment is at risk.
 
 
 ## 🧠 Choosing Between Users, Groups, and Roles
-Use IAM Users when:
+#### Use IAM Users when:
 - You need long-term access for a human or script.
 - You want to assign credentials directly.
 
-Use IAM Groups when:
+#### Use IAM Groups when:
 - You manage multiple users with similar responsibilities.
 - You want to apply policies uniformly (e.g., all developers get EC2 access).
 
-Use IAM Roles when:
+#### Use IAM Roles when:
 - You need temporary access (e.g., EC2 accessing S3).
 - You want to delegate access across accounts or organizations.
 - You integrate with identity providers (SSO, federation).
 
-Combine Them Like This:
+#### Combine Them Like This:
 - Create IAM users for individuals.
 - Assign users to groups for shared permissions.
 - Use roles for temporary or scoped access (e.g., assume a “DevOpsAdmin” role only when needed).
@@ -235,6 +236,7 @@ You can also use CloudFormation, Terraform, or AWS CLI for infrastructure-as-cod
 
 ### ⚖️ Strengths and Limitations
 | Identity Type | Strengths | Limitations |
+|---|---|---|
 | IAM User | Direct access, customizable credentials | Long-term credentials can be risky if not rotated |
 | IAM Group | Simplifies permission management for teams | No direct access—must be used with users |
 | IAM Role | Temporary credentials, cross-account access, service integration | Cannot log in directly; must be assumed |
@@ -567,6 +569,7 @@ Principal
 In resource-based policies, a Principal can be:
 
 | Type | Example |
+|---|---|
 | IAM user | arn:aws:iam::123456789012:user/Alice |
 | IAM role | arn:aws:iam::123456789012:role/AdminRole |
 | AWS account | 123456789012 or arn:aws:iam::123456789012:root |
