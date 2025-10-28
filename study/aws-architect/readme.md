@@ -1,7 +1,7 @@
 # Domain 1 - Security
 
-- secure access to aws resources
-- secure workloads and applications
+- [secure access to aws resources](./secure-access.md)
+- [secure workloads and applications](./secure-workloads.md)
 - data security controls
 
 # Domain 2 - Resilient
