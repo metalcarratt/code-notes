@@ -448,6 +448,54 @@ To build resilient architectures:
 - Private subnet: App servers, DBs, internal services.
 - NAT Gateway: Placed in public subnet, used by private subnets.
 
+## 🧭 Step-by-Step Setup: On-Prem to Private Subnet via VPN
+#### 1. Establish VPN Connectivity
+- Use AWS Site-to-Site VPN or Direct Connect to link your on-premises network to AWS.
+- Deploy a Virtual Private Gateway (VGW) in your VPC.
+- Register a Customer Gateway (CGW) to represent your on-prem device.
+- Create the VPN connection between VGW and CGW.
 
+#### 2. Configure Route Tables
+- In the private subnet’s route table, add a route for your on-prem CIDR:
+```Code
+Destination: 192.168.0.0/16 → Target: vgw-xxxxxxxx
+```
+- This ensures traffic from your on-prem network is routed to the private subnet.
+
+#### 3. Security Group and NACL Configuration
+- Security Groups:
+  - Attach to your application servers.
+  - Allow inbound traffic from your on-prem CIDR and required ports (e.g., TCP 443).
+  - Deny all other inbound traffic by default.
+- NACLs:
+  - Apply to the private subnet.
+  - Allow inbound/outbound traffic from/to your on-prem CIDR.
+  - Block traffic from public IP ranges if needed.
+
+#### 4. No IGW in Private Subnet
+- Do not associate an Internet Gateway (IGW) with the private subnet’s route table.
+- This ensures no direct public internet access to your application servers.
+
+### 🛡️ Optional Enhancements for Security and Scalability
+#### 🔹 Transit Gateway
+- Use Transit Gateway if connecting multiple VPCs or hybrid environments.
+- Centralizes routing and supports transitive connectivity.
+
+#### 🔹 PrivateLink
+- For exposing services securely to other VPCs or accounts.
+- Keeps traffic within AWS’s private network—no public IPs involved.
+
+#### 🔹 VPC Peering
+- Use for direct VPC-to-VPC communication (non-transitive).
+- Ensure CIDRs don’t overlap and route tables are updated.
+
+### ✅ Summary of Key Protections
+| Layer | Protection |
+|---|---|
+| Subnet | No IGW route; private subnet only |
+| Route Table | Routes only to VPN/Transit Gateway |
+| Security Group | Allows only on-prem CIDR and required ports |
+| NACL | Filters traffic at subnet boundary |
+| VPN/Direct Connect | Encrypted, authenticated private link |
 
 
