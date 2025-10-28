@@ -316,6 +316,45 @@ Private subnet outgoing traffic:
 
 <img width="658" height="792" alt="Screenshot 2025-10-28 at 12 29 42 pm" src="https://github.com/user-attachments/assets/9082b9e5-1a9b-4a3b-a3a0-70a68f84d89c" />
 
+## Putting services in public vs private subnets
+
+### 🧭 Public vs Private Subnets: Core Distinction
+| Subnet Type | Internet Gateway Route? | Typical Use |
+|---|---|---|
+| Public | Yes (0.0.0.0/0 → IGW) | Inbound-facing services (e.g., ALB, bastion hosts) |
+| Private | No direct IGW route | Internal services (e.g., app servers, databases) |
+
+### 🔐 Why Put Databases in Private Subnets?
+#### 1. Defense-in-Depth: Network-Level Isolation
+- Even if your security group blocks all public IPs, a public subnet still has a route to the internet.
+- A private subnet has no path to the internet, so even misconfigured security groups or leaked credentials can’t expose the DB externally.
+- This is about reducing blast radius and enforcing trust boundaries.
+
+#### 2. Enforcing Who Can Call, Not Just What
+- Yes—this is key. By placing a DB in a private subnet:
+  - Only resources inside the VPC (e.g., app servers, Lambda functions) can reach it.
+  - You’re saying: “Only things that live in this trusted zone can even try to talk to me.”
+- This is stronger than just saying “only allow port 3306 from IP X”—because it removes the possibility of external IPs reaching the subnet at all.
+
+#### 3. Compliance and Audit Requirements
+- Many standards (e.g., PCI DSS, HIPAA) require non-publicly routable infrastructure for sensitive data.
+- A private subnet is a clear architectural signal that a resource is not internet-facing.
+
+### 🧠 When Might You Not Need a Private Subnet?
+- For public APIs, ALBs, or bastion hosts, you want them to be reachable from the internet.
+- For S3 access, you can use VPC endpoints in private subnets to avoid NAT gateways.
+- For Lambda functions, you can choose whether they run in a VPC or not—depending on whether they need to reach private resources.
+
+### ✅ Summary: Placement Decision Heuristics
+| Service Type | Subnet Placement | Why |
+|---|---|---|
+| Load Balancer (ALB/NLB) | Public | Needs to accept internet traffic |
+| App Servers | Private | Accessed via ALB; no direct internet exposure |
+| Databases (RDS, Aurora) | Private | Sensitive data; no public access |
+| Bastion Host | Public | Allows controlled SSH into private resources |
+| NAT Gateway | Public | Enables private subnets to reach internet |
+| S3 Access from Private Subnet | Private + VPC Endpoint | Avoids NAT, keeps traffic internal |
+
 
 ### Topics to round out
 #### 1. Protocols and Port Behavior
