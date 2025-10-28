@@ -32,7 +32,7 @@ This could involve determining who or what can launch or terminate your resource
   - How do you build in security to your networking tiers?
   - How do you secure application use across these tiers? And what does the management of those security components look like?
   - For the exam, you could get a question asking, for which AWS service helps to secure personally identifiable information or PII? PII is personal data used to establish an individual's identity, this includes your name, your home address, email address, your social security number, driver license number, passport, date of birth, bank account information, credit card, and so on. Amazon Macie is an AWS service that uses machine learning to discover, classify, and protect sensitive data stored in Amazon S3.
-  - More services to help here are Amazon Cognito, Amazon GuardDuty, and for Cognito, ensure you have an understanding of Cognito user pools, Cognito identity pools, and how Cognito brokers the single sign on or ID federation. You will most likely see scenario based questions around use cases for these services.
+  - More services to help here are Amazon Cognito, Amazon GuardDuty, and for Cognito, ensure you have an understanding of [Cognito user pools, Cognito identity pools, and how Cognito brokers](#cognito-details) the single sign on or ID federation. You will most likely see scenario based questions around use cases for these services.
 - Another fundamental needed for designing secure workloads and applications is firewalls and proxy servers.
   - You'll wanna understand how to integrate security services to secure applications with services such as AWS Shield AWS WAF, AWS IAM Identity Center, Amazon Cognito, Amazon Guard Duty, Amazon Macie, AWS Secrets Manager, and AWS Systems Manager Parameter Store.
   - Understand the difference between Shield Standard and Shield Advance.
@@ -676,3 +676,41 @@ Cognito secures user identity and authentication, especially for web and mobile 
 - Threat detection service that monitors VPC Flow Logs, DNS logs, and CloudTrail.
 - Flags suspicious activity like port scanning, credential exfiltration, or anomalous API calls.
 
+## Cognito details
+### 👤 Cognito User Pools – Authentication & User Management
+- Purpose: Manage user sign-up, sign-in, and profile data.
+- Features:
+  - Built-in user directory with customizable attributes.
+  - Supports MFA, password policies, and email/SMS verification.
+  - Can authenticate users via username/password, social providers (Google, Facebook), or SAML/OIDC identity providers.
+
+*🧠 Think of User Pools as your app’s login system.*
+
+### 🛂 Cognito Identity Pools – Authorization & AWS Access
+- Purpose: Grant temporary AWS credentials to authenticated users.
+- Features:
+  - Maps users (from User Pools or federated providers) to IAM roles.
+  - Enables access to AWS services like S3, DynamoDB, etc.
+  - Supports unauthenticated guest access if needed.
+
+*🧠 Identity Pools are about what users can do in AWS once they’re authenticated.*
+
+### 🔗 Federation & Single Sign-On (SSO)
+- Cognito supports federated identity via:
+  - SAML 2.0 (e.g., Active Directory, Okta)
+  - OIDC (e.g., Google, Azure AD)
+  - Social providers (e.g., Facebook, Apple)
+- You can broker SSO by linking external identity providers to Cognito User Pools or directly to Identity Pools.
+
+*🧠 Federation lets users log in with existing credentials from trusted providers.*
+
+### 🧪 Scenario-Based Exam Tips
+Here’s how AWS might test this:
+
+| Scenario | Correct Cognito Use |
+|---|---|
+| You need a login system for a mobile app | User Pool |
+| You want users to access S3 after login | User Pool + Identity Pool |
+| You want employees to log in using Azure AD | Federated SSO via OIDC or SAML |
+| You want to assign different IAM roles based on user group | Identity Pool role mapping |
+| You want guest users to upload images to S3 | Identity Pool with unauthenticated access |
