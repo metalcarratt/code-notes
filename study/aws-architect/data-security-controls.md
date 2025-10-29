@@ -1,5 +1,5 @@
-# Determining appropriate data security controls
 <a name="top"></a>
+# Determining appropriate data security controls
 
 Let's get started with a third task statement, determine appropriate data security controls. For this task statement, and when considering security at every level, the protection of data is one of the most important areas of focus. We mentioned this briefly in the last lesson. However, whether the data is in transit or at rest, its security needs to be evaluated. Under AWS accounts and IAM fundamentals, we talked about the principle of lease privilege, and this is important for security at each layer. 
 
