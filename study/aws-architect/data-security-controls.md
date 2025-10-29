@@ -28,7 +28,7 @@ Let's get started with a third task statement, determine appropriate data securi
       - Server side encryption with customer provided keys,
       - server side encryption with Amazon S3 managed keys,
       - server side encryption with customer master keys stored in AWS KMS.
-- Let's change the topic slightly and talk about compliance and compliance requirements. For this exam, you also need to know which AWS technologies can help to meet and satisfy compliance requirements. We mentioned earlier that security and compliance is a shared responsibility between AWS and the customer.
+- Let's change the topic slightly and talk about [compliance](#compliance-and-aws-artifact) and compliance requirements. For this exam, you also need to know which AWS technologies can help to meet and satisfy compliance requirements. We mentioned earlier that security and compliance is a shared responsibility between AWS and the customer.
   - Understand AWS artifact and how to use the self-service central repository for the AWS security and compliance reports and online agreements.
 - Let's move on and talk about data retention, classification, and data recovery.
   - There are best practices for securing sensitive data in AWS data stores.
