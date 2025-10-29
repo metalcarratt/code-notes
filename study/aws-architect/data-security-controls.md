@@ -21,7 +21,7 @@ Let's get started with a third task statement, determine appropriate data securi
     - Also, understand how to implement access policies for encryption keys.
     - For this exam, you'll need to understand the main differences and why you might choose one service over another.
   - Diving deeper, you should also know how to [use AWS Certificate Manager to encrypt data in transit](#encrypt-data-in-transit-with-acm) and how certificates are renewed.
-  - You should also understand Amazon S3 encryption. S3 provides encryption at rest and in transit. With S3, you have two methods that support encryption, client side encryption and server side encryption.
+  - You should also understand [Amazon S3 encryption](#s3-encryption). S3 provides encryption at rest and in transit. With S3, you have two methods that support encryption, client side encryption and server side encryption.
     - With client side encryption, the objects being uploaded to S3 are encrypted before the data leaves the source to S3, so it happens on the client side.
     - With server side encryption, the data uses the default encryption in transit with https. When that data arrives at S3, it is encrypted by S3, S3 manages this encryption.
     - With client side encryption, you control all, with server side encryption, we have a few choices you need to know for this certification exam, so ensure you understand each.
