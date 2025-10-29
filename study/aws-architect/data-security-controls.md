@@ -3,7 +3,7 @@
 Let's get started with a third task statement, determine appropriate data security controls. For this task statement, and when considering security at every level, the protection of data is one of the most important areas of focus. We mentioned this briefly in the last lesson. However, whether the data is in transit or at rest, its security needs to be evaluated. Under AWS accounts and IAM fundamentals, we talked about the principle of lease privilege, and this is important for security at each layer. 
 
 - Do you know how to design and implement [the principle of lease privilege](#the-principle-of-least-privilege) to ensure only those who need access have the only the degree of access that they need? 
-- Diving deeper, do you also know how to design and implement securing access to your encryption keys? 
+- Diving deeper, do you also know how to design and implement [securing access to your encryption keys](#-securing-access-to-encryption-keys-kms)? 
   - As a solutions architect, we need to understand the [fundamentals of encryption](#-encryption-fundamentals).
   - There are two types of encryption we need to know for this certification exam. Encryption at rest and encryption in transit. So let's pause again and cover briefly some fundamentals needed for this exam. In AWS, we need to make sure our data is encrypted at rest and also in transit.
     - Encryption at rest is designed to protect against unauthorized access and theft. Encryption at rest is usually used when only one party is involved.
