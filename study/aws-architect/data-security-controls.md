@@ -107,3 +107,76 @@ Let's get started with a third task statement, determine appropriate data securi
     - AWS Backup also supports copying backups across Regions such as to a disaster recovery Region.
     - Here's a question. What service can we use for hybrid environments?
     - Well, what about AWS Storage Gateway?
+
+
+---
+
+# The principle of least privilege
+## 🔐 Core Design Principles
+#### 1. Start with Deny-All
+- IAM policies should begin with no access, then explicitly allow only what’s needed.
+- Avoid wildcard actions like `"Action": "*"` or `"Resource": "*"` unless absolutely necessary.
+
+#### 2. Use Scoped IAM Roles and Policies
+- Assign fine-grained IAM roles to EC2, Lambda, ECS, etc.
+- Scope permissions to specific resources, regions, and actions.
+  - Example: Allow `s3:GetObject` only on `arn:aws:s3:::my-bucket/private/*`
+
+### 3. Use Conditions for Context-Aware Access
+- Leverage `Condition` blocks in IAM policies:
+  - Time-based access (`aws:CurrentTime`)
+  - IP restrictions (`aws:SourceIp`)
+  - MFA enforcement (`aws:MultiFactorAuthPresent`)
+  - Tag-based access control (`aws:ResourceTag`)
+
+#### 4. Segment Access by Role or Group
+- Use IAM Identity Center or Cognito groups to assign roles based on job function.
+- Example: Developers get read-only access to logs, but not to production databases.
+
+#### 5. Limit Duration with Temporary Credentials
+- Use STS (Security Token Service) or Cognito Identity Pools to issue short-lived credentials.
+- This reduces the risk of credential leakage or misuse.
+
+#### 6. Audit and Rotate
+- Use Access Analyzer, CloudTrail, and IAM Access Advisor to:
+  - Identify unused permissions
+  - Detect overly broad access
+  - Rotate credentials and secrets regularly (via Secrets Manager)
+
+## 🧠 Example: Least Privilege for a Lambda Function
+Let’s say a Lambda function needs to:
+- Read from one S3 bucket
+- Write logs to CloudWatch
+
+You’d attach an IAM role like:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["s3:GetObject"],
+      "Resource": ["arn:aws:s3:::my-bucket/input/*"]
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents"],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+No access to other buckets, no write access to S3, and no permissions beyond logging.
+
+## ✅ Summary Checklist
+
+| Practice | Tool/Service |
+|---|---|
+| Scoped permissions | IAM policies |
+| Temporary access | STS, Cognito |
+| Context-aware rules | IAM Conditions |
+| Role-based access | IAM Identity Center, Cognito groups |
+| Audit & cleanup | Access Analyzer, CloudTrail |
+| Secret rotation | Secrets Manager |
