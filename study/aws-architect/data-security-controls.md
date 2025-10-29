@@ -14,7 +14,7 @@ Let's get started with a third task statement, determine appropriate data securi
     - A **key** is just a password and is used with the algorithms and produces ciphertext, and there are different types of keys in different types of encryption.
     - **Ciphertext** is your encrypted data.
   - Now taking a step back, there are also two types of encryption and keys that we need to know, symmetric and asymmetric. Here are a few questions to consider.
-    - What methods are available to secure your data at rest? For example, why would you use AWS KMS instead of AWS Cloud HSM for managing your data encryption keys or how can you use those two services together?
+    - What methods are available to [secure your data at rest](#-methods-to-secure-data-at-rest)? For example, why would you use AWS KMS instead of AWS Cloud HSM for managing your data encryption keys or how can you use those two services together?
     - How do you manage encryption keys across regions?
     - What types of keys are there, and what are the differences in their capabilities?
     - How often can you rotate each type of key?
