@@ -380,3 +380,61 @@ AWS Certificate Manager (ACM) helps encrypt data in transit by provisioning and 
 | Public certs | Free, auto-renewable |
 | Private certs | Via ACM Private CA |
 | Monitoring | ACM console + email alerts |
+
+## S3 Encryption
+### 🔐 Encryption in Transit (Always Enabled)
+- S3 uses HTTPS (TLS) by default for all data in transit.
+- Protects data as it moves between client and S3.
+- No configuration needed—this is automatic.
+
+### 🔐 Encryption at Rest: Two Main Methods
+#### ✅ 1. Client-Side Encryption
+- Encryption happens before upload—on the client.
+- You manage:
+  - The encryption algorithm
+  - The encryption keys
+  - The key lifecycle and rotation
+- S3 stores the already encrypted object—it doesn’t know the key.
+- Use cases:
+  - Full control over encryption
+  - Compliance with external key custody requirements
+
+#### ✅ 2. Server-Side Encryption (SSE)
+- S3 encrypts the object after it arrives, using one of three methods:
+
+#### 🔹 SSE-S3 (Amazon S3 Managed Keys)
+- S3 handles everything: key creation, storage, rotation.
+- No need to manage keys.
+- Uses AES-256 encryption.
+- Header: `x-amz-server-side-encryption: AES256`
+
+*🧠 Best for simple, automatic encryption with minimal overhead.*
+
+#### 🔹 SSE-KMS (AWS KMS Managed Keys)
+- Uses Customer Master Keys (CMKs) from AWS KMS.
+- You control:
+  - Key policies
+  - IAM permissions
+  - Audit via CloudTrail
+- Supports automatic key rotation (for symmetric CMKs).
+- Header: `x-amz-server-side-encryption: aws:kms`
+
+*🧠 Best for granular access control, auditability, and compliance.*
+
+#### 🔹 SSE-C (Customer-Provided Keys)
+- You provide the encryption key with each request.
+- S3 uses it to encrypt/decrypt but does not store the key.
+- You must manage:
+  - Key lifecycle
+  - Secure transmission
+- Header: `x-amz-server-side-encryption-customer-algorithm: AES256`
+
+*🧠 Best when you need S3 to encrypt but want full control over the key.*
+
+### 🧠 Summary Table
+| Method | Key Management | Who Controls Key | Use Case |
+|---|---|---|---|
+| Client-Side | You | You | Full control, external compliance |
+| SSE-S3 | S3 | AWS | Simple, automatic encryption |
+| SSE-KMS | KMS | You (via IAM/KMS) | Audit, access control, compliance |
+| SSE-C | You | You | S3 encrypts, you manage key |
