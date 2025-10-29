@@ -57,7 +57,7 @@ Let's get started with a third task statement, determine appropriate data securi
 - Dive deeper into [AWS KMS and S3](#kms-and-s3).
   - Are there managed services that can help you secure, evaluate, and audit the security of your data? Definitely dive into AWS KMS.
    - Understanding your data security options will require understanding how the services operate, their security options, and how the services interact.
-- The last thing I wanna bring to your attention is protecting based on access patterns. Certain services such as S3 give you the ability to manage security for entire buckets and to add control based on specific paths or objects.
+- The last thing I wanna bring to your attention is [protecting based on access patterns](#s3-access-security-and-data-lifecycle-management). Certain services such as S3 give you the ability to manage security for entire buckets and to add control based on specific paths or objects.
   - What capabilities exist for automatically managing the data lifecycle?
   - For example, when would you use S3 lifecycle configurations instead of S3 intelligent tiering?
   - You should know which services provide this level of granularity, read and build policies based on different access patterns and needs, and understand how those policies are evaluated by the service backend.
