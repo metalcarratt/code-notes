@@ -528,6 +528,8 @@ AWS Artifact is a self-service portal that provides:
 
 [Top](#top)
 
+---
+
 # Data retention, classification and recovery
 ## 🧱 AWS CAF Security Perspective: 5 Capabilities
 #### 1. Identity and Access Management (IAM)
