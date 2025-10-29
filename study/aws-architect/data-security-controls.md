@@ -527,3 +527,72 @@ AWS Artifact is a self-service portal that provides:
 | Use Case | Internal/external audits | Real-time security compliance |
 
 [Top](#top)
+
+# Data retention, classification and recovery
+## 🧱 AWS CAF Security Perspective: 5 Capabilities
+#### 1. Identity and Access Management (IAM)
+- Who can access the data?
+- Use fine-grained IAM policies, resource-based policies, and attribute-based access control (ABAC).
+- Enforce least privilege, MFA, and role-based access.
+- Use IAM Access Analyzer to detect unintended access.
+
+#### 2. Detective Controls
+- How do you know if something goes wrong?
+- Use:
+  - AWS CloudTrail for API auditing.
+  - AWS Config for configuration drift detection.
+  - Amazon GuardDuty for threat detection.
+  - AWS Security Hub for centralized visibility.
+- Enable S3 object-level logging for sensitive buckets.
+
+#### 3. Infrastructure Security
+- How is the environment secured?
+- Use VPC segmentation, security groups, NACLs, and WAF/Shield.
+- Isolate sensitive workloads in private subnets.
+- Use VPC endpoints to avoid public internet exposure.
+
+#### 4. Data Protection
+- How is the data secured at rest and in transit?
+- Use:
+  - Encryption at rest: SSE-S3, SSE-KMS, client-side encryption.
+  - Encryption in transit: TLS/SSL via ACM or service defaults.
+  - KMS key policies and rotation.
+  - Secrets Manager or Parameter Store for credentials.
+- Apply bucket/object-level policies to enforce encryption and access control.
+
+#### 5. Incident Response
+- What happens when something goes wrong?
+- Prepare with:
+  - Runbooks and playbooks (e.g., via Systems Manager Automation).
+  - CloudWatch alarms and EventBridge rules for real-time triggers.
+  - Isolate compromised resources using tags and automation.
+  - Use AWS Backup and S3 versioning for recovery.
+
+## 🧠 Data Classification: Not All Data Is Equal
+- Define classification tiers (e.g., Public, Internal, Confidential, Restricted).
+- Tag resources with data sensitivity labels.
+- Use Macie to discover and classify PII in S3.
+- Enforce access controls and encryption based on classification.
+
+## 🔐 Defense in Depth: Layered Security Controls
+| Control Type | Examples | Purpose |
+|---|---|---|
+| Preventative | IAM, SGs, KMS, WAF, S3 bucket policies | Stop unauthorized access |
+| Detective | CloudTrail, GuardDuty, Config, Macie | Detect and alert on anomalies |
+
+*🧠 Layering both types ensures redundancy and resilience.*
+
+## 🔁 Data Retention and Recovery
+- Use S3 lifecycle policies to transition or expire data.
+- Use AWS Backup for centralized backup across services (EFS, RDS, DynamoDB, EC2).
+- Enable S3 versioning and Object Lock for immutability.
+- Use Cross-Region Replication (CRR) for disaster recovery.
+
+## ✅ Summary: Secure Data Lifecycle
+1. Classify your data based on sensitivity.
+2. Control access using IAM and encryption.
+3. Monitor and audit with detective controls.
+4. Back up and retain data per compliance needs.
+5. Respond and recover with automation and tested playbooks.
+
+
