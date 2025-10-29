@@ -44,16 +44,16 @@ Let's get started with a third task statement, determine appropriate data securi
   - But basically we need to ensure we are thinking about the data we are protecting, how it is stored, and who has access to it.
   - Second, remember that not all data is created equal. We must ensure our data is classified properly to enforce the security of that data.
   - Third, add security controls or defense in depth. Most important here is layering multiple security controls to provide redundancy along with two categories, preventative and detective. Understand what data protection looks like for your architecture and your requirements.
-  - Here are questions to consider.
-    - How do you design data protection when using a VPN over the internet, or over a private connection through AWS Direct Connect or connections between VPCs or for the transfer of your data between services such as Amazon S3 and your VPC?
-    - How do you protect the data in transit when reaching in users over the public internet?
-    - Also, how do the various data management and storage services handle data protection?
-      - For example, how will data management and storage differ when looking at S3 versus Amazon EBS?
-      - And does the use of those protections change the performance of the services?
-    - Let's consider a scenario where the data is being generated on an instance that is using an EBS volume, that data needs to be protected while maintaining durability. Would you want to store the data on an encrypted EBS volume or transfer the data to an encrypted S3 bucket? The least effort would be to use the encrypted EBS volume.
-    - Another question to consider, will the use of encryption affect performance, and if so, how?
-      - Ensure you know which services have no impact and which services might have a slight impact on the performance, for example, data retrieving speed with AWS RDS and AWS KMS, or when reading data from S3.
-    - Also know how to handle the root keys and how that method differs from your data keys.
+- Here are [questions to consider](#questions-about-securing-data-in-transit-and-at-rest).
+  - How do you design data protection when using a VPN over the internet, or over a private connection through AWS Direct Connect or connections between VPCs or for the transfer of your data between services such as Amazon S3 and your VPC?
+  - How do you protect the data in transit when reaching in users over the public internet?
+  - Also, how do the various data management and storage services handle data protection?
+    - For example, how will data management and storage differ when looking at S3 versus Amazon EBS?
+    - And does the use of those protections change the performance of the services?
+  - Let's consider a scenario where the data is being generated on an instance that is using an EBS volume, that data needs to be protected while maintaining durability. Would you want to store the data on an encrypted EBS volume or transfer the data to an encrypted S3 bucket? The least effort would be to use the encrypted EBS volume.
+  - Another question to consider, will the use of encryption affect performance, and if so, how?
+    - Ensure you know which services have no impact and which services might have a slight impact on the performance, for example, data retrieving speed with AWS RDS and AWS KMS, or when reading data from S3.
+  - Also know how to handle the root keys and how that method differs from your data keys.
 - Dive deeper into AWS KMS and S3.
   - Are there managed services that can help you secure, evaluate, and audit the security of your data? Definitely dive into AWS KMS.
    - Understanding your data security options will require understanding how the services operate, their security options, and how the services interact.
