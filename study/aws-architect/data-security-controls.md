@@ -1,4 +1,5 @@
 # Determining appropriate data security controls
+<a name="top"></a>
 
 Let's get started with a third task statement, determine appropriate data security controls. For this task statement, and when considering security at every level, the protection of data is one of the most important areas of focus. We mentioned this briefly in the last lesson. However, whether the data is in transit or at rest, its security needs to be evaluated. Under AWS accounts and IAM fundamentals, we talked about the principle of lease privilege, and this is important for security at each layer. 
 
@@ -181,7 +182,7 @@ No access to other buckets, no write access to S3, and no permissions beyond log
 | Audit & cleanup | Access Analyzer, CloudTrail |
 | Secret rotation | Secrets Manager |
 
-[Top](#)
+[Top](#top)
 
 ---
 
@@ -441,7 +442,7 @@ AWS Certificate Manager (ACM) helps encrypt data in transit by provisioning and 
 | SSE-KMS | KMS | You (via IAM/KMS) | Audit, access control, compliance |
 | SSE-C | You | You | S3 encrypts, you manage key |
 
-[Top](#)
+[Top](#top)
 
 ---
 
@@ -524,3 +525,5 @@ AWS Artifact is a self-service portal that provides:
 | Automation | Evidence collection | Continuous monitoring |
 | Integration | CloudTrail, Config, IAM | GuardDuty, Macie, Inspector |
 | Use Case | Internal/external audits | Real-time security compliance |
+
+[Top](#top)
