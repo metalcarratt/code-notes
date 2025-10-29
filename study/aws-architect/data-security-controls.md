@@ -840,3 +840,28 @@ AWS offers multiple disaster recovery strategies—backup & restore, pilot light
 - Encrypt backups with KMS and control access via IAM.
 - Tag resources for backup policies and compliance tracking.
 
+## 🔥 What Is a Pilot Light?
+- Think of it as a minimal version of your environment always running in a secondary Region.
+- Only critical components (e.g., databases, core services) are kept live.
+- During a disaster, you scale up the rest of the infrastructure (e.g., app servers, load balancers).
+- Fast recovery, but low cost because most resources are dormant.
+
+*🧠 Analogy: Like keeping the pilot flame lit on a gas heater—ready to ignite full service when needed.*
+
+## 🌡️ What Is Warm Standby?
+- A scaled-down replica of your full production environment runs in a secondary Region.
+- It’s partially active—can handle limited traffic or testing.
+- During a disaster, you scale up to full capacity and redirect traffic.
+- Higher cost than pilot light, but faster failover.
+
+*🧠 Analogy: Like keeping a backup car idling—ready to drive, but not at full speed until needed.*
+
+## 💰 Estimated Cost Multipliers for AWS Disaster Recovery Strategies
+These estimates assume a typical web application with compute, storage, and database components, and use monthly cost baselines for comparison:
+
+| Strategy | Relative Cost | Multiplier vs. Backup & Restore | Notes |
+|---|---|---|---|
+| Backup & Restore | 💸 | 1× | Only storage costs (e.g., S3, snapshots) |
+| Pilot Light | 💸💸 | ~2–3× | Minimal compute + storage for core services |
+| Warm Standby | 💸💸💸 | ~5–7× | Scaled-down full environment, ready to scale |
+| Multi-site Active-Active | 💸💸💸💸 | ~10–15× | Full duplicate infra in second region |
