@@ -438,3 +438,43 @@ AWS Certificate Manager (ACM) helps encrypt data in transit by provisioning and 
 | SSE-S3 | S3 | AWS | Simple, automatic encryption |
 | SSE-KMS | KMS | You (via IAM/KMS) | Audit, access control, compliance |
 | SSE-C | You | You | S3 encrypts, you manage key |
+
+---
+
+# Compliance and AWS Artifact
+
+AWS Artifact is your go-to self-service portal for accessing AWS compliance reports, certifications, and agreements. It helps you meet compliance requirements by providing auditor-ready documentation and managing legal agreements—all within the shared responsibility model.
+
+## 🛡️ AWS Shared Responsibility Model
+- AWS is responsible for: the security of the cloud—physical infrastructure, global network, hardware, and foundational services.
+- You (the customer) are responsible for: the security in the cloud—your data, configurations, access controls, and workload compliance.
+
+*🧠 Understanding this split is key to knowing which AWS tools support your compliance obligations.*
+
+## 📁 What Is AWS Artifact?
+AWS Artifact is a self-service portal that provides:
+- On-demand access to compliance reports:
+  - SOC 1, SOC 2, ISO 27001, PCI DSS, HIPAA, FedRAMP, and more.
+- Third-party audit reports and certifications:
+  - Issued by independent auditors to validate AWS’s compliance posture.
+- Online agreements:
+  - Accept and manage legal documents like Business Associate Agreements (BAAs) for HIPAA or GDPR Data Processing Addendums.
+
+## 🧠 How AWS Artifact Helps You Stay Compliant
+| Feature | Benefit |
+|---|---|
+| Download compliance reports | Share with auditors or use for internal validation |
+| Review and accept agreements | Ensure legal coverage for regulated workloads |
+| Track compliance posture | Understand AWS’s role in your compliance strategy |
+| Use reports across accounts | Agreements apply to current and future accounts in your org |
+
+## ✅ Other AWS Services That Support Compliance
+| Service | Role in Compliance |
+|---|---|
+| AWS Config | Tracks resource configurations for audit |
+| AWS CloudTrail | Logs API activity for forensic analysis |
+| AWS Audit Manager | Automates evidence collection for frameworks like PCI, ISO, HIPAA |
+| AWS Security Hub | Aggregates findings from GuardDuty, Macie, etc. for centralized compliance view |
+| AWS IAM & Identity Center | Enforces least privilege and access control |
+| Amazon Macie | Detects and classifies sensitive data (e.g., PII) in S3 |
+| AWS Shield & WAF | Protects against DDoS and app-layer attacks for regulatory uptime requirements |
