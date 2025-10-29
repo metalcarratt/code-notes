@@ -4,7 +4,7 @@ Let's get started with a third task statement, determine appropriate data securi
 
 - Do you know how to design and implement [the principle of lease privilege](#the-principle-of-least-privilege) to ensure only those who need access have the only the degree of access that they need? 
 - Diving deeper, do you also know how to design and implement securing access to your encryption keys? 
-  - As a solutions architect, we need to understand the fundamentals of encryption.
+  - As a solutions architect, we need to understand the [fundamentals of encryption](#-encryption-fundamentals).
   - There are two types of encryption we need to know for this certification exam. Encryption at rest and encryption in transit. So let's pause again and cover briefly some fundamentals needed for this exam. In AWS, we need to make sure our data is encrypted at rest and also in transit.
     - Encryption at rest is designed to protect against unauthorized access and theft. Encryption at rest is usually used when only one party is involved.
     - Encryption in transit is designed to protect data as it's being transferred between two places and two or more parties are involved.
