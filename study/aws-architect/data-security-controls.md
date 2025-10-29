@@ -332,3 +332,51 @@ This reversible process is what lets AWS services like S3, RDS, and EBS encrypt 
 | Compliance | ⚠️ Good for most | ✅ Strong for regulated workloads |
 | Control | ⚠️ Limited key custody | ✅ Full control over keys |
 | Rotation | ✅ Automatic (symmetric) | ❌ Manual only |
+
+## Encrypt data in transit with ACM
+AWS Certificate Manager (ACM) helps encrypt data in transit by provisioning and managing SSL/TLS certificates for AWS services. It also automates certificate renewal when DNS validation is used, ensuring uninterrupted secure communication.
+
+### 🔐 Encrypting Data in Transit with ACM
+#### ✅ What ACM Does
+- Provides SSL/TLS certificates to secure connections between clients and AWS services.
+- Supports HTTPS encryption for services like:
+  - Elastic Load Balancing (ALB/NLB)
+  - Amazon CloudFront
+  - Amazon API Gateway
+  - AWS App Runner
+
+#### ✅ How It Works
+- You request a certificate via ACM (public or private).
+- Attach it to a supported service (e.g., ALB listener or CloudFront distribution).
+- ACM handles key generation, certificate storage, and deployment.
+
+*🧠 This ensures that data in transit is encrypted using industry-standard protocols like TLS 1.2 or 1.3.*
+
+### 🔁 Certificate Renewal in ACM
+#### 🔹 Public Certificates
+- Automatic renewal if:
+  - DNS validation was used during issuance.
+  - The certificate is still associated with an AWS resource (e.g., ALB).
+- ACM revalidates domain ownership using the same method (DNS or email).
+- You’ll receive email alerts if renewal fails or validation is pending.
+
+#### 🔹 Private Certificates
+- Managed via ACM Private CA.
+- Renewal can be automated or manual, depending on configuration.
+
+#### 🔹 Common Renewal Issues
+- DNS misconfigurations (missing CNAME records).
+- Certificate no longer associated with a resource.
+- Expired validation records.
+
+*🧠 To ensure smooth renewal, always keep DNS validation records active and monitor ACM alerts.*
+
+### ✅ Summary Checklist
+| Task | ACM Feature |
+|---|---|
+| Encrypt data in transit | SSL/TLS certificates |
+| Supported services | ALB, CloudFront, API Gateway |
+| Renewal method | Automatic (DNS) or manual (email) |
+| Public certs | Free, auto-renewable |
+| Private certs | Via ACM Private CA |
+| Monitoring | ACM console + email alerts |
