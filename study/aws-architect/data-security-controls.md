@@ -54,7 +54,7 @@ Let's get started with a third task statement, determine appropriate data securi
   - Another question to consider, will the use of encryption affect performance, and if so, how?
     - Ensure you know which services have no impact and which services might have a slight impact on the performance, for example, data retrieving speed with AWS RDS and AWS KMS, or when reading data from S3.
   - Also know how to handle the root keys and how that method differs from your data keys.
-- Dive deeper into AWS KMS and S3.
+- Dive deeper into [AWS KMS and S3](#kms-and-s3).
   - Are there managed services that can help you secure, evaluate, and audit the security of your data? Definitely dive into AWS KMS.
    - Understanding your data security options will require understanding how the services operate, their security options, and how the services interact.
 - The last thing I wanna bring to your attention is protecting based on access patterns. Certain services such as S3 give you the ability to manage security for entire buckets and to add control based on specific paths or objects.
