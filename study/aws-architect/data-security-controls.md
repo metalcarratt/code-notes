@@ -181,6 +181,8 @@ No access to other buckets, no write access to S3, and no permissions beyond log
 | Audit & cleanup | Access Analyzer, CloudTrail |
 | Secret rotation | Secrets Manager |
 
+[Top](#)
+
 ---
 
 # Encryption
@@ -438,6 +440,8 @@ AWS Certificate Manager (ACM) helps encrypt data in transit by provisioning and 
 | SSE-S3 | S3 | AWS | Simple, automatic encryption |
 | SSE-KMS | KMS | You (via IAM/KMS) | Audit, access control, compliance |
 | SSE-C | You | You | S3 encrypts, you manage key |
+
+[Top](#)
 
 ---
 
