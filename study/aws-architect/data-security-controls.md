@@ -865,3 +865,84 @@ These estimates assume a typical web application with compute, storage, and data
 | Pilot Light | 💸💸 | ~2–3× | Minimal compute + storage for core services |
 | Warm Standby | 💸💸💸 | ~5–7× | Scaled-down full environment, ready to scale |
 | Multi-site Active-Active | 💸💸💸💸 | ~10–15× | Full duplicate infra in second region |
+
+## 🧠 Disaster Recovery Deep Dive by Service
+### 💾 Amazon EBS Snapshots
+- Type: Point-in-time block-level backup of volumes.
+- Automation: Use AWS Backup or Data Lifecycle Manager (DLM).
+- Cross-region: Manual or automated copy to another region.
+- RPO: Depends on snapshot frequency.
+- RTO: Minutes—restore volume and attach to EC2.
+
+### 🧠 Amazon DynamoDB Backup
+- Types:
+  - On-demand backups: Full table snapshot.
+  - Point-in-time recovery (PITR): Continuous backup up to 35 days.
+- Automation: PITR is continuous; on-demand can be scheduled.
+- Cross-region: Use Global Tables for active-active DR.
+- RPO: Seconds (PITR).
+- RTO: Seconds to minutes—restore table or failover.
+
+### 🧠 Amazon RDS Snapshots
+- Types:
+  - Automated backups: Daily snapshots + transaction logs.
+  - Manual snapshots: User-initiated, can be retained longer.
+- Automation: Via AWS Backup or RDS settings.
+- Cross-region: Manual copy of snapshots.
+- RPO: Minutes to hours.
+- RTO: Minutes—restore DB instance.
+
+### 🧠 Amazon Aurora Snapshots
+- Same as RDS, but with cluster-level granularity.
+- Aurora Global Database: Enables cross-region read replicas and fast failover.
+- RPO: Seconds (with Global DB).
+- RTO: <1 minute (with Global DB failover).
+
+### 🧠 Amazon EFS Backup (via AWS Backup)
+- Type: File system-level backup.
+- Automation: Fully integrated with AWS Backup.
+- Cross-region: Supported via AWS Backup copy jobs.
+- RPO: Depends on schedule.
+- RTO: Minutes—restore file system or mount target.
+
+### 🧠 Amazon Redshift Snapshots
+- Types:
+  - Automated snapshots: Daily.
+  - Manual snapshots: User-defined.
+- Cross-region: Manual copy supported.
+- RPO: Daily (automated), tighter with manual.
+- RTO: Minutes to hours—restore cluster.
+
+### 🧠 Amazon Neptune Snapshots
+- Type: Cluster-level snapshot.
+- Automation: Manual or via AWS Backup.
+- Cross-region: Manual copy supported.
+- RPO: Snapshot-dependent.
+- RTO: Minutes—restore cluster.
+
+### 🧠 Amazon DocumentDB Snapshots
+- Same model as RDS.
+- Automation: Automated and manual snapshots.
+- Cross-region: Manual copy supported.
+- RPO: Daily (automated).
+- RTO: Minutes—restore cluster.
+
+### 🧠 Amazon S3 Cross-Region Replication (CRR)
+- Type: Asynchronous object-level replication.
+- Automation: Continuous; versioning required.
+- RPO: Near real-time (depends on replication lag).
+- RTO: Immediate—data is already in DR region.
+- Bonus: Supports Object Lock for WORM compliance.
+
+### ✅ Summary Table
+| Service | Backup Type | Cross-Region Support | RPO | RTO | Automation |
+|---|---|---|---|---|---|
+| EBS | Snapshot | ✅ Manual/Auto | Minutes–hours | Minutes | ✅ |
+| DynamoDB | PITR + On-demand | ✅ Global Tables | Seconds | Seconds–minutes | ✅ |
+| RDS | Snapshot | ✅ Manual | Minutes–hours | Minutes | ✅ |
+| Aurora | Snapshot + Global DB | ✅ Global DB | Seconds | <1 min | ✅ |
+| EFS | AWS Backup | ✅ | Schedule-based | Minutes | ✅ |
+| Redshift | Snapshot | ✅ Manual | Daily | Minutes–hours | ✅ |
+| Neptune | Snapshot | ✅ Manual | Snapshot-based | Minutes | ✅ |
+| DocumentDB | Snapshot | ✅ Manual | Daily | Minutes | ✅ |
+| S3 | CRR + Versioning | ✅ Continuous | Near real-time | Immediate | ✅ |
