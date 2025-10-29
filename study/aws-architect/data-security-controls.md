@@ -782,3 +782,61 @@ S3 offers both Intelligent-Tiering and Lifecycle configurations to manage data b
 - Match access patterns to storage class and policy granularity.
 - Simulate and test policies to ensure least privilege and correct behavior.
 
+[Top](#top)
+
+---
+
+# Disaster recovery
+
+AWS offers multiple disaster recovery strategies—backup & restore, pilot light, warm standby, and multi-site active-active—each suited to different RTO/RPO needs. Storage services like S3, EBS, RDS, and DynamoDB support periodic or continuous backup options, with point-in-time recovery available for many.
+
+## 🧭 AWS Disaster Recovery Strategies
+| Strategy | Description | RTO | RPO | Cost | Complexity |
+|---|---|---|---|---|---|
+| Backup & Restore | Periodic backups, restore on demand | Hours | Hours | Low | Low |
+| Pilot Light | Core services always running, scale up on failover | Minutes | Minutes | Medium | Medium |
+| Warm Standby | Scaled-down replica running in parallel | Seconds–minutes | Seconds–minutes | Higher | Higher |
+| Multi-site Active-Active | Fully redundant systems in multiple regions | Near-zero | Near-zero | Highest | Highest |
+
+*🧠 Choose based on business impact, compliance, and acceptable downtime.*
+
+## 🗄️ Storage Services and Backup Options
+#### ✅ Amazon S3
+- Versioning: Protects against accidental deletes/overwrites.
+- Cross-Region Replication (CRR): For regional resilience.
+- Lifecycle policies: Automate archival and deletion.
+- Object Lock: Enforces WORM compliance.
+
+### ✅ Amazon EBS
+- Snapshots: Manual or scheduled via AWS Backup.
+- Point-in-time recovery: Restore volume to snapshot state.
+- Cross-region copy: For disaster recovery.
+
+#### ✅ Amazon RDS
+- Automated backups: Daily snapshots + transaction logs.
+- Point-in-time recovery: Restore to any second within retention window.
+- Manual snapshots: Can be copied across regions.
+
+#### ✅ Amazon DynamoDB
+- Point-in-time recovery (PITR): Continuous backups up to 35 days.
+- On-demand backups: Full table snapshots.
+- Global tables: Multi-region active-active replication.
+
+#### ✅ Amazon EFS
+- AWS Backup integration: Scheduled backups.
+- Cross-region backup: Supported via AWS Backup.
+
+### 🔁 Backup Frequency and Recovery Point Objective (RPO)
+- requent backups = lower RPO (less data loss).
+- Continuous backups (e.g., DynamoDB PITR) offer near-zero RPO.
+- Scheduled backups (e.g., EBS, RDS) depend on interval (daily, hourly).
+
+*🧠 Always align backup frequency with business tolerance for data loss.*
+
+### 🔐 Key Design Principles
+- Automate backups using AWS Backup or service-native features.
+- Test restores regularly to validate recovery procedures.
+- Use cross-region replication for regional resilience.
+- Encrypt backups with KMS and control access via IAM.
+- Tag resources for backup policies and compliance tracking.
+
