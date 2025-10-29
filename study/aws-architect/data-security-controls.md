@@ -276,3 +276,59 @@ Ciphertext + Key + Algorithm → Plaintext
 
 This reversible process is what lets AWS services like S3, RDS, and EBS encrypt and decrypt data securely—often using AWS KMS to manage the keys.
 
+## 🔐 Methods to Secure Data at Rest
+#### ✅ AWS KMS (Key Management Service)
+- Managed service with automatic scaling and integration across AWS.
+- Supports symmetric and asymmetric keys.
+- Ideal for most workloads needing encryption at rest (e.g., S3, RDS, EBS).
+- Key rotation: Automatic every 365 days for symmetric CMKs.
+
+#### ✅ AWS CloudHSM
+- Dedicated hardware security module (HSM) under your full control.
+- You manage keys, users, and lifecycle manually.
+- Required for strict compliance (e.g., FIPS 140-2 Level 3, custom PKCS#11 apps).
+- No automatic key rotation—you must implement it yourself.
+
+#### 🔗 Using KMS + CloudHSM Together
+- You can create a KMS custom key store backed by CloudHSM.
+- This gives you KMS integration with CloudHSM-level control.
+- Ideal for regulated industries needing auditable key custody.
+
+### 🌍 Managing Keys Across Regions
+- KMS keys are region-specific.
+- For multi-region apps:
+  - Create replica keys in other regions.
+  - Use multi-region keys for simplified replication and disaster recovery.
+- CloudHSM clusters must be manually deployed per region.
+
+### 🔑 Types of Keys in AWS
+| Key Type | Description | Use Cases |
+|---|---|---|
+| Symmetric CMK | Same key for encrypt/decrypt | S3, EBS, RDS, Lambda |
+| Asymmetric CMK | Public/private key pair | Digital signatures, public encryption |
+| CloudHSM Keys | Full control, custom formats | PKCS#11 apps, compliance-heavy workloads |
+
+### 🔁 Key Rotation
+| Key Type | Rotation Support |
+|---|---|
+| Symmetric CMK (KMS) | ✅ Automatic (365 days) |
+| Asymmetric CMK (KMS) | ❌ Manual only |
+| CloudHSM Keys | ❌ Manual only |
+ 
+### 🛂 Implementing Access Policies
+- Use KMS key policies to define who can use or manage keys.
+- Combine with IAM policies for fine-grained control.
+- Use conditions like:
+  - `aws:SourceIp` for IP restrictions
+  - `aws:RequestTag` for tag-based access
+  - `kms:EncryptionContext` for context-aware permissions
+- Audit with CloudTrail and Access Analyzer.
+
+### 🧠 Why Choose One Over the Other?
+| Feature | AWS KMS | AWS CloudHSM |
+|---|---|---|
+| Ease of use | ✅ Fully managed | ❌ Manual setup |
+| Integration | ✅ Broad AWS support | ⚠️ Limited native integration |
+| Compliance | ⚠️ Good for most | ✅ Strong for regulated workloads |
+| Control | ⚠️ Limited key custody | ✅ Full control over keys |
+| Rotation | ✅ Automatic (symmetric) | ❌ Manual only |
