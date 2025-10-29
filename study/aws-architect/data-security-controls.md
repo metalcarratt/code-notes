@@ -653,3 +653,60 @@ To protect data in transit and at rest across AWS, use encryption, private conne
 
 *🧠 Use envelope encryption: KMS generates a data key, encrypts it with the CMK, and you store both.*
 
+[Top](#top)
+
+---
+
+# KMS and S3
+## 🔐 Deep Dive: AWS KMS (Key Management Service)
+#### ✅ Core Functions
+- Create, store, and manage encryption keys (Customer Managed Keys or CMKs).
+- Supports symmetric and asymmetric keys.
+- Enables envelope encryption: KMS encrypts a data key, which encrypts your actual data.
+- Integrated with over 50 AWS services including S3, EBS, RDS, Lambda, and Secrets Manager.
+
+#### 🔒 Security Features
+- Key policies: Define who can use or manage each key.
+- IAM integration: Enforce least privilege access.
+- Automatic key rotation: Every 365 days for symmetric CMKs.
+- Audit logging: Every KMS API call is logged in CloudTrail.
+- Multi-region keys: Simplify disaster recovery and cross-region replication.
+
+## 🧱 Deep Dive: Amazon S3 + KMS
+#### ✅ Server-Side Encryption Options
+| Mode | Description | Key Source |
+|---|---|---|
+| SSE-S3 | S3-managed keys | AWS-managed |
+| SSE-KMS | KMS-managed keys | Customer-managed or AWS-managed |
+| SSE-C | Customer-provided keys | You manage externally |
+| Client-side encryption | Encrypt before upload | You manage all keys and logic |
+
+#### 🔐 SSE-KMS Highlights
+- Encrypts data at rest using KMS CMKs.
+- Allows fine-grained access control via IAM and key policies.
+- Supports bucket policies that enforce encryption:
+```json
+"Condition": {
+  "StringNotEquals": {
+    "s3:x-amz-server-side-encryption": "aws:kms"
+  }
+}
+```
+- Encryption status is visible in S3 Inventory, Storage Lens, and CloudTrail logs.
+
+## 🧠 Managed Services for Evaluation and Audit
+| Service | Role |
+|---|---|
+| AWS CloudTrail | Logs all KMS and S3 API calls for audit |
+| Amazon Macie | Classifies sensitive data (e.g., PII) in S3 |
+| AWS Security Hub | Aggregates findings from Macie, GuardDuty, etc. |
+| AWS Config | Tracks encryption settings and compliance drift |
+| AWS Audit Manager | Maps evidence to compliance frameworks (e.g., PCI, HIPAA) |
+
+#### 🔁 How They Interact
+- S3 calls KMS to encrypt/decrypt objects using CMKs.
+- CloudTrail logs every KMS and S3 operation for audit.
+- Macie scans S3 for sensitive data and flags unencrypted buckets.
+- Security Hub aggregates findings across services for centralized compliance visibility.
+
+  
