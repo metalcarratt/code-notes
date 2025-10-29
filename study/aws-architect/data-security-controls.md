@@ -478,3 +478,45 @@ AWS Artifact is a self-service portal that provides:
 | AWS IAM & Identity Center | Enforces least privilege and access control |
 | Amazon Macie | Detects and classifies sensitive data (e.g., PII) in S3 |
 | AWS Shield & WAF | Protects against DDoS and app-layer attacks for regulatory uptime requirements |
+
+## 📋 AWS Audit Manager – Automated Evidence Collection
+#### ✅ What It Does
+- Helps you continuously audit your AWS usage.
+- Automatically collects evidence from AWS services (e.g., CloudTrail, Config, IAM).
+- Maps evidence to compliance frameworks like:
+  - PCI DSS
+  - ISO 27001
+  - HIPAA
+  - SOC 2
+  - NIST 800-53
+
+#### 🧠 How It Helps with Compliance
+- Reduces manual effort in gathering audit artifacts.
+- Tracks control status and assessment progress.
+- Generates audit-ready reports for internal teams or external auditors.
+
+## 🛡️ AWS Security Hub – Centralized Security and Compliance Visibility
+#### ✅ What It Does
+- Aggregates findings from AWS services like:
+  - GuardDuty
+  - Macie
+  - Inspector
+  - Firewall Manager
+- Evaluates your environment against security standards:
+  - AWS Foundational Security Best Practices
+  - CIS AWS Foundations Benchmark
+  - PCI DSS
+
+#### 🧠 How It Helps with Compliance
+- Provides a single dashboard for security posture.
+- Flags non-compliant resources and misconfigurations.
+- Supports automated remediation via EventBridge and Lambda.
+
+## ✅ Summary Comparison
+| Feature | Audit Manager | Security Hub |
+|---|---|---|
+| Focus | Compliance frameworks | Security posture |
+| Output | Audit evidence, reports | Findings, alerts, dashboards |
+| Automation | Evidence collection | Continuous monitoring |
+| Integration | CloudTrail, Config, IAM | GuardDuty, Macie, Inspector |
+| Use Case | Internal/external audits | Real-time security compliance |
