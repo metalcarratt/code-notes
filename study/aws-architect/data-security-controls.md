@@ -243,3 +243,36 @@ No access to other buckets, no write access to S3, and no permissions beyond log
 | Audit usage | CloudTrail logs |
 | Minimize exposure | Envelope encryption |
 
+## 🔐 Encryption: The Protective Tunnel
+Encryption wraps your data in a secure tunnel, making it unreadable to unauthorized parties. Whether the data is at rest (stored) or in transit (moving), encryption ensures that only those with the right key can unlock it.
+
+### 🧠 Key Terms You Must Know
+#### 1. Plaintext
+- Definition: The original, readable form of data before encryption.
+- Examples: Text files, images, documents, passwords, application binaries.
+- Key Point: It’s not always “text”—it’s anything unencrypted.
+
+#### 2. Algorithm
+- Definition: A mathematical formula or code that transforms plaintext into ciphertext.
+- Examples: AES (Advanced Encryption Standard), RSA, SHA.
+- Key Point: It needs both plaintext and a key to work.
+
+#### 3. Key
+- Definition: A secret value (like a password) used by the algorithm to encrypt or decrypt data.
+- Types:
+  - Symmetric keys: Same key for encryption and decryption (e.g., AES).
+  - Asymmetric keys: Public key encrypts, private key decrypts (e.g., RSA).
+- Key Point: Protecting the key is as important as encrypting the data.
+
+#### 4. Ciphertext
+- Definition: The encrypted version of your data—unreadable without the correct key.
+- Key Point: This is what gets stored or transmitted securely.
+
+### 🧩 How It All Fits Together
+```plaintext
+Plaintext + Key + Algorithm → Ciphertext
+Ciphertext + Key + Algorithm → Plaintext
+```
+
+This reversible process is what lets AWS services like S3, RDS, and EBS encrypt and decrypt data securely—often using AWS KMS to manage the keys.
+
