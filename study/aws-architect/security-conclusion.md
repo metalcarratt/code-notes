@@ -1,1 +1,28 @@
 Welcome back, and congratulations on finishing the first Domain for this certification. For your studies and preparation, dive deeper into protecting your resources, applications, and data. One of the security best practices is to follow the principle of least privilege where we only grant the permissions needed and no more. What services can we use to follow the principle of least privilege when working in a multi account environment? Would you use AWS Control Tower AWS Service Catalog, or AWS Organizations? Be sure you have a good understanding of IAM. For example, when would you use an AWS IAM role and when would you use an IAM user? Know the differences between an identity policy a resource policy, a permissions policy, and a service control policy. How are policies evaluated when there are overlapping allow and deny rules? Know different ways to federate into AWS. Be sure to know the AWS Single Sign-On service and different use cases for AWS Directory Service. Understand what monitoring services exist in addition to Amazon CloudTrail, Amazon CloudWatch, and VPC Flow Logs. Understand how to set up your own VPCs with the appropriate security controls. Be sure you know the use cases and capabilities of AWS Shield, AWS WAF, AWS Secrets Manager, and AWS Systems Manager Parameter Store. Make sure you know how you can protect your data in transit and at rest in AWS. In what cases would you need to choose AWS KMS or AWS CloudHSM? Ensure you have a solid understanding of the different AWS security services capabilities appropriate use cases and when another service might be a better option. Being able to choose between two different services based on the stem is gonna help you pass the certification exam. Let's get started with Domain 2. Refer to the exam guide and scan here for a link to download and follow along and I'll see you in the next video.
+
+These resources have additional information on the topics covered in this domain:
+
+- [Managing Your AWS Account](https://docs.aws.amazon.com/accounts/latest/reference/managing-accounts.html)
+- [What is IAM?](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
+- [What is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+- [Security in Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/security.html)
+- [Security, Identity, and Compliance](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/security-services.html)
+- [Data Encryption](https://docs.aws.amazon.com/whitepapers/latest/introduction-aws-security/data-encryption.html)
+- [Amazon EBS Snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html)
+- [Point-in-Time Recovery for DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/PointInTimeRecovery.html)
+- [Backing up and Restoring an Amazon RDS DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html)
+- [Creating a DB Cluster Snapshot](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CreateSnapshotCluster.html)
+- [Using AWS Backup to Back up and Restore Amazon EFS File Systems](https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html)
+- [Amazon Redshift Snapshots and Backups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+- [Overview of Backing up and Restoring a Neptune DB Cluster](https://docs.aws.amazon.com/neptune/latest/userguide/backup-restore-overview.html)
+- [Backing up and Restoring in Amazon DocumentDB](https://docs.aws.amazon.com/documentdb/latest/developerguide/backup_restore.html)
+- [Amazon S3 Cross-Region Replication (CRR)](http://aws.amazon.com/s3/features/replication/)
+- [AWS Backup](http://aws.amazon.com/backup)
+- [Amazon Elastic Block Store (EBS)](http://aws.amazon.com/ebs/)
+- [Amazon EC2 instances](http://aws.amazon.com/ec2/)
+- [Amazon Relational Database Service (Amazon RDS) databases](http://aws.amazon.com/rds/)
+- [Amazon Aurora](http://aws.amazon.com/rds/aurora/)
+- [Amazon DynamoDB](http://aws.amazon.com/dynamodb/)
+- [Amazon Elastic File System (Amazon EFS)](http://aws.amazon.com/efs/)
+- [AWS Storage Gateway](http://aws.amazon.com/storagegateway/)
+- [Amazon FSx for Windows File Server and Amazon FSx for Lustre](http://aws.amazon.com/fsx/windows/)
