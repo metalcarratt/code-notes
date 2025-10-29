@@ -800,31 +800,40 @@ AWS offers multiple disaster recovery strategies—backup & restore, pilot light
 
 *🧠 Choose based on business impact, compliance, and acceptable downtime.*
 
-## 🗄️ Storage Services and Backup Options
-#### ✅ Amazon S3
-- Versioning: Protects against accidental deletes/overwrites.
-- Cross-Region Replication (CRR): For regional resilience.
-- Lifecycle policies: Automate archival and deletion.
-- Object Lock: Enforces WORM compliance.
+## RPO vs RTO
+### 🕒 Recovery Point Objective (RPO)
+#### ✅ What It Means
+- RPO defines how much data you can afford to lose in a disaster.
+- It’s measured in time—the maximum acceptable age of the data since the last backup or replication.
 
-### ✅ Amazon EBS
-- Snapshots: Manual or scheduled via AWS Backup.
-- Point-in-time recovery: Restore volume to snapshot state.
-- Cross-region copy: For disaster recovery.
+#### 🧠 Example
+- If your RPO is 1 hour, you must back up or replicate data at least every hour.
+- If a failure occurs, you may lose up to 1 hour of data—but no more.
 
-#### ✅ Amazon RDS
-- Automated backups: Daily snapshots + transaction logs.
-- Point-in-time recovery: Restore to any second within retention window.
-- Manual snapshots: Can be copied across regions.
+#### 🔧 Influencing Factors
+- Backup frequency (e.g., hourly snapshots vs. continuous PITR)
+- Replication lag (e.g., S3 Cross-Region Replication)
+- Business tolerance for data loss
 
-#### ✅ Amazon DynamoDB
-- Point-in-time recovery (PITR): Continuous backups up to 35 days.
-- On-demand backups: Full table snapshots.
-- Global tables: Multi-region active-active replication.
+### ⏱️ Recovery Time Objective (RTO)
+#### ✅ What It Means
+- RTO defines how quickly you must restore service after a disaster.
+- It’s the maximum acceptable downtime before operations must resume.
 
-#### ✅ Amazon EFS
-- AWS Backup integration: Scheduled backups.
-- Cross-region backup: Supported via AWS Backup.
+#### 🧠 Example
+- If your RTO is 15 minutes, your architecture must support failover or restore within that time.
+- This might involve automated scaling, pre-provisioned standby environments, or fast snapshot restores.
+
+#### 🔧 Influencing Factors
+- Restore speed (e.g., EC2 from AMI vs. EBS snapshot)
+- Failover automation (e.g., Route 53 health checks)
+- Infrastructure readiness (e.g., warm standby vs. pilot light)
+
+### 🧠 Summary Table
+| Metric | Definition | Goal | Example |
+|---|---|---|---|
+| RPO | Max data loss (time) | Minimize lost data | Backup every 1 hour = 1-hour RPO |
+| RTO | Max downtime (time) | Minimize outage duration | Restore in 15 minutes = 15-min RTO |
 
 ### 🔁 Backup Frequency and Recovery Point Objective (RPO)
 - requent backups = lower RPO (less data loss).
