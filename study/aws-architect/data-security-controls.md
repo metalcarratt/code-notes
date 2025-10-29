@@ -8,7 +8,7 @@ Let's get started with a third task statement, determine appropriate data securi
   - There are two types of encryption we need to know for this certification exam. Encryption at rest and encryption in transit. So let's pause again and cover briefly some fundamentals needed for this exam. In AWS, we need to make sure our data is encrypted at rest and also in transit.
     - Encryption at rest is designed to protect against unauthorized access and theft. Encryption at rest is usually used when only one party is involved.
     - Encryption in transit is designed to protect data as it's being transferred between two places and two or more parties are involved.
-  - Ensure you understand that using encryption adds a tunnel around that data so no one from the outside can read the data. And to understand encryption, it's important to understand some terms. Ensure you know the following terms and concepts.
+  - Ensure you understand that using [encryption adds a tunnel](#-encryption-the-protective-tunnel) around that data so no one from the outside can read the data. And to understand encryption, it's important to understand some terms. Ensure you know the following terms and concepts.
     - **Plaintext** is not always text data, but it is always unencrypted. It could be docs, images, applications, and so on.
     - An **algorithm** is code that takes the plaintext and the encryption key, and generates your encrypted data. When a algorithm is being used, it needs the plaintext and also a key.
     - A **key** is just a password and is used with the algorithms and produces ciphertext, and there are different types of keys in different types of encryption.
