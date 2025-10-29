@@ -955,3 +955,39 @@ These estimates assume a typical web application with compute, storage, and data
 | Neptune | Snapshot | ✅ Manual | Snapshot-based | Minutes | ✅ |
 | DocumentDB | Snapshot | ✅ Manual | Daily | Minutes | ✅ |
 | S3 | CRR + Versioning | ✅ Continuous | Near real-time | Immediate | ✅ |
+
+
+
+## 🧠 What Is AWS Storage Gateway?
+AWS Storage Gateway is a hybrid cloud storage service that connects your on-premises applications to AWS storage services like S3, EBS, and Glacier. It supports multiple gateway types depending on your use case:
+
+### 🔹 Gateway Types
+| Type | Description | Use Case |
+|---|---|---|
+| File Gateway | NFS/SMB interface to S3 | Backup, archiving, file shares |
+| Volume Gateway | iSCSI block storage backed by EBS snapshots | Disaster recovery, VM backups |
+| Tape Gateway | Emulates physical tape libraries, stores data in Glacier | Long-term archival, compliance |
+
+### 🔐 How It Supports Disaster Recovery
+- Backs up on-prem data to AWS using EBS snapshots or S3 objects.
+- Integrates with AWS Backup for centralized scheduling and monitoring.
+- Supports cross-region backup copy for DR scenarios.
+- Enables point-in-time recovery for volume data.
+- Reduces on-prem storage footprint by tiering cold data to the cloud.
+
+### ✅ AWS Backup Capabilities by Resource
+| Resource | Backup Support | Cross-Region Copy | Point-in-Time Recovery |
+|---|---|---|---|
+| EBS Volumes | ✅ Snapshots | ✅ | ✅ |
+| EC2 Instances | ✅ (via AMIs + volumes) | ✅ | ✅ |
+| RDS/Aurora | ✅ Snapshots | ✅ | ✅ |
+| DynamoDB | ✅ On-demand + PITR	✅ (via export)	✅ |
+| EFS File Systems | ✅ via AWS Backup | ✅ | ✅ |
+| Storage Gateway Volumes | ✅ via Volume Gateway | ✅ | ✅ |
+| Amazon FSx (Windows/Lustre) | ✅ via AWS Backup | ✅ | ✅ |
+
+### 🧠 Summary: Hybrid + Backup Strategy
+- Use Storage Gateway to extend AWS backup and DR to on-prem workloads.
+- Use AWS Backup to centralize scheduling, monitoring, and cross-region replication.
+- Choose gateway type based on workload: File (S3), Volume (EBS), or Tape (Glacier).
+- Ensure IAM roles and encryption policies are in place for secure backup flows.
