@@ -180,3 +180,66 @@ No access to other buckets, no write access to S3, and no permissions beyond log
 | Role-based access | IAM Identity Center, Cognito groups |
 | Audit & cleanup | Access Analyzer, CloudTrail |
 | Secret rotation | Secrets Manager |
+
+---
+
+# Encryption
+## 🔐 Encryption Fundamentals
+#### ✅ Encryption at Rest
+- Purpose: Protect data stored on disk from unauthorized access or theft.
+- Use Case: One party owns and accesses the data (e.g., S3, RDS, EBS volumes).
+- AWS Services: Most support automatic encryption at rest using KMS keys (e.g., S3 SSE-KMS, RDS encryption).
+
+#### ✅ Encryption in Transit
+- Purpose: Protect data as it moves between systems or services.
+- Use Case: Two or more parties involved (e.g., client-server, API calls).
+- AWS Services: Use TLS/SSL for HTTPS, IAM policies for API access, and VPC endpoints for private routing.
+
+## 🔑 Securing Access to Encryption Keys (KMS)
+#### 1. Use AWS KMS for Key Management
+- Centralized service for creating, storing, and managing encryption keys.
+- Supports Customer Managed Keys (CMKs) and AWS Managed Keys.
+- Keys are stored securely in FIPS 140-2 validated HSMs.
+
+#### 2. Control Access with IAM and Key Policies
+- IAM policies define who can use KMS APIs (e.g., `kms:Encrypt`, `kms:Decrypt`).
+- Key policies define who can administer or use the key itself.
+- Use least privilege: only allow `kms:Decrypt` to services that need it.
+
+#### 3. Enable Key Rotation
+- For CMKs, enable automatic rotation every 365 days.
+- This helps reduce risk from long-lived keys.
+
+#### 4. Audit Key Usage
+- Use CloudTrail to log all KMS API calls.
+- Monitor for unusual patterns (e.g., unexpected decrypts or key deletions).
+
+#### 5. Use Envelope Encryption
+- Encrypt data with a data key, then encrypt the data key with a KMS key.
+- Reduces direct use of KMS and improves performance.
+
+### 🧠 Example: Securing S3 with KMS
+- Enable SSE-KMS on your S3 bucket.
+- Use a Customer Managed Key with a key policy like:
+  - Allow kms:Decrypt only to specific IAM roles (e.g., Lambda, EC2).
+  - Deny access from public or untrusted roles.
+- Use bucket policies to enforce encryption:
+
+```json
+"Condition": {
+  "StringNotEquals": {
+    "s3:x-amz-server-side-encryption": "aws:kms"
+  }
+}
+```
+
+### ✅ Summary Checklist
+| Task | AWS Feature |
+|---|---|
+| Encrypt data at rest | KMS + SSE-KMS, RDS encryption |
+| Encrypt data in transit | TLS/SSL, HTTPS, VPC endpoints |
+| Manage keys securely | KMS CMKs + IAM/Key policies |
+| Rotate keys | KMS automatic rotation |
+| Audit usage | CloudTrail logs |
+| Minimize exposure | Envelope encryption |
+
