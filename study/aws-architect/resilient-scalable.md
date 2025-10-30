@@ -23,7 +23,7 @@ Let's move on. You should also have a fundamental understanding of containers, s
   - For more depth, read the AWS Well-Architected Framework High Performance Computing lens.
 - Know the different types of [placement groups](#-placement-groups-what-and-why) and [advance networking options](#-networking-enhancements) for certain EC2 instance types will help answer questions and build better designs.
 
-There are many options for using storage in your multi-tier architecture.
+There are many options for using [storage in your multi-tier architecture](#%EF%B8%8F-storage-in-multi-tier-architecture).
 - For example, many years ago, companies used relational databases for nearly every data need.
   - At extreme scale, this presents challenges.
   - However, AWS has many different purpose-built databases such as
