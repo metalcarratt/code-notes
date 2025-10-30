@@ -112,9 +112,30 @@ We mentioned that one of the ways in which that we can help ensure our applicati
   - Use **serverless** (e.g., Lambda) for event-driven scaling.
 
 ## 🧠 Summary Table
-
 | Scaling Type | Direction | Example | Cost Strategy |
 |--------------|-----------|---------|----------------|
 | **Vertical** | Scale up/down | Resize EC2 | Use burstable or scheduled resizing |
 | **Horizontal** | Scale out/in | Add EC2 nodes | Use Auto Scaling, Spot, serverless |
 
+
+## 🔄 What Is Elasticity?
+**Elasticity** is the ability of a system to automatically adjust its capacity to match changing demand. It uses **automation** and **horizontal scaling** to add or remove resources as needed.
+
+## 📈 Why Elasticity Matters
+- **Demand is rarely linear**—it fluctuates over time.
+- Elastic systems can **scale out** (add resources) during peak demand.
+- They can **scale in** (remove resources) when demand drops.
+- This ensures your environment is **right-sized** at all times.
+
+## ⚙️ AWS Tools for Elasticity
+- **Launch Configuration**: Defines how new instances are created.
+- **Auto Scaling Groups**: Automatically adjust the number of EC2 instances based on metrics like CPU, memory, or custom CloudWatch alarms.
+
+## ✅ Benefits of Elasticity
+Elasticity supports key pillars of the **AWS Well-Architected Framework**:
+- **Performance Efficiency**: Right resources at the right time.
+- **Operational Excellence**: Automated scaling reduces manual intervention.
+- **Cost Optimization**: Avoid over-provisioning and pay only for what you use.
+
+## 🧠 Summary
+Elasticity ensures your system can grow and shrink dynamically, optimizing for performance, reliability, and cost. It’s a core principle of cloud-native architecture.
