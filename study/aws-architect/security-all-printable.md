@@ -2248,3 +2248,67 @@ AWS Storage Gateway is a hybrid cloud storage service that connects your on-prem
 - Choose gateway type based on workload: File (S3), Volume (EBS), or Tape (Glacier).
 - Ensure IAM roles and encryption policies are in place for secure backup flows.
 
+---
+# Others
+---
+
+# 🧠 What Is Amazon FSx?
+
+**Amazon FSx** is a family of **fully managed file storage services** that provide high-performance, scalable file systems built on popular file system technologies. It’s designed for workloads that require **shared file access**, **POSIX compliance**, or **Windows compatibility**.
+
+## 🔹 FSx Variants and Use Cases
+
+| FSx Variant | Backing Technology | Ideal For |
+|-------------|--------------------|-----------|
+| **FSx for Windows File Server** | Windows Server | Windows-based apps, SMB protocol, Active Directory integration |
+| **FSx for Lustre** | Lustre (HPC file system) | High-performance computing, ML training, big data |
+| **FSx for NetApp ONTAP** | NetApp ONTAP | Enterprise workloads, snapshots, multi-protocol (NFS, SMB, iSCSI) |
+| **FSx for OpenZFS** | OpenZFS | Linux-based apps, snapshots, compression, cloning |
+
+## ✅ Key Features
+
+- **Fully managed**: No need to provision or patch file servers.
+- **Scalable performance**: Supports thousands of concurrent connections.
+- **Integrated with AWS Backup**: Centralized backup and restore.
+- **Supports encryption at rest and in transit**.
+- **Access via VPC**: Must be mounted from within your network.
+
+## 🧠 Why Use FSx?
+
+- You need **shared file storage** with native file system features.
+- You’re migrating **on-premises workloads** that depend on SMB/NFS.
+- You want **enterprise-grade features** like snapshots, replication, and multi-protocol access.
+
+## 🗂️ SMB vs. NFS
+
+### ✅ SMB (Server Message Block)
+- Native to Windows environments.
+- Used for file sharing across Windows clients and servers.
+- Supports Active Directory integration, file locking, and Windows ACLs.
+- Protocol used by Amazon FSx for Windows File Server.
+
+🧠 *Think: Windows file shares like `\\server\folder`.*
+
+### ✅ NFS (Network File System)
+- Native to Linux/Unix environments.
+- Used for mounting remote file systems over a network.
+- POSIX-compliant, supports hierarchical directories and file permissions.
+- Protocol used by Amazon EFS, FSx for Lustre, FSx for OpenZFS, and FSx for NetApp ONTAP.
+
+🧠 *Think: mounting `/mnt/data` from a remote Linux server.*
+
+## 🚀 What Is HPC (High Performance Computing)?
+
+**HPC** refers to solving complex computational problems using parallel processing across many CPUs or GPUs. It's used in:
+
+- Scientific simulations (e.g., climate modeling, genomics)
+- Financial risk modeling
+- Machine learning training
+- Rendering and animation
+
+### ✅ AWS HPC Tools
+- FSx for Lustre: High-throughput file system optimized for HPC workloads.
+- EC2 HPC instances: With enhanced networking and CPU/GPU acceleration.
+- AWS Batch and ParallelCluster: For job orchestration and cluster management.
+
+🧠 *HPC is all about speed, scale, and parallelism—think thousands of cores crunching data simultaneously.*
