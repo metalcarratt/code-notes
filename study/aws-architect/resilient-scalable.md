@@ -205,3 +205,81 @@ Elasticity ensures your system can grow and shrink dynamically, optimizing for p
   - Limited execution time (15 min max).
   - Cold start latency.
   - Stateless by default; must integrate with external storage.
+
+## 🚀 High Performance Computing (HPC)
+
+**HPC** refers to solving complex problems using parallel processing across many CPUs or GPUs. It’s used in:
+- Scientific simulations (e.g., weather, genomics)
+- Financial modeling
+- Machine learning training
+- Rendering and animation
+
+HPC workloads demand:
+- High compute power
+- Low-latency networking
+- Fast storage throughput
+- Scalable architecture
+
+### 🚀 High Performance Computing (HPC) on EC2
+#### ✅ Compute-Optimized (e.g., C6i, C7g)
+- Designed for high CPU-to-memory ratio.
+- Ideal for CPU-bound workloads like batch processing, analytics, and some HPC tasks.
+- Not specialized for HPC, but often used in HPC pipelines when GPU or ultra-low latency isn’t required.
+
+#### ✅ HPC-Specific Instances (e.g., Hpc6id, Hpc7g)
+- Tuned for low-latency, high-throughput networking.
+- Often paired with Elastic Fabric Adapter (EFA).
+- Designed for MPI workloads, simulations, and tightly coupled compute clusters.
+
+### ✅ GPU-Accelerated Instances (e.g., P5, G5, G6)
+- Designed for workloads requiring massive parallelism and floating-point performance.
+- Ideal for:
+  - Machine learning training and inference
+  - Scientific simulations
+  - 3D rendering and video transcoding
+- Support CUDA, TensorFlow, PyTorch, and other GPU frameworks.
+- Often used with EFA for distributed training across multiple GPUs.
+
+🧠 *GPU instances are a specialized subset of HPC, optimized for parallel compute rather than tightly coupled CPU clusters.*
+
+### 🧠 Placement Groups: What and Why
+Placement groups control how EC2 instances are physically arranged in the AWS data center to optimize for performance or fault tolerance.
+
+| Type | Purpose | Use Case |
+|------|---------|----------|
+| **Cluster** | Pack instances close together for low latency and high throughput | HPC, ML training, tightly coupled workloads |
+| **Spread** | Spread instances across hardware to reduce correlated failure risk | Critical workloads needing fault isolation |
+| **Partition** | Divide instances into groups with independent failure domains | Large distributed systems (e.g., HDFS, Cassandra)
+
+🧠 *For HPC, use Cluster Placement Groups to minimize latency between nodes.*
+
+### 🔌 Networking Enhancements
+#### ✅ Elastic Fabric Adapter (EFA)
+- Low-latency, high-bandwidth networking for tightly coupled HPC workloads.
+- Supports MPI (Message Passing Interface) and NCCL for distributed training.
+- Only available on select instance types (e.g., C5n, Hpc6id, P5).
+
+#### ✅ SR-IOV (Single Root I/O Virtualization)
+- Enables Enhanced Networking by bypassing the hypervisor.
+- Provides higher packet per second (PPS) and lower latency.
+- Available on many instance types (e.g., C6i, M5n).
+
+#### ✅ ENA (Elastic Network Adapter)
+- Default for Enhanced Networking.
+- Supports up to 100 Gbps throughput on some instances.
+
+### 🧠 Matching AWS Services to Workload Needs
+| Requirement       | Compute                  | Storage         | Networking                    | Database              |
+|------------------|--------------------------|-----------------|-------------------------------|------------------------|
+| **HPC**           | EC2 with EFA, Cluster PG | FSx for Lustre  | Enhanced Networking           | Amazon Aurora or custom |
+| **Microservices** | ECS/EKS with Fargate     | S3 or EFS       | VPC + Service Discovery       | DynamoDB or Aurora     |
+| **Event-driven**  | Lambda                   | S3 or DynamoDB  | API Gateway                   | DynamoDB               |
+| **Legacy apps**   | EC2                      | EBS             | VPC                           | RDS or EC2-hosted DB   |
+| **Burst workloads**| Lambda or Fargate       | S3              | CloudFront + API Gateway      | DynamoDB               |
+
+### 🧠 Summary
+
+- **Compute-optimized** = high CPU, good for general performance.
+- **HPC instances** = tuned for distributed compute, often with EFA.
+- **Placement groups** = control physical layout for latency or fault isolation.
+- **Networking enhancements** = reduce latency and boost throughput for HPC clusters.
