@@ -36,7 +36,7 @@ There are many options for using [storage in your multi-tier architecture](#%EF%
       - Read Replicas provide two main benefits, performance benefits and availability benefits.
       - RDS Multi-AZ does not scale your reads. It cannot be accessed directly and the standby does not provide added performance. It is only good for high availability.
       - Diving deeper using a Reed Replica is not a substitute for using a cache. Querying a Read Replica still has overhead of making a database connection, authentication, SQL query parsing, optimization locking, and so on.
-      - But there are many other options for using caching. Under extreme Load, your application components may run into performance issues. You should know which services can be used for caching including but not limiting to Amazon CloudFront, ElastiCache, and DynamoDB Accelerator.
+      - But there are many other [options for using caching](). Under extreme Load, your application components may run into performance issues. You should know which services can be used for caching including but not limiting to Amazon CloudFront, ElastiCache, and DynamoDB Accelerator.
       - Again, ensure you understand the fundamentals of caching, Read Replicas, and more.
 
 Diving even deeper, ensure you know 
