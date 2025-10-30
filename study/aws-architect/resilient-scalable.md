@@ -11,7 +11,7 @@ When thinking about resilient architectures, we want to design our architectures
   - It adds additional resources as the demand increases. And then when that demand decreases, we can scale back in to a smaller number of servers or even no servers.
   - This optimizes our environment for performance efficiency, operational excellence, and cost optimization which are all pillars of the AWS Well-Architected Framework.
 - For this exam, know the difference between horizontal and vertical scaling and how to achieve them using different services.
-  - For example, what are the capabilities of AWS Auto Scaling and Amazon EC2 Auto Scaling?
+  - For example, what are the capabilities of [AWS Auto Scaling and Amazon EC2 Auto Scaling](#%EF%B8%8F-aws-auto-scaling-vs-amazon-ec2-auto-scaling)?
   - What are the different types of scaling policies you can use with Amazon EC2 Auto Scaling?
 
 Let's move on. You should also have a fundamental understanding of containers, serverless, and virtualization.
