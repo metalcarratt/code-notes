@@ -12,7 +12,7 @@ When thinking about resilient architectures, we want to design our architectures
   - This optimizes our environment for performance efficiency, operational excellence, and cost optimization which are all pillars of the AWS Well-Architected Framework.
 - For this exam, know the difference between horizontal and vertical scaling and how to achieve them using different services.
   - For example, what are the capabilities of [AWS Auto Scaling and Amazon EC2 Auto Scaling](#%EF%B8%8F-aws-auto-scaling-vs-amazon-ec2-auto-scaling)?
-  - What are the different types of scaling policies you can use with Amazon EC2 Auto Scaling?
+  - What are the different [types of scaling policies](#-ec2-auto-scaling-policy-types) you can use with Amazon EC2 Auto Scaling?
 
 Let's move on. You should also have a fundamental understanding of containers, serverless, and virtualization.
 - There are many options for running your compute workloads in the cloud.
