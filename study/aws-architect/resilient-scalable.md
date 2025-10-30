@@ -83,8 +83,8 @@ We mentioned that one of the ways in which that we can help ensure our applicati
 
 **Scaling** is the ability of a system to handle increasing or decreasing load. Systems scale to meet demand—whether it's growing traffic, data volume, or compute needs.
 
-## 🔀 Types of Scaling
-### 🧱 Vertical Scaling (Scaling Up)
+### 🔀 Types of Scaling
+#### 🧱 Vertical Scaling (Scaling Up)
 - **Definition**: Increasing the capacity of a single resource (e.g., upgrading to a larger EC2 instance).
 - **Example**: Moving from `t3.medium` to `m5.2xlarge`.
 - **Pros**:
@@ -97,7 +97,7 @@ We mentioned that one of the ways in which that we can help ensure our applicati
   - Use **burstable instances** (e.g., T-series) for spiky workloads.
   - Consider **auto-resize scripts** for predictable growth.
 
-### 🧮 Horizontal Scaling (Scaling Out)
+#### 🧮 Horizontal Scaling (Scaling Out)
 - **Definition**: Adding more instances or nodes to distribute load.
 - **Example**: Adding EC2 instances behind a load balancer.
 - **Pros**:
@@ -111,7 +111,7 @@ We mentioned that one of the ways in which that we can help ensure our applicati
   - Leverage **Spot Instances** for non-critical workloads.
   - Use **serverless** (e.g., Lambda) for event-driven scaling.
 
-## 🧠 Summary Table
+### 🧠 Summary Table
 | Scaling Type | Direction | Example | Cost Strategy |
 |--------------|-----------|---------|----------------|
 | **Vertical** | Scale up/down | Resize EC2 | Use burstable or scheduled resizing |
@@ -121,21 +121,21 @@ We mentioned that one of the ways in which that we can help ensure our applicati
 ## 🔄 What Is Elasticity?
 **Elasticity** is the ability of a system to automatically adjust its capacity to match changing demand. It uses **automation** and **horizontal scaling** to add or remove resources as needed.
 
-## 📈 Why Elasticity Matters
+### 📈 Why Elasticity Matters
 - **Demand is rarely linear**—it fluctuates over time.
 - Elastic systems can **scale out** (add resources) during peak demand.
 - They can **scale in** (remove resources) when demand drops.
 - This ensures your environment is **right-sized** at all times.
 
-## ⚙️ AWS Tools for Elasticity
+### ⚙️ AWS Tools for Elasticity
 - **Launch Configuration**: Defines how new instances are created.
 - **Auto Scaling Groups**: Automatically adjust the number of EC2 instances based on metrics like CPU, memory, or custom CloudWatch alarms.
 
-## ✅ Benefits of Elasticity
+### ✅ Benefits of Elasticity
 Elasticity supports key pillars of the **AWS Well-Architected Framework**:
 - **Performance Efficiency**: Right resources at the right time.
 - **Operational Excellence**: Automated scaling reduces manual intervention.
 - **Cost Optimization**: Avoid over-provisioning and pay only for what you use.
 
-## 🧠 Summary
+### 🧠 Summary
 Elasticity ensures your system can grow and shrink dynamically, optimizing for performance, reliability, and cost. It’s a core principle of cloud-native architecture.
