@@ -139,3 +139,32 @@ Elasticity supports key pillars of the **AWS Well-Architected Framework**:
 
 ### 🧠 Summary
 Elasticity ensures your system can grow and shrink dynamically, optimizing for performance, reliability, and cost. It’s a core principle of cloud-native architecture.
+
+## ⚙️ AWS Auto Scaling vs. Amazon EC2 Auto Scaling
+| Feature | AWS Auto Scaling | Amazon EC2 Auto Scaling |
+|--------|------------------|--------------------------|
+| **Scope** | Multiple services (EC2, ECS, DynamoDB, Aurora) | Only EC2 instances |
+| **Use Case** | Unified scaling across resources | Maintain EC2 instance count in Auto Scaling Groups |
+| **Management** | Centralized scaling plans | Per-ASG configuration |
+| **Scaling Policies** | Target tracking only | Multiple policy types (see below) |
+
+- **AWS Auto Scaling** is ideal for managing scaling across multiple services from a single interface.
+- **Amazon EC2 Auto Scaling** is more granular and flexible for EC2-specific workloads.
+
+## 📈 EC2 Auto Scaling Policy Types
+
+### 1. Target Tracking Scaling
+- Automatically adjusts capacity to maintain a target metric (e.g., average CPU at 60%).
+- Easiest to configure and recommended for most use cases.
+
+### 2. Step Scaling
+- Adds/removes instances in steps based on metric thresholds.
+- Example: Add 1 instance if CPU > 60%, add 2 if CPU > 80%.
+
+### 3. Simple Scaling
+- Triggers scaling based on a single CloudWatch alarm.
+- Includes cooldown period to prevent rapid scaling.
+
+### 4. Scheduled Scaling
+- Scales based on a defined schedule (e.g., scale out at 8 AM, scale in at 6 PM).
+- Useful for predictable workloads like business hours.
