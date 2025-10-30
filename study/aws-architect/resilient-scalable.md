@@ -2,7 +2,7 @@
 
 When thinking about resilient architectures, we want to design our architectures with scalable and loosely coupled services, and we want to ensure our application continues to run even when there is a failure of an application component. It is best practice to test your applications at scale to ensure your applications can perform well under load. So let's again go back to our fundamentals to ensure we understand scaling. 
 
-Scaling is the ability of a system to scale, so increasing and decreasing the load placed on that system. And systems scale when they need to grow or shrink, again depending on the load or the demand. 
+[Scaling](#scaling) is the ability of a system to scale, so increasing and decreasing the load placed on that system. And systems scale when they need to grow or shrink, again depending on the load or the demand. 
 - There are two ways to scale, vertical and horizontal. Ensure you know the difference between these two along with the cost optimization for each.
 - Still under fundamentals, what is elasticity?
   - Well, it is using automation along with horizontal scaling to match your capacity with your demand.
