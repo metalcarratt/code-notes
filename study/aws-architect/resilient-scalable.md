@@ -19,7 +19,7 @@ Let's move on. You should also have a fundamental understanding of containers, s
   - Containers, serverless, and virtual instances in EC2, but when does it make more sense to use one over the other?
   - What are the benefits and limitations of the different service options?
   - Different workloads have different needs. Know how to recommend the appropriate compute, storage, networking, and databases based on the requirements and the right AWS services to meet the requirements.
-  - For example, when using Amazon EC2 for high performance computing, there are different instance types and deployment configurations that are optimal for HPC.
+  - For example, when using Amazon EC2 for [high performance computing](#-high-performance-computing-hpc), there are different instance types and deployment configurations that are optimal for HPC.
   - For more depth, read the AWS Well-Architected Framework High Performance Computing lens.
 - Know the different types of placement groups and advance networking options for certain EC2 instance types will help answer questions and build better designs.
 
