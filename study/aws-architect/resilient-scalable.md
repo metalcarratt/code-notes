@@ -168,3 +168,40 @@ Elasticity ensures your system can grow and shrink dynamically, optimizing for p
 ### 4. Scheduled Scaling
 - Scales based on a defined schedule (e.g., scale out at 8 AM, scale in at 6 PM).
 - Useful for predictable workloads like business hours.
+
+---
+
+# AWS Compute
+## 🧠 AWS Compute Options: When to Use What
+
+### 🧱 Amazon EC2 (Virtual Machines)
+- **Use When**: You need full OS-level control, custom networking, or specialized hardware (e.g., GPUs).
+- **Benefits**:
+  - Broad instance types (general, compute, memory, storage, accelerated).
+  - Supports placement groups for low-latency HPC workloads.
+  - Advanced networking: Elastic Fabric Adapter (EFA), SR-IOV, Enhanced Networking.
+- **Limitations**:
+  - Manual scaling unless paired with Auto Scaling.
+  - Longer startup time than containers or serverless.
+  - Higher operational overhead.
+
+### 📦 Containers (ECS, EKS, Fargate)
+- **Use When**: You want portability, fast startup, and microservices architecture.
+- **Benefits**:
+  - Lightweight and fast to deploy.
+  - Managed orchestration via ECS (simple) or EKS (Kubernetes).
+  - Fargate removes need to manage EC2 instances.
+- **Limitations**:
+  - Requires containerization and orchestration knowledge.
+  - Less control than EC2 for low-level tuning.
+
+### ⚡ Serverless (AWS Lambda)
+- **Use When**: You have short-lived, event-driven tasks with unpredictable demand.
+- **Benefits**:
+  - No infrastructure management.
+  - Scales instantly and automatically.
+  - Pay-per-invocation pricing.
+- **Limitations**:
+  - Limited execution time (15 min max).
+  - Cold start latency.
+  - Stateless by default; must integrate with external storage.
