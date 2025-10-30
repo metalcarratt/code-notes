@@ -32,7 +32,7 @@ There are many options for using [storage in your multi-tier architecture](#%EF%
     - Amazon Aurora for a cloud native relational database service,
   - and Amazon Redshift for data warehouse needs.
   - Here are questions to consider.
-    - How can you handle scaling with the AWS database services? For resiliency in RDS, would you use Read Replicas or a Multi-AZ design?
+    - How can you [handle scaling with the AWS database services](#-scaling-and-resiliency-in-aws-database-services)? For resiliency in RDS, would you use Read Replicas or a Multi-AZ design?
       - Read Replicas provide two main benefits, performance benefits and availability benefits.
       - RDS Multi-AZ does not scale your reads. It cannot be accessed directly and the standby does not provide added performance. It is only good for high availability.
       - Diving deeper using a Reed Replica is not a substitute for using a cache. Querying a Read Replica still has overhead of making a database connection, authentication, SQL query parsing, optimization locking, and so on.
