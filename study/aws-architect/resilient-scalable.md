@@ -15,7 +15,7 @@ When thinking about resilient architectures, we want to design our architectures
   - What are the different [types of scaling policies](#-ec2-auto-scaling-policy-types) you can use with Amazon EC2 Auto Scaling?
 
 Let's move on. You should also have a fundamental understanding of containers, serverless, and virtualization.
-- There are many options for running your compute workloads in the cloud.
+- There are many options for running your [compute workloads](#aws-compute) in the cloud.
   - Containers, serverless, and virtual instances in EC2, but when does it make more sense to use one over the other?
   - What are the benefits and limitations of the different service options?
   - Different workloads have different needs. Know how to recommend the appropriate compute, storage, networking, and databases based on the requirements and the right AWS services to meet the requirements.
