@@ -4,7 +4,7 @@ When thinking about resilient architectures, we want to design our architectures
 
 [Scaling](#scaling) is the ability of a system to scale, so increasing and decreasing the load placed on that system. And systems scale when they need to grow or shrink, again depending on the load or the demand. 
 - There are two ways to scale, vertical and horizontal. Ensure you know the difference between these two along with the cost optimization for each.
-- Still under fundamentals, what is elasticity?
+- Still under fundamentals, [what is elasticity](#-what-is-elasticity)?
   - Well, it is using automation along with horizontal scaling to match your capacity with your demand.
   - Demand is very rarely linear. It is usually increasing and decreasing and using elasticity that gives our capacity the ability to increase and decrease to meet that ever changing demand.
   - AWS provides launch configuration and autoscaling to scale out our systems to match the capacity to the demand giving our environment the ability to scale.
