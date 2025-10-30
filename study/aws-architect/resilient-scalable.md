@@ -21,7 +21,7 @@ Let's move on. You should also have a fundamental understanding of containers, s
   - Different workloads have different needs. Know how to recommend the appropriate compute, storage, networking, and databases based on the requirements and the right AWS services to meet the requirements.
   - For example, when using Amazon EC2 for [high performance computing](#-high-performance-computing-hpc), there are different instance types and deployment configurations that are optimal for HPC.
   - For more depth, read the AWS Well-Architected Framework High Performance Computing lens.
-- Know the different types of [placement groups](#-placement-groups-what-and-why) and advance networking options for certain EC2 instance types will help answer questions and build better designs.
+- Know the different types of [placement groups](#-placement-groups-what-and-why) and [advance networking options](#-networking-enhancements) for certain EC2 instance types will help answer questions and build better designs.
 
 There are many options for using storage in your multi-tier architecture.
 - For example, many years ago, companies used relational databases for nearly every data need.
