@@ -411,3 +411,66 @@ There’s no automatic routing—you control the traffic split.
 - Use **Multi-AZ** for high availability and automatic failover.
 - Use **caching** (ElastiCache, CloudFront, DAX) to reduce latency and offload backend systems.
 - Understand that each layer adds value but serves different purposes—combine them for optimal performance and resiliency.
+
+---
+
+# Proxies, CDNs and routing
+## 🔐 Amazon RDS Proxy: Scalability, Resiliency, and Security
+
+### ✅ Scalability
+- **Connection pooling**: RDS Proxy maintains a pool of open DB connections, allowing thousands of clients (e.g., Lambda functions, containers) to reuse them.
+- **Reduces overhead**: Minimizes the cost of opening/closing connections, especially for serverless or bursty workloads.
+- **Improves throughput**: Applications can scale without overwhelming the database with connection churn.
+
+### ✅ Resiliency
+- **Failover acceleration**: In Multi-AZ setups, RDS Proxy reduces failover time by up to **66% for RDS** and **79% for Aurora**.
+- **Connection preservation**: It automatically redirects connections to a healthy DB instance during failover.
+
+### ✅ Security
+- **IAM authentication**: Supports IAM-based DB access, reducing reliance on hardcoded credentials.
+- **Secrets Manager integration**: Securely stores and rotates DB credentials.
+- **TLS encryption**: Ensures secure in-transit communication between app and proxy.
+
+## 🧊 Amazon CloudFront (Content Delivery Network)
+
+- **Encrypts Data**:
+  - Supports **HTTPS/TLS** for secure content delivery.
+  - Integrates with **AWS Certificate Manager (ACM)** for easy SSL/TLS management.
+- **Removes Network Hops**:
+  - Caches content at **edge locations** close to users, reducing round trips to origin servers.
+  - Uses **persistent connections** to origin, minimizing latency.
+- **Controls Access**:
+  - Supports **signed URLs and cookies** to restrict access to premium content.
+  - Integrates with **AWS WAF** and **Shield** for DDoS protection and request filtering.
+- **Use When**:
+  - You need to serve static or dynamic content globally with low latency.
+  - You want to offload TLS termination and caching from your origin servers.
+
+## 🧭 Amazon Route 53 (DNS and Routing)
+
+- **Encrypts Data**:
+  - Supports **DNSSEC** to protect against DNS spoofing and cache poisoning.
+- **Removes Network Hops**:
+  - Uses **latency-based routing** to direct users to the closest healthy endpoint.
+  - Supports **geolocation and geoproximity routing** for regional performance optimization.
+- **Controls Access**:
+  - Can route traffic based on **health checks**, ensuring only healthy endpoints receive traffic.
+  - Enables **failover routing** to backup resources.
+- **Use When**:
+  - You need smart DNS routing across regions or availability zones.
+  - You want to implement **resilient failover** and **geographically aware routing**.
+
+
+## 🚀 AWS Global Accelerator
+
+- **Encrypts Data**:
+  - Supports **TLS passthrough** and **TLS termination** at the edge.
+- **Removes Network Hops**:
+  - Uses **AWS global backbone** to route traffic from edge locations to your application endpoints.
+  - Reduces latency and jitter by avoiding the public internet.
+- **Controls Access**:
+  - Provides **static anycast IPs** for consistent access control and firewall rules.
+  - Automatically reroutes traffic to healthy endpoints in case of failure.
+- **Use When**:
+  - You need **low-latency, highly available** access to your application across multiple AWS Regions.
+  - You want to simplify IP whitelisting and improve global performance for TCP/UDP workloads.
