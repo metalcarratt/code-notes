@@ -504,3 +504,59 @@ Use **AWS Transfer Family** when you need:
 - Integrated monitoring and automation
 
 It’s ideal for replacing legacy FTP servers, onboarding partners, or automating file-based workflows in a cloud-native way.
+
+---
+
+# 🧠 Designing Scalable and Reliable Workloads on AWS
+
+## 🏗️ Architectural Foundations
+
+#### ✅ Service-Oriented Architecture (SOA)
+- Focuses on **reusable software components** exposed via service interfaces.
+- Promotes **modularity** and **interoperability** across systems.
+- Common in enterprise integration and legacy modernization.
+
+#### ✅ Microservices Architecture
+- Breaks applications into **small, independently deployable services**.
+- Each service owns its **data and logic**, and communicates via **APIs**.
+- Enables **faster development**, **scaling**, and **resilience**.
+
+## 🌐 Distributed Systems Design
+
+Distributed systems rely on **network communication** between components like servers, services, and databases. To build resilient workloads:
+
+- Design for **latency tolerance** and **partial failure**.
+- Ensure **loose coupling** between components.
+- Use **timeouts, retries, and circuit breakers** to prevent cascading failures.
+- Monitor and log **inter-service communication** for observability.
+
+## 🔄 Microservices Communication Patterns
+
+| Pattern        | Description | AWS Services |
+|----------------|-------------|--------------|
+| **API-driven** | Services interact via REST or GraphQL APIs | API Gateway, Lambda, AppSync |
+| **Event-driven** | Services react to events asynchronously | EventBridge, SNS, SQS, Lambda |
+| **Data streaming** | Real-time data flow between services | Kinesis, MSK (Kafka), Lambda |
+
+## 🧱 Building Scalable Microservices on AWS
+
+| Layer            | AWS Services |
+|------------------|--------------|
+| **UI**           | Amplify, CloudFront, API Gateway |
+| **Microservices**| Lambda, ECS/Fargate, EKS |
+| **Data Stores**  | DynamoDB, Aurora, S3, ElastiCache |
+
+- Use **containers** for portability and orchestration.
+- Use **serverless** for auto-scaling and reduced ops overhead.
+- Apply **autoscaling policies** and **multi-AZ deployments** for resilience.
+
+## ⚡ Serverless Workload Options
+
+| Service         | Use Case |
+|-----------------|----------|
+| **AWS Lambda**  | Event-driven compute, short-lived tasks |
+| **Step Functions** | Workflow orchestration across services |
+| **API Gateway** | Front door for RESTful APIs |
+| **EventBridge** | Event bus for loosely coupled services |
+| **S3 + SNS/SQS**| Trigger-based file processing pipelines |
+
