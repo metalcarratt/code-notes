@@ -474,3 +474,33 @@ There’s no automatic routing—you control the traffic split.
 - **Use When**:
   - You need **low-latency, highly available** access to your application across multiple AWS Regions.
   - You want to simplify IP whitelisting and improve global performance for TCP/UDP workloads.
+
+
+## AWS Transfer Family
+
+AWS Transfer Family provides **fully managed file transfer services** that support:
+- **SFTP**, **FTPS**, and **FTP** protocols
+- Integration with **Amazon S3** or **Amazon EFS** as backend storage
+- **User authentication** via IAM, AD, or custom identity providers
+- **Audit logging** via CloudWatch and AWS CloudTrail
+
+### 🔧 Key Benefits
+
+| Feature | Description |
+|--------|-------------|
+| **No infrastructure to manage** | Fully managed service—no EC2, patching, or scaling required |
+| **Multi-AZ support** | Operates across up to **three Availability Zones** for high availability |
+| **Auto scaling** | Dynamically scales to handle concurrent connections and transfer volume |
+| **Redundant fleet** | Ensures resiliency for connection handling and transfer requests |
+| **Workflow automation** | Integrates with Step Functions, Lambda, and EventBridge for post-transfer processing |
+| **Security & compliance** | Supports encryption in transit and at rest, plus detailed audit trails |
+
+### 🧠 Summary
+
+Use **AWS Transfer Family** when you need:
+- Secure, protocol-compliant file transfer
+- Zero infrastructure management
+- Scalable, resilient architecture
+- Integrated monitoring and automation
+
+It’s ideal for replacing legacy FTP servers, onboarding partners, or automating file-based workflows in a cloud-native way.
