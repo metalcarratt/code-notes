@@ -560,3 +560,79 @@ Distributed systems rely on **network communication** between components like se
 | **EventBridge** | Event bus for loosely coupled services |
 | **S3 + SNS/SQS**| Trigger-based file processing pipelines |
 
+## ⚙️ Core AWS Serverless Services
+
+| Service         | Role |
+|-----------------|------|
+| **AWS Lambda**  | Event-driven compute |
+| **Amazon API Gateway** | Managed API front door |
+| **Amazon SQS**  | Message queue for decoupling |
+| **Amazon EventBridge** | Event bus for loosely coupled services |
+| **Amazon DynamoDB** | Serverless NoSQL database |
+| **AWS Step Functions** | Workflow orchestration |
+
+## 🧠 Amazon API Gateway
+
+### ✅ Key Features
+- Fully managed service to **create, publish, and manage APIs**.
+- Supports **REST, HTTP, and WebSocket APIs**.
+- **Scales automatically** to handle millions of requests.
+- Integrated with **Lambda**, **IAM**, **Cognito**, and **WAF**.
+
+### 🔍 Common Use Cases
+- **Expose Lambda functions** via HTTP endpoints.
+- **Proxy requests** to backend services (e.g., EC2, ECS, on-prem).
+- **Rate limiting and throttling** to protect backend systems.
+- **Authentication and authorization** using IAM or Cognito.
+- **Transform requests/responses** using mapping templates.
+- **Multi-tenant APIs** with usage plans and API keys.
+
+## ⚡ AWS Lambda: Scaling and Concurrency
+
+### ✅ Key Concepts
+- **Concurrency** = number of executions happening at the same time.
+- **Reserved concurrency**: guarantees capacity for critical functions.
+- **Provisioned concurrency**: pre-warms Lambda instances to avoid cold starts.
+- **Burst concurrency**: Lambda can scale rapidly in response to spikes.
+
+### 🧠 Scaling Lambda
+- Lambda scales **automatically** with incoming requests or events.
+- Each new request triggers a new instance (up to concurrency limits).
+- Use **SQS, EventBridge, or API Gateway** to trigger Lambda asynchronously or synchronously.
+
+## 📬 Amazon SQS: Decoupling and Asynchronous Workflows
+
+### ✅ What Is SQS?
+Amazon Simple Queue Service (SQS) is a **fully managed message queue** that enables **decoupling** of application components.
+
+### 🔍 Use Cases
+- Buffer requests between frontend and backend.
+- Handle **long-running or bursty workloads** asynchronously.
+- Enable **independent scaling** of producers and consumers.
+- Improve **fault tolerance** by retrying failed messages.
+
+### 🧠 Scaling with SQS
+- **Producers** and **consumers** can scale **independently**.
+- SQS supports **high throughput** (thousands of messages per second).
+- Use **Lambda triggers** or **EC2/ECS consumers** to process messages.
+- Combine with **DLQs (Dead Letter Queues)** for error handling.
+
+## 🧠 Pattern: Async Decoupling with SQS
+
+```plaintext
+[Frontend/API Gateway] --> [SQS Queue] --> [Lambda or ECS Consumer]
+```
+Frontend sends request to SQS (non-blocking).
+
+Backend processes messages at its own pace.
+
+Improves user experience and system resilience.
+
+## 🧠 Summary
+- **Serverless** = no infrastructure to manage, scales automatically, and pays per use.
+- **API Gateway** = scalable, secure API front door for Lambda and other services.
+- **Lambda** = event-driven compute that scales with concurrency.
+- **SQS** = decouples components, enables async processing, and supports high throughput.
+
+Together, these services form the backbone of scalable, resilient, and loosely coupled microservices architectures on AWS.
+
