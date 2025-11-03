@@ -77,6 +77,8 @@ We mentioned that one of the ways in which that we can help ensure our applicati
       - Evaluate the needs from the questions. And by understanding how the services work, know what will be best for the various implementations you encounter.
       - Given a set of use cases and knowing the capabilities of different AWS services, you should know how to design the appropriate type of architecture to meet the requirements. A wide variety of patterns including event-driven, microservices, and multi-tiered architectures might apply, but some will be more appropriate based on the user's needs. This task statement requires you to have depth and knowledge across API Gateway, Transfer Family, SQS, Secrets Manager, Application Load Balancers, SQS, Fargate, Lambda, Amazon Elastic Container Service, Elastic Kubernetes service, and more.
 
+Extra:
+- [AWS Step Functions](#-aws-step-functions-serverless-workflow-orchestration)
 
 # Scaling
 ## ⚙️ What Is Scaling?
