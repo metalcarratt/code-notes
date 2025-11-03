@@ -636,3 +636,102 @@ Improves user experience and system resilience.
 
 Together, these services form the backbone of scalable, resilient, and loosely coupled microservices architectures on AWS.
 
+---
+
+# 🔗 Decoupling Techniques: Synchronous vs Asynchronous Integration
+Decoupling enables components to operate independently within a distributed system. Two primary integration patterns are:
+
+## 🔄 Synchronous Decoupling
+
+### ✅ Characteristics
+- **Real-time interaction**: Component A waits for a response from Component B.
+- **Tight timing dependency**: Both components must be available for the transaction to succeed.
+- **Immediate feedback**: Useful for user-facing operations or short-lived tasks.
+
+### 🔧 AWS Services
+| Service | Role |
+|--------|------|
+| **Elastic Load Balancer (ALB/NLB)** | Routes traffic to healthy backend targets |
+| **Amazon API Gateway** | Front door for RESTful APIs |
+| **AWS Lambda** | Handles synchronous invocations via API Gateway |
+| **Amazon ECS/EKS** | Hosts microservices with synchronous HTTP endpoints |
+
+🧠 *Use synchronous decoupling when latency is low and availability of both components is guaranteed.*
+
+## ⏳ Asynchronous Decoupling
+
+### ✅ Characteristics
+- **Event or message-based**: Component A sends a message and continues without waiting.
+- **Loose timing dependency**: Components can operate independently and recover from delays or failures.
+- **Improved scalability and fault tolerance**: Ideal for long-running or bursty workloads.
+
+### 🔧 AWS Services
+| Service | Role |
+|--------|------|
+| **Amazon SQS** | Durable message queue for decoupling producers and consumers |
+| **Amazon SNS** | Pub/Sub messaging for fan-out delivery |
+| **Amazon EventBridge** | Event bus for loosely coupled service communication |
+| **AWS Lambda** | Processes events asynchronously from SQS, SNS, or EventBridge |
+| **Step Functions** | Orchestrates asynchronous workflows with retries and error handling |
+
+🧠 *Use asynchronous decoupling to buffer workloads, improve user experience, and isolate failures.*
+
+## 🧠 Summary
+
+| Pattern        | Availability Dependency | Latency | Scalability | Fault Tolerance | AWS Examples |
+|----------------|--------------------------|--------|-------------|-----------------|---------------|
+| **Synchronous** | High (both must be up)   | Low     | Moderate     | Low              | API Gateway, ALB, Lambda |
+| **Asynchronous**| Low (decoupled timing)   | Variable| High         | High             | SQS, SNS, EventBridge |
+
+Designing with the right decoupling pattern helps your workloads **scale independently**, **recover gracefully**, and **operate reliably** under stress.
+
+## 🧠 Serverless Tools for Decoupling in AWS
+
+Decoupling is about designing systems where components operate independently. Serverless services in AWS make this easier by abstracting infrastructure and enabling flexible, event-driven communication.
+
+### 🔧 Key Serverless Services and Their Roles
+
+| Service                  | Role in Decoupling |
+|--------------------------|--------------------|
+| **Amazon SQS**           | Message queue for asynchronous decoupling |
+| **Amazon SNS**           | Pub/Sub messaging for fan-out delivery |
+| **Amazon EventBridge**   | Event bus for loosely coupled service communication |
+| **AWS Lambda**           | Stateless compute triggered by events |
+| **Amazon API Gateway**   | Front door for synchronous APIs |
+| **Amazon DynamoDB**      | Serverless NoSQL store for fast, scalable data access |
+| **AWS Step Functions**   | Workflow orchestration across services |
+| **AWS Transfer Family**  | Managed file transfer with event triggers |
+| **AWS Secrets Manager**  | Secure credential storage and rotation |
+| **Application Load Balancer** | Synchronous routing with health checks and path-based rules |
+| **AWS Fargate**          | Serverless containers for long-running or batch tasks |
+| **Amazon ECS/EKS**       | Container orchestration for microservices and hybrid workloads |
+
+## 🧱 Deployment Patterns
+
+### ✅ Event-Driven Architecture
+- **Trigger-based workflows** using SQS, SNS, EventBridge, and Lambda.
+- Ideal for decoupling producers and consumers.
+- Scales independently and buffers load.
+
+### ✅ Microservices Architecture
+- Services communicate via **API Gateway**, **ALB**, or **EventBridge**.
+- Each service owns its logic and data store (e.g., DynamoDB, Aurora).
+- Use **Lambda**, **Fargate**, or **ECS/EKS** for compute.
+
+### ✅ Multi-Tier Architecture
+- UI → API Gateway → Lambda → SQS → Backend Processor
+- Use **Step Functions** for orchestration and retries.
+- Use **Secrets Manager** for secure access to DBs and APIs.
+
+## 🧠 How These Services Improve Decoupling
+
+| Capability         | Serverless Tool(s) | Benefit |
+|--------------------|--------------------|---------|
+| **Async buffering**| SQS, SNS           | Prevents overload, enables retry |
+| **Event routing**  | EventBridge        | Loosely couples producers and consumers |
+| **Stateless compute**| Lambda, Fargate  | Scales independently, no persistent state |
+| **Secure access**  | Secrets Manager    | Avoids hardcoded credentials |
+| **API abstraction**| API Gateway, ALB   | Decouples frontend from backend |
+| **Data isolation** | DynamoDB           | Each service owns its data |
+| **Workflow control**| Step Functions    | Adds resilience and visibility |
+
