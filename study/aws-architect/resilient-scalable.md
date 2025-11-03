@@ -735,3 +735,60 @@ Decoupling is about designing systems where components operate independently. Se
 | **Data isolation** | DynamoDB           | Each service owns its data |
 | **Workflow control**| Step Functions    | Adds resilience and visibility |
 
+---
+
+# 🔄 AWS Step Functions: Serverless Workflow Orchestration
+
+AWS Step Functions let you coordinate multiple AWS services into **reliable, scalable workflows** using a visual state machine model.
+
+## 🧠 What Step Functions Do
+
+- Define workflows as **state machines** with steps that:
+  - Invoke **Lambda functions**
+  - Call **APIs**
+  - Interact with **DynamoDB**, **SQS**, **SNS**, and more
+- Include **retry logic**, **error handling**, and **conditional branching**
+- Automate **long-running**, **multi-step**, or **event-driven** processes
+
+## 🔧 Workflow Types
+
+| Type         | Description |
+|--------------|-------------|
+| **Standard** | Durable workflows (up to 1 year), supports human interaction and complex logic |
+| **Express**  | High-volume, short-duration workflows (under 5 minutes), ideal for real-time processing |
+
+## 🔍 Common Use Cases
+
+- **ETL pipelines**: Process and transform data across services
+- **Microservice orchestration**: Coordinate Lambda, ECS, and API calls
+- **Approval workflows**: Wait for human input before proceeding
+- **Error-resilient automation**: Retry failed steps and log outcomes
+- **Data processing chains**: Trigger actions based on file uploads or events
+
+## ✅ Benefits
+
+- **Visual designer**: Drag-and-drop interface in AWS Console
+- **Built-in error handling**: Retry policies, catch blocks, fallback steps
+- **Serverless and scalable**: No infrastructure to manage
+- **Auditability**: Execution history and logs for every step
+- **Modular design**: Reuse and compose workflows from smaller tasks
+
+## 🔗 Integrations
+
+Step Functions work with:
+- **Lambda**
+- **DynamoDB**
+- **SQS/SNS**
+- **API Gateway**
+- **ECS/Fargate**
+- **SageMaker**
+- **Glue**
+- **Athena**
+
+## 🧠 Summary
+
+Use AWS Step Functions to:
+- Build **resilient, modular workflows**
+- Coordinate services without custom orchestration code
+- Handle **errors, retries, and branching logic** automatically
+- Scale workflows across serverless and container-based architectures
